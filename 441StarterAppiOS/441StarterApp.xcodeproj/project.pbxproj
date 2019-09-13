@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		10096D83232C02D900E5AA50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10096D82232C02D900E5AA50 /* AppDelegate.swift */; };
-		10096D85232C02D900E5AA50 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10096D84232C02D900E5AA50 /* ViewController.swift */; };
 		10096D88232C02D900E5AA50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10096D86232C02D900E5AA50 /* Main.storyboard */; };
 		10096D8A232C02DA00E5AA50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10096D89232C02DA00E5AA50 /* Assets.xcassets */; };
 		10096D8D232C02DA00E5AA50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10096D8B232C02DA00E5AA50 /* LaunchScreen.storyboard */; };
+		10A7BE90232C046400B5610E /* ChatterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A7BE8F232C046400B5610E /* ChatterTableViewController.swift */; };
+		10A7BE92232C050900B5610E /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A7BE91232C050900B5610E /* ComposeViewController.swift */; };
+		10A7BE94232C06E700B5610E /* ChatterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A7BE93232C06E700B5610E /* ChatterTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		10096D7F232C02D900E5AA50 /* 441StarterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 441StarterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10096D82232C02D900E5AA50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		10096D84232C02D900E5AA50 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		10096D87232C02D900E5AA50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		10096D89232C02DA00E5AA50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10096D8C232C02DA00E5AA50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10096D8E232C02DA00E5AA50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10A7BE8F232C046400B5610E /* ChatterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatterTableViewController.swift; sourceTree = "<group>"; };
+		10A7BE91232C050900B5610E /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		10A7BE93232C06E700B5610E /* ChatterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatterTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +59,10 @@
 			isa = PBXGroup;
 			children = (
 				10096D82232C02D900E5AA50 /* AppDelegate.swift */,
-				10096D84232C02D900E5AA50 /* ViewController.swift */,
 				10096D86232C02D900E5AA50 /* Main.storyboard */,
+				10A7BE93232C06E700B5610E /* ChatterTableViewCell.swift */,
+				10A7BE91232C050900B5610E /* ComposeViewController.swift */,
+				10A7BE8F232C046400B5610E /* ChatterTableViewController.swift */,
 				10096D89232C02DA00E5AA50 /* Assets.xcassets */,
 				10096D8B232C02DA00E5AA50 /* LaunchScreen.storyboard */,
 				10096D8E232C02DA00E5AA50 /* Info.plist */,
@@ -135,8 +141,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10096D85232C02D900E5AA50 /* ViewController.swift in Sources */,
+				10A7BE92232C050900B5610E /* ComposeViewController.swift in Sources */,
+				10A7BE90232C046400B5610E /* ChatterTableViewController.swift in Sources */,
 				10096D83232C02D900E5AA50 /* AppDelegate.swift in Sources */,
+				10A7BE94232C06E700B5610E /* ChatterTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
