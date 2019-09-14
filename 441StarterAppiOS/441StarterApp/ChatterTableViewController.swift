@@ -8,17 +8,34 @@
 
 import UIKit
 
+class Chatt {
+    var username: String
+    var timestamp: String
+    var message: String
+    
+    public init(user: String, time: String, message: String) {
+        self.username = user
+        self.timestamp = time
+        self.message = message
+    }
+}
+
 class ChatterTableViewController: UITableViewController {
 
+    var chatts: [Chatt] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.refreshControl?.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        self.refreshControl?.attributedTitle = NSAttributedString(string: "Reloading Chatts")
+        self.refreshControl?.tintColor = UIColor.purple.withAlphaComponent(0.35)
+        self.refreshControl?.beginRefreshing()
+        self.handleRefresh()
+        
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        tableView.estimatedRowHeight = 44.0
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 140
         tableView.register(ChatterTableViewCell.self, forCellReuseIdentifier: "ChatterCell")
     }
     
@@ -35,7 +52,7 @@ class ChatterTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return chatts.count
     }
 
     
@@ -44,58 +61,63 @@ class ChatterTableViewController: UITableViewController {
             return UITableViewCell()
         }
 
-        cell.user.text = "Username: Alec"
         cell.selectionStyle = .none
-        cell.message.text = "test message"
-        cell.timestamp.text = "test timestamp"
+        cell.user.text = chatts[indexPath.row].username
+        cell.message.text = chatts[indexPath.row].message
+        cell.timestamp.text = chatts[indexPath.row].timestamp
 
         return cell
     }
- 
+}
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+extension ChatterTableViewController {
+    
+    @objc func handleRefresh() {
+        self.refreshChatts()
+        self.refreshControl?.endRefreshing()
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func refreshChatts() {
+        
+        guard let endpointURL = URL(string: "http://134.209.218.243/getchatts/") else {
+            return
+        }
+        
+        var request = URLRequest(url: endpointURL)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            guard let _ = data, error == nil else {
+                print("GET NETWORKING ERROR")
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                
+                print("HTTP STATUS: \(httpStatus.statusCode)")
+                return
+                
+            }
+            
+            do {
+                
+                var newChatts = [Chatt]()
+                let json = try JSONSerialization.jsonObject(with: data!) as! [String:Any]
+                let chattsReceived = json["chatts"] as? [[String]] ?? []
+                
+                for chattEntry in chattsReceived {
+                    let chatt = Chatt(user: chattEntry[0], time: chattEntry[2], message: chattEntry[1])
+                    newChatts += [chatt]
+                }
+                
+                self.chatts = newChatts
+                self.tableView.reloadData()
+            }
+            catch let error as NSError {
+                print(error)
+            }
+        }
+        task.resume()
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

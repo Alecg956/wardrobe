@@ -17,10 +17,18 @@ class ChatterTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.contentView.backgroundColor = .green
+        self.contentView.backgroundColor = UIColor.purple.withAlphaComponent(0.35)
         self.contentView.addSubview(user)
         self.contentView.addSubview(timestamp)
         self.contentView.addSubview(message)
+        
+        user.font = UIFont.boldSystemFont(ofSize: 16.0)
+        user.lineBreakMode = .byWordWrapping
+        user.numberOfLines = 0
+        timestamp.lineBreakMode = .byWordWrapping
+        timestamp.numberOfLines = 0
+        message.lineBreakMode = .byWordWrapping
+        message.numberOfLines = 0
         
         user.translatesAutoresizingMaskIntoConstraints = false;
         timestamp.translatesAutoresizingMaskIntoConstraints = false;
@@ -29,19 +37,20 @@ class ChatterTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             
             
-            user.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8.0),
-            user.trailingAnchor.constraint(greaterThanOrEqualTo: timestamp.leadingAnchor, constant: -100),
-            user.topAnchor.constraint(equalTo: self.topAnchor, constant: 8.0),
-            user.bottomAnchor.constraint(equalTo: message.topAnchor, constant: -8.0),
+            user.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 8.0),
+            user.trailingAnchor.constraint(greaterThanOrEqualTo: self.contentView.centerXAnchor),
+            user.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8.0),
+            user.bottomAnchor.constraint(equalTo: message.topAnchor, constant: -10.0),
 
-            timestamp.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8.0),
-            timestamp.topAnchor.constraint(equalTo: self.topAnchor, constant: 8.0),
-            timestamp.bottomAnchor.constraint(equalTo: message.topAnchor, constant: -8.0),
+            timestamp.leadingAnchor.constraint(greaterThanOrEqualTo: self.contentView.centerXAnchor),
+            timestamp.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -8.0),
+            timestamp.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8.0),
+            timestamp.bottomAnchor.constraint(equalTo: message.topAnchor, constant: -10.0),
 
-            message.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8.0),
-            message.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0.0),
-            message.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8.0)
-            ])
+            message.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 8.0),
+            message.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 0.0),
+            message.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -8.0)
+        ])
 
     }
     

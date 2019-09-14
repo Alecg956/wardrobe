@@ -40,6 +40,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="6Vz-VZ-ukt">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lOO-Wg-w3m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -53,14 +56,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvn-rO-9aX">
-                                <rect key="frame" x="167.5" y="158" width="79" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The App Makers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvn-rO-9aX">
+                                <rect key="frame" x="144.5" y="158" width="125" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0f7-Ge-4xg">
-                                <rect key="frame" x="87" y="204" width="240" height="200"/>
+                                <rect key="frame" x="10" y="204" width="394" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="7uZ-kr-8cT"/>
@@ -73,8 +76,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="0f7-Ge-4xg" firstAttribute="top" secondItem="pvn-rO-9aX" secondAttribute="bottom" constant="25" id="DNz-fz-7Ku"/>
-                            <constraint firstItem="JMo-Dx-vSP" firstAttribute="trailing" secondItem="0f7-Ge-4xg" secondAttribute="trailing" constant="87" id="K8I-uH-LOC"/>
-                            <constraint firstItem="0f7-Ge-4xg" firstAttribute="leading" secondItem="JMo-Dx-vSP" secondAttribute="leading" constant="87" id="LHe-K5-o5c"/>
+                            <constraint firstItem="JMo-Dx-vSP" firstAttribute="trailing" secondItem="0f7-Ge-4xg" secondAttribute="trailing" constant="10" id="K8I-uH-LOC"/>
+                            <constraint firstItem="0f7-Ge-4xg" firstAttribute="leading" secondItem="JMo-Dx-vSP" secondAttribute="leading" constant="10" id="LHe-K5-o5c"/>
                             <constraint firstItem="0f7-Ge-4xg" firstAttribute="centerX" secondItem="eVJ-EB-lNG" secondAttribute="centerX" id="bUP-yu-azE"/>
                             <constraint firstItem="pvn-rO-9aX" firstAttribute="centerX" secondItem="eVJ-EB-lNG" secondAttribute="centerX" id="bic-w6-mkZ"/>
                             <constraint firstItem="pvn-rO-9aX" firstAttribute="top" secondItem="JMo-Dx-vSP" secondAttribute="top" constant="70" id="uVY-1l-4EL"/>
@@ -87,8 +90,16 @@
                                 <action selector="cancelPost:" destination="6OF-fA-RI8" id="wxS-dh-uOY"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Submit" id="0wl-B7-3u8"/>
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="0wl-B7-3u8">
+                            <connections>
+                                <action selector="submitPost:" destination="6OF-fA-RI8" id="jp8-8H-HfV"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="messageText" destination="0f7-Ge-4xg" id="nMk-Q2-7tZ"/>
+                        <outlet property="usernameLabel" destination="pvn-rO-9aX" id="9UN-eM-OB5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pah-gx-5pt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
