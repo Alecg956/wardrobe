@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Chatter Table View Controller-->
+        <!--441 Posts-->
         <scene sceneID="Q1w-a7-Hbj">
             <objects>
                 <tableViewController id="qC7-Rs-HGj" customClass="ChatterTableViewController" customModule="_41StarterApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,7 +33,7 @@
                             <outlet property="delegate" destination="qC7-Rs-HGj" id="2uP-Gb-2qp"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ftr-gU-DIX">
+                    <navigationItem key="navigationItem" title="441 Posts" id="ftr-gU-DIX">
                         <barButtonItem key="rightBarButtonItem" title="Post" id="nbH-X0-oZ5">
                             <connections>
                                 <segue destination="tNf-ic-eOU" kind="presentation" id="7yv-nu-935"/>
@@ -41,6 +41,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="6Vz-VZ-ukt">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                 </tableViewController>

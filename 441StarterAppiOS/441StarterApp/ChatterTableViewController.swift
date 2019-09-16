@@ -28,7 +28,6 @@ class ChatterTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.refreshControl?.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
-        self.refreshControl?.attributedTitle = NSAttributedString(string: "Reloading Chatts")
         self.refreshControl?.tintColor = UIColor.purple.withAlphaComponent(0.35)
         self.refreshControl?.beginRefreshing()
         self.handleRefresh()
@@ -103,16 +102,19 @@ extension ChatterTableViewController {
             do {
                 
                 var newChatts = [Chatt]()
-                let json = try JSONSerialization.jsonObject(with: data!) as! [String:Any]
-                let chattsReceived = json["chatts"] as? [[String]] ?? []
-                
-                for chattEntry in chattsReceived {
-                    let chatt = Chatt(user: chattEntry[0], time: chattEntry[2], message: chattEntry[1])
-                    newChatts += [chatt]
+                if let json = try JSONSerialization.jsonObject(with: data!) as? [String:Any] {
+                    DispatchQueue.main.async {
+                        let chattsReceived = json["chatts"] as? [[String]] ?? []
+                        
+                        for chattEntry in chattsReceived {
+                            let chatt = Chatt(user: chattEntry[0], time: chattEntry[2], message: chattEntry[1])
+                            newChatts += [chatt]
+                        }
+                        
+                        self.chatts = newChatts
+                        self.tableView.reloadData()
+                    }
                 }
-                
-                self.chatts = newChatts
-                self.tableView.reloadData()
             }
             catch let error as NSError {
                 print(error)
