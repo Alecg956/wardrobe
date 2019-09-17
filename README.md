@@ -1,2 +1,2 @@
-# EECS-441-F19
+# App Makers
 
