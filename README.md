@@ -1,7 +1,5 @@
 # App Makers
 
-The App Makers:
-
 Directory Structure:
 
 ```
@@ -38,6 +36,13 @@ Directory Structure:
 └── README.md
 ```
 
-iOS Demo Usage Instructions:
+# iOS Starter App Instructions:
 
-Backend Demo Usage Instructions:
+1.  Download, update, and install xCode if you don't already have it installed (https://developer.apple.com/xcode/)
+2.  Open the 441StarterApp.xcodeproj file in the 441StarterAppiOS folder
+3.  (optional) Connect an iOS device using a lightning connector if you are not planning on using the simulator
+4.  Press the "play" button at the top left corner of the interface
+5.  Watch you simulator/device start and load the application
+6.  Done!
+
+# Backend Starter App Instructions:
