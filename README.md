@@ -5,6 +5,7 @@ Directory Structure:
 ```
 .
 ├── 441StarterAppBackend
+│  
 │   ├── README.md
 │   ├── chatter
 │   │   ├── __init__.py
@@ -14,6 +15,7 @@ Directory Structure:
 │   │   ├── models.py
 │   │   ├── tests.py
 │   │   └── views.py
+│   │  
 │   ├── django_project
 │   │   ├── __init__.py
 │   │   ├── settings.py
@@ -21,7 +23,9 @@ Directory Structure:
 │   │   ├── urls.py
 │   │   └── wsgi.py
 │   └── manage.py
+│  
 ├── 441StarterAppiOS
+│  
 │   ├── 441StarterApp
 │   │   ├── AppDelegate.swift
 │   │   ├── Assets.xcassets
