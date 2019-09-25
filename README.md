@@ -5,7 +5,7 @@ Directory Structure:
 ```
 .
 ├── 441StarterAppBackend
-│  
+│   │  
 │   ├── README.md
 │   ├── chatter
 │   │   ├── __init__.py
@@ -25,7 +25,7 @@ Directory Structure:
 │   └── manage.py
 │  
 ├── 441StarterAppiOS
-│  
+│   │  
 │   ├── 441StarterApp
 │   │   ├── AppDelegate.swift
 │   │   ├── Assets.xcassets
