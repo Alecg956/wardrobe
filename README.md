@@ -71,4 +71,4 @@ Directory Structure:
 2. Connect to IP address http://167.99.60.42/getchatts/ to get chatt data from backend server with GET request
 3. Connect to IP address http://167.99.60.42/addchatt/ to add new chatt data to backend server in JSON format with POST request
 4. Connect to IP address http://167.99.60.42/getchatts/ again to verify that newly added chatt is in the database
-5. Done
+5. Done!
