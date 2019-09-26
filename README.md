@@ -67,5 +67,8 @@ Directory Structure:
 6.  Done!
 
 # Backend Starter App Instructions:
-1. Connect to IP address http://167.99.60.42/getchatts/ to get chatt data from backend server with GET request
-2. Connect to IP address http://167.99.60.42/addchatt/ to add chatt data to backend server in JSON format with POST request.
+1. Download, update, and install Postman if you don't already have it installed (https://www.getpostman.com/)
+2. Connect to IP address http://167.99.60.42/getchatts/ to get chatt data from backend server with GET request
+3. Connect to IP address http://167.99.60.42/addchatt/ to add new chatt data to backend server in JSON format with POST request
+4. Connect to IP address http://167.99.60.42/getchatts/ again to verify that newly added chatt is in the database
+5. Done
