@@ -22,6 +22,51 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(_:)))
+        sceneView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func didTap(_ gesture: UITapGestureRecognizer) {
+        
+        // get the scene view and the coordinates of the tap
+        let sceneView = gesture.view as? ARSCNView
+        let touchCoords = gesture.location(in: sceneView)
+        
+        // create the hit test object, this will allow us to determine
+        // if the user tapped a plane
+        guard let hitTest = sceneView?.hitTest(touchCoords, types: .existingPlaneUsingExtent), !hitTest.isEmpty, let hitTestRes = hitTest.first else {
+            
+            return
+        }
+        
+        // get the position of the center of the plane
+        let position = SCNVector3Make(hitTestRes.worldTransform.columns.3.x, hitTestRes.worldTransform.columns.3.y, hitTestRes.worldTransform.columns.3.z)
+        
+        print(position)
+        
+        // add item to our scene
+        addItemToPosition(position)
+        
+    }
+  
+    func addItemToPosition(_ position: SCNVector3) {
+        
+        // add to the scene in the background to not block the UI
+        DispatchQueue.main.async {
+
+            // create a box geometry
+            let boxGeometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
+
+            // create a node with box geometry
+            let cube = SCNNode(geometry: boxGeometry)
+            
+            // set the position of the cube to be where the tap was
+            cube.position = position
+            
+            // add the node to the scene
+            self.sceneView.scene.rootNode.addChildNode(cube)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
