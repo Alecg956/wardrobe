@@ -108,6 +108,8 @@ Directory Structure:
 1.  Download, update, and install xCode if you don't already have it installed (https://developer.apple.com/xcode/)
 2.  Open the wardrobe.xcodeproj file in the wardrobe folder
 3.  (optional) Connect an iOS device using a lightning connector if you are not planning on using the simulator
+3.1 If iOS device is connected, select the device from the simulator drop-down options next to the "Wardrobe" scheme selection
+    (found in the gray rectangle to the right of the "stop" button)
 4.  Press the "play" button at the top left corner of the interface
 5.  Watch you simulator/device start and load the application
 6.  Done!
