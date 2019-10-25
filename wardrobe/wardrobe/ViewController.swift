@@ -11,8 +11,30 @@ import SceneKit
 import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
+    
+    lazy var numModels = Int()
 
     @IBOutlet var sceneView: ARSCNView!
+    
+    lazy var scaleUpButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.tintColor = .green
+        button.setTitle("Scale Up", for: .normal)
+        button.addTarget(self, action: #selector(didTapScaleUp), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var scaleDownButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.tintColor = .red
+        button.setTitle("Scale Down", for: .normal)
+        button.addTarget(self, action: #selector(didTapScaleDown), for: .touchUpInside)
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +45,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
+        // create a gesture recognizer for tapping to insert the model
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(_:)))
         sceneView.addGestureRecognizer(tapGestureRecognizer)
+        
+        // set up the UI
+        setupUI()
     }
     
     @objc func didTap(_ gesture: UITapGestureRecognizer) {
@@ -49,20 +75,51 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         addItemToPosition(position)
         
     }
+    
+    @objc func didTapScaleUp() {
+        if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
+            node.scale.x += 0.1
+            node.scale.y += 0.1
+            node.scale.z += 0.1
+        }
+    }
+    
+    @objc func didTapScaleDown () {
+        if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
+            node.scale.x -= 0.1
+            node.scale.y -= 0.1
+            node.scale.z -= 0.1
+        }
+    }
   
     func addItemToPosition(_ position: SCNVector3) {
         
+        if numModels >= 1 {
+            return
+        }
+        
         guard let url = Bundle.main.url(forResource: "human_male", withExtension: "usdz", subdirectory: "art.scnassets") else { return }
         
-        let scene = try! SCNScene(url: url, options: [.checkConsistency: true])
+        let scene: SCNScene
+        
+        do {
+            scene = try SCNScene(url: url, options: [.checkConsistency: true])
+        } catch {
+            fatalError()
+        }
         
         // add to the scene in the background to not block the UI
         DispatchQueue.main.async {
             
             if let node = scene.rootNode.childNode(withName: "human_male", recursively: false) {
                 
-                node.position = position
+                self.numModels += 1
                 
+                node.position = position
+                node.scale = SCNVector3Make(0.9, 0.9, 0.9)
+                
+                self.sceneView.automaticallyUpdatesLighting = true
+                self.sceneView.autoenablesDefaultLighting = true
                 self.sceneView.scene.rootNode.addChildNode(node)
                 
             }
@@ -77,6 +134,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Enable plane detection
         configuration.planeDetection = .horizontal
+        
+        configuration.isLightEstimationEnabled = true
         
         // show feature points
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
@@ -142,6 +201,23 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
+        
+    }
+    
+    func setupUI() {
+        
+        self.view.addSubview(scaleUpButton)
+        self.view.addSubview(scaleDownButton)
+        
+        NSLayoutConstraint.activate([
+            
+            scaleDownButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: -50.0),
+            scaleDownButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -25.0),
+            
+            scaleUpButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 50.0),
+            scaleUpButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -25.0),
+        
+        ])
         
     }
 }
