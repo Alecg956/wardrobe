@@ -52,20 +52,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
   
     func addItemToPosition(_ position: SCNVector3) {
         
+        guard let url = Bundle.main.url(forResource: "human_male", withExtension: "usdz", subdirectory: "art.scnassets") else { return }
+        
+        let scene = try! SCNScene(url: url, options: [.checkConsistency: true])
+        
         // add to the scene in the background to not block the UI
         DispatchQueue.main.async {
-
-            // create a box geometry
-            let boxGeometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
-
-            // create a node with box geometry
-            let cube = SCNNode(geometry: boxGeometry)
             
-            // set the position of the cube to be where the tap was
-            cube.position = position
-            
-            // add the node to the scene
-            self.sceneView.scene.rootNode.addChildNode(cube)
+            if let node = scene.rootNode.childNode(withName: "human_male", recursively: false) {
+                
+                node.position = position
+                
+                self.sceneView.scene.rootNode.addChildNode(node)
+                
+            }
         }
     }
     
