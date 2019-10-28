@@ -13,6 +13,8 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
     
     lazy var numModels = Int()
+    static let rotateRightSmall = SCNAction.rotateBy(x: 0, y: 0.2, z: 0, duration: 0.05)
+    static let rotateLeftSmall = SCNAction.rotateBy(x: 0, y: -0.2, z: 0, duration: 0.05)
     
     var timer: Timer = Timer()
 
@@ -22,6 +24,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         
+        button.backgroundColor = .green
         button.tintColor = .green
         button.setTitle("Scale Up", for: .normal)
         button.addTarget(self, action: #selector(didTapScaleUp), for: .touchUpInside)
@@ -31,8 +34,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     lazy var scaleDownButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        
-        button.tintColor = .red
+        button.backgroundColor = .red
         button.setTitle("Scale Down", for: .normal)
         button.addTarget(self, action: #selector(didTapScaleDown), for: .touchUpInside)
         return button
@@ -41,8 +43,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     lazy var rotateRightButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        
-        button.tintColor = .red
+        button.backgroundColor = .blue
         button.setTitle("RR", for: .normal)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapRotateRight))
@@ -56,12 +57,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     lazy var rotateLeftButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        
-        button.tintColor = .red
+        button.backgroundColor = .blue
         button.setTitle("RL", for: .normal)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapRotateLeft))
-        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(didTapRotateLeft))
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(didPressRotateLeft))
         
         button.addGestureRecognizer(longGesture)
         button.addGestureRecognizer(tapGesture)
@@ -129,15 +129,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     // handler for tapping rotate right button
     @objc func didTapRotateRight (gesture: UITapGestureRecognizer) {
+        
         if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
-            node.eulerAngles.y += 0.2
+            node.runAction(ViewController.rotateRightSmall)
         }
     }
     
     // handler for tapping rotate left button
     @objc func didTapRotateLeft () {
+        
         if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
-            node.eulerAngles.y -= 0.2
+            node.runAction(ViewController.rotateLeftSmall)
         }
     }
     
@@ -291,9 +293,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             rotateRightButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 50.0),
             rotateRightButton.bottomAnchor.constraint(equalTo: self.scaleDownButton.topAnchor, constant: -50.0),
+            rotateRightButton.heightAnchor.constraint(equalToConstant: 50.0),
+            rotateRightButton.widthAnchor.constraint(equalToConstant: 50.0),
+            
             
             rotateLeftButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: -50.0),
             rotateLeftButton.bottomAnchor.constraint(equalTo: self.scaleDownButton.topAnchor, constant: -50.0),
+            rotateLeftButton.heightAnchor.constraint(equalToConstant: 50.0),
+            rotateLeftButton.widthAnchor.constraint(equalToConstant: 50.0),
         
         ])
         
