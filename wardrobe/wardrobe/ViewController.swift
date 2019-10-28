@@ -13,6 +13,8 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
     
     lazy var numModels = Int()
+    
+    var timer: Timer = Timer()
 
     @IBOutlet var sceneView: ARSCNView!
     
@@ -36,6 +38,36 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         return button
     }()
     
+    lazy var rotateRightButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.tintColor = .red
+        button.setTitle("RR", for: .normal)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapRotateRight))
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(didPressRotateRight))
+        
+        button.addGestureRecognizer(longGesture)
+        button.addGestureRecognizer(tapGesture)
+        return button
+    }()
+    
+    lazy var rotateLeftButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.tintColor = .red
+        button.setTitle("RL", for: .normal)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapRotateLeft))
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(didTapRotateLeft))
+        
+        button.addGestureRecognizer(longGesture)
+        button.addGestureRecognizer(tapGesture)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,6 +85,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         setupUI()
     }
     
+    // Handler for adding the model to the scene
     @objc func didTap(_ gesture: UITapGestureRecognizer) {
         
         // get the scene view and the coordinates of the tap
@@ -76,6 +109,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
+    // Handler for tapping scale up button
     @objc func didTapScaleUp() {
         if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
             node.scale.x += 0.1
@@ -84,6 +118,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    // handler for tapping scale down button
     @objc func didTapScaleDown () {
         if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
             node.scale.x -= 0.1
@@ -91,7 +126,40 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             node.scale.z -= 0.1
         }
     }
-  
+    
+    // handler for tapping rotate right button
+    @objc func didTapRotateRight (gesture: UITapGestureRecognizer) {
+        if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
+            node.eulerAngles.y += 0.2
+        }
+    }
+    
+    // handler for tapping rotate left button
+    @objc func didTapRotateLeft () {
+        if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
+            node.eulerAngles.y -= 0.2
+        }
+    }
+    
+    // handler for holding rotate right button
+    @IBAction func didPressRotateRight(gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(didTapRotateRight), userInfo: nil, repeats: true)
+        } else if gesture.state == .ended || gesture.state == .cancelled {
+            timer.invalidate()
+        }
+    }
+    
+    // handler for holding rotate left button
+    @IBAction func didPressRotateLeft(gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(didTapRotateLeft), userInfo: nil, repeats: true)
+        } else if gesture.state == .ended || gesture.state == .cancelled {
+            timer.invalidate()
+        }
+    }
+    
+    // Add an item to the scene on tap
     func addItemToPosition(_ position: SCNVector3) {
         
         if numModels >= 1 {
@@ -126,6 +194,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    // Set up the initial state of the scene
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -204,10 +273,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
+    // Set up the UI (not AR related)
     func setupUI() {
         
         self.view.addSubview(scaleUpButton)
         self.view.addSubview(scaleDownButton)
+        self.view.addSubview(rotateRightButton)
+        self.view.addSubview(rotateLeftButton)
         
         NSLayoutConstraint.activate([
             
@@ -216,6 +288,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             scaleUpButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 50.0),
             scaleUpButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -25.0),
+            
+            rotateRightButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 50.0),
+            rotateRightButton.bottomAnchor.constraint(equalTo: self.scaleDownButton.topAnchor, constant: -50.0),
+            
+            rotateLeftButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: -50.0),
+            rotateLeftButton.bottomAnchor.constraint(equalTo: self.scaleDownButton.topAnchor, constant: -50.0),
         
         ])
         
