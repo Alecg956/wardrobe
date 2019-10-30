@@ -10,37 +10,52 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+class ARTestViewController: UIViewController, ARSCNViewDelegate {
     
     lazy var numModels = Int()
     static let rotateRightSmall = SCNAction.rotateBy(x: 0, y: 0.2, z: 0, duration: 0.05)
     static let rotateLeftSmall = SCNAction.rotateBy(x: 0, y: -0.2, z: 0, duration: 0.05)
+    static let scaleUpSmall = SCNAction.scale(by: 1.1, duration: 0.05)
+    static let scaleDownSmall = SCNAction.scale(by: 0.9, duration: 0.05)
     
     var timer: Timer = Timer()
 
     @IBOutlet var sceneView: ARSCNView!
     
     lazy var scaleUpButton: UIButton = {
+        
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         
         button.backgroundColor = .green
         button.tintColor = .green
         button.setTitle("Scale Up", for: .normal)
-        button.addTarget(self, action: #selector(didTapScaleUp), for: .touchUpInside)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapScaleUp))
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(didPressScaleUp))
+        
+        button.addGestureRecognizer(longGesture)
+        button.addGestureRecognizer(tapGesture)
         return button
     }()
     
     lazy var scaleDownButton: UIButton = {
+        
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .red
         button.setTitle("Scale Down", for: .normal)
-        button.addTarget(self, action: #selector(didTapScaleDown), for: .touchUpInside)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapScaleDown))
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(didPressScaleDown))
+        
+        button.addGestureRecognizer(longGesture)
+        button.addGestureRecognizer(tapGesture)
         return button
     }()
     
     lazy var rotateRightButton: UIButton = {
+        
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .blue
@@ -55,6 +70,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }()
     
     lazy var rotateLeftButton: UIButton = {
+        
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .blue
@@ -92,8 +108,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let sceneView = gesture.view as? ARSCNView
         let touchCoords = gesture.location(in: sceneView)
         
-        // create the hit test object, this will allow us to determine
-        // if the user tapped a plane
+        // create hit test object, allows us to determine if a plane tapped
         guard let hitTest = sceneView?.hitTest(touchCoords, types: .existingPlaneUsingExtent), !hitTest.isEmpty, let hitTestRes = hitTest.first else {
             
             return
@@ -111,19 +126,35 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     // Handler for tapping scale up button
     @objc func didTapScaleUp() {
+        
         if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
-            node.scale.x += 0.1
-            node.scale.y += 0.1
-            node.scale.z += 0.1
+            node.runAction(ARTestViewController.scaleUpSmall)
         }
     }
     
     // handler for tapping scale down button
     @objc func didTapScaleDown () {
+        
         if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
-            node.scale.x -= 0.1
-            node.scale.y -= 0.1
-            node.scale.z -= 0.1
+            node.runAction(ARTestViewController.scaleDownSmall)
+        }
+    }
+    
+    // handler for holding scale up button
+    @IBAction func didPressScaleUp(gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(didTapScaleUp), userInfo: nil, repeats: true)
+        } else if gesture.state == .ended || gesture.state == .cancelled {
+            timer.invalidate()
+        }
+    }
+    
+    // handler for holding scale down button
+    @IBAction func didPressScaleDown(gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(didTapScaleDown), userInfo: nil, repeats: true)
+        } else if gesture.state == .ended || gesture.state == .cancelled {
+            timer.invalidate()
         }
     }
     
@@ -131,7 +162,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @objc func didTapRotateRight (gesture: UITapGestureRecognizer) {
         
         if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
-            node.runAction(ViewController.rotateRightSmall)
+            node.runAction(ARTestViewController.rotateRightSmall)
         }
     }
     
@@ -139,7 +170,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @objc func didTapRotateLeft () {
         
         if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
-            node.runAction(ViewController.rotateLeftSmall)
+            node.runAction(ARTestViewController.rotateLeftSmall)
         }
     }
     
