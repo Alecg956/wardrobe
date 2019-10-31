@@ -43,6 +43,23 @@ class CustomizeViewController: UIViewController {
     }()
 
     
+    //Other gender button
+    lazy var otherButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.backgroundColor = .red
+        button.tintColor = .red
+        button.setTitle("Other", for: .normal)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOther))
+        
+        button.addGestureRecognizer(tapGesture)
+        
+        return button
+    }()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,13 +72,31 @@ class CustomizeViewController: UIViewController {
         maleButton.tintColor = .green
         
         femaleButton.backgroundColor = .red
-        maleButton.tintColor = .red
+        femaleButton.tintColor = .red
+        
+        otherButton.backgroundColor = .red
+        otherButton.tintColor = .red
     }
     
-    // Handler for tapping male button
+    // Handler for tapping female button
     @objc func didTapFemale() {
         femaleButton.backgroundColor = .green
         femaleButton.tintColor = .green
+        
+        maleButton.backgroundColor = .red
+        maleButton.tintColor = .red
+        
+        otherButton.backgroundColor = .red
+        otherButton.tintColor = .red
+    }
+    
+    // Handler for tapping other button
+    @objc func didTapOther() {
+        otherButton.backgroundColor = .green
+        otherButton.tintColor = .green
+        
+        femaleButton.backgroundColor = .red
+        femaleButton.tintColor = .red
         
         maleButton.backgroundColor = .red
         maleButton.tintColor = .red
@@ -73,14 +108,18 @@ class CustomizeViewController: UIViewController {
         
         self.view.addSubview(maleButton)
         self.view.addSubview(femaleButton)
+        self.view.addSubview(otherButton)
         
         NSLayoutConstraint.activate([
             
-            maleButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 50.0),
+            maleButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: -100.0),
             maleButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor, constant: 0.0),
             
-            femaleButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: -50.0),
+            femaleButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 0.0),
             femaleButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor, constant: 0.0),
+            
+            otherButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 100.0),
+            otherButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor, constant: 0.0),
         
         ])
         
