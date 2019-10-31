@@ -94,7 +94,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         
         // create a gesture recognizer for tapping to insert the model
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(_:)))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapScreen(_:)))
         sceneView.addGestureRecognizer(tapGestureRecognizer)
         
         // set up the UI
@@ -102,7 +102,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
     }
     
     // Handler for adding the model to the scene
-    @objc func didTap(_ gesture: UITapGestureRecognizer) {
+    @objc func didTapScreen(_ gesture: UITapGestureRecognizer) {
         
         // get the scene view and the coordinates of the tap
         let sceneView = gesture.view as? ARSCNView
