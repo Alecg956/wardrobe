@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1022546F236B4C7100B064A3 /* BrowseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1022546E236B4C7100B064A3 /* BrowseTableViewController.swift */; };
 		1025E616235CFBD90017E7DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1025E615235CFBD90017E7DA /* AppDelegate.swift */; };
 		1025E618235CFBD90017E7DA /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 1025E617235CFBD90017E7DA /* art.scnassets */; };
 		1025E61A235CFBD90017E7DA /* ARTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1025E619235CFBD90017E7DA /* ARTestViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1022546E236B4C7100B064A3 /* BrowseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BrowseTableViewController.swift; path = wardrobe/BrowseTableViewController.swift; sourceTree = "<group>"; };
 		1025E612235CFBD90017E7DA /* wardrobe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wardrobe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1025E615235CFBD90017E7DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1025E617235CFBD90017E7DA /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -40,6 +42,7 @@
 		1025E609235CFBD90017E7DA = {
 			isa = PBXGroup;
 			children = (
+				1022546E236B4C7100B064A3 /* BrowseTableViewController.swift */,
 				1025E614235CFBD90017E7DA /* wardrobe */,
 				1025E613235CFBD90017E7DA /* Products */,
 			);
@@ -141,6 +144,7 @@
 			files = (
 				1025E61A235CFBD90017E7DA /* ARTestViewController.swift in Sources */,
 				1025E616235CFBD90017E7DA /* AppDelegate.swift in Sources */,
+				1022546F236B4C7100B064A3 /* BrowseTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
