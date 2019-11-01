@@ -6,6 +6,11 @@
 //  Copyright © 2019 Alec Goldberg. All rights reserved.
 //
 
+//Global struct with model parameters
+struct CustomizeVariables {
+    static var gender = "other"
+}
+
 import UIKit
 
 class CustomizeViewController: UIViewController {
@@ -15,8 +20,8 @@ class CustomizeViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        button.backgroundColor = .green
-        button.tintColor = .green
+        button.backgroundColor = .red
+        button.tintColor = .red
         button.setTitle("Male", for: .normal)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapMale))
@@ -48,8 +53,8 @@ class CustomizeViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        button.backgroundColor = .red
-        button.tintColor = .red
+        button.backgroundColor = .green
+        button.tintColor = .green
         button.setTitle("Other", for: .normal)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOther))
@@ -76,6 +81,8 @@ class CustomizeViewController: UIViewController {
         
         otherButton.backgroundColor = .red
         otherButton.tintColor = .red
+        
+        CustomizeVariables.gender = "male"
     }
     
     // Handler for tapping female button
@@ -88,6 +95,8 @@ class CustomizeViewController: UIViewController {
         
         otherButton.backgroundColor = .red
         otherButton.tintColor = .red
+        
+        CustomizeVariables.gender = "female"
     }
     
     // Handler for tapping other button
@@ -100,6 +109,8 @@ class CustomizeViewController: UIViewController {
         
         maleButton.backgroundColor = .red
         maleButton.tintColor = .red
+        
+        CustomizeVariables.gender = "other"
     }
 
     
