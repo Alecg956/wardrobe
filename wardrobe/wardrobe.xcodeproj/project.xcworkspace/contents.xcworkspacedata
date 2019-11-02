@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:wardrobe.xcodeproj">
+      location = "group:/Users/alecgoldberg/Desktop/EECS 441/Misc/eecs-441-f19/wardrobe/wardrobe/BrowseTableViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>
