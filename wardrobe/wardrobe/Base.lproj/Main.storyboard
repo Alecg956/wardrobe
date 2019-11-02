@@ -47,7 +47,7 @@
         <!--Customize-->
         <scene sceneID="ykj-We-Pac">
             <objects>
-                <viewController id="avf-8g-qkC" sceneMemberID="viewController">
+                <viewController id="avf-8g-qkC" customClass="CustomizeViewController" customModule="wardrobe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m3V-Rb-b2x">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
