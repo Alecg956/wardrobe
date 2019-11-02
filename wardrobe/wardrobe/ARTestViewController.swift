@@ -101,29 +101,6 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         setupUI()
     }
     
-    // Handler for adding the model to the scene
-    @objc func didTapScreen(_ gesture: UITapGestureRecognizer) {
-        
-        // get the scene view and the coordinates of the tap
-        let sceneView = gesture.view as? ARSCNView
-        let touchCoords = gesture.location(in: sceneView)
-        
-        // create hit test object, allows us to determine if a plane tapped
-        guard let hitTest = sceneView?.hitTest(touchCoords, types: .existingPlaneUsingExtent), !hitTest.isEmpty, let hitTestRes = hitTest.first else {
-            
-            return
-        }
-        
-        // get the position of the center of the plane
-        let position = SCNVector3Make(hitTestRes.worldTransform.columns.3.x, hitTestRes.worldTransform.columns.3.y, hitTestRes.worldTransform.columns.3.z)
-        
-        print(position)
-        
-        // add item to our scene
-        addItemToPosition(position)
-        
-    }
-    
     // Handler for tapping scale up button
     @objc func didTapScaleUp() {
         
@@ -190,6 +167,29 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         } else if gesture.state == .ended || gesture.state == .cancelled {
             timer.invalidate()
         }
+    }
+    
+    // Handler for adding the model to the scene
+    @objc func didTapScreen(_ gesture: UITapGestureRecognizer) {
+        
+        // get the scene view and the coordinates of the tap
+        let sceneView = gesture.view as? ARSCNView
+        let touchCoords = gesture.location(in: sceneView)
+        
+        // create hit test object, allows us to determine if a plane tapped
+        guard let hitTest = sceneView?.hitTest(touchCoords, types: .existingPlaneUsingExtent), !hitTest.isEmpty, let hitTestRes = hitTest.first else {
+            
+            return
+        }
+        
+        // get the position of the center of the plane
+        let position = SCNVector3Make(hitTestRes.worldTransform.columns.3.x, hitTestRes.worldTransform.columns.3.y, hitTestRes.worldTransform.columns.3.z)
+        
+        print(position)
+        
+        // add item to our scene
+        addItemToPosition(position)
+        
     }
     
     // Add an item to the scene on tap

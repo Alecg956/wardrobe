@@ -15,6 +15,7 @@
 		1025E61D235CFBD90017E7DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1025E61B235CFBD90017E7DA /* Main.storyboard */; };
 		1025E61F235CFBDE0017E7DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1025E61E235CFBDE0017E7DA /* Assets.xcassets */; };
 		1025E622235CFBDE0017E7DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1025E620235CFBDE0017E7DA /* LaunchScreen.storyboard */; };
+		10F44016236C793100435BC9 /* BrowseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F44015236C793100435BC9 /* BrowseTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		1025E61E235CFBDE0017E7DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1025E621235CFBDE0017E7DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1025E623235CFBDE0017E7DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10F44015236C793100435BC9 /* BrowseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +46,6 @@
 		1025E609235CFBD90017E7DA = {
 			isa = PBXGroup;
 			children = (
-				1022546E236B4C7100B064A3 /* BrowseTableViewController.swift */,
 				1025E614235CFBD90017E7DA /* wardrobe */,
 				1025E613235CFBD90017E7DA /* Products */,
 			);
@@ -61,6 +62,8 @@
 		1025E614235CFBD90017E7DA /* wardrobe */ = {
 			isa = PBXGroup;
 			children = (
+				1022546E236B4C7100B064A3 /* BrowseTableViewController.swift */,
+				10F44015236C793100435BC9 /* BrowseTableViewCell.swift */,
 				1025E615235CFBD90017E7DA /* AppDelegate.swift */,
 				1025E617235CFBD90017E7DA /* art.scnassets */,
 				1025E619235CFBD90017E7DA /* ARTestViewController.swift */,
@@ -146,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1025E61A235CFBD90017E7DA /* ARTestViewController.swift in Sources */,
+				10F44016236C793100435BC9 /* BrowseTableViewCell.swift in Sources */,
 				1025E616235CFBD90017E7DA /* AppDelegate.swift in Sources */,
 				0623963D236AA4D30012C6C7 /* CustomizeViewController.swift in Sources */,
 				1022546F236B4C7100B064A3 /* BrowseTableViewController.swift in Sources */,
