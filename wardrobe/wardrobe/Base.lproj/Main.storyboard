@@ -17,7 +17,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="CZi-ai-xfp"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Purchase" id="c5m-17-KaA"/>
+                    <tabBarItem key="tabBarItem" title="Purchase" image="cart" catalog="system" id="c5m-17-KaA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WWZ-TX-C1X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -54,7 +54,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="mF8-ML-dpf"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Customize" id="Dmq-c2-Y8e"/>
+                    <tabBarItem key="tabBarItem" title="Customize" image="person" catalog="system" id="Dmq-c2-Y8e"/>
                     <navigationItem key="navigationItem" id="ydj-UH-9mT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T72-Ab-91D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -69,8 +69,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrB-h1-WRS">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BrB-h1-WRS">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </arscnView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -82,7 +82,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Test" id="7Gg-45-rOn"/>
+                    <tabBarItem key="tabBarItem" title="Test" image="eye" catalog="system" id="7Gg-45-rOn"/>
                     <navigationItem key="navigationItem" id="pff-R3-Hy6"/>
                     <connections>
                         <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
@@ -90,7 +90,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3610" y="335"/>
+            <point key="canvasLocation" x="-3610.144927536232" y="334.82142857142856"/>
         </scene>
         <!--Browse-->
         <scene sceneID="H3k-wt-nHf">
@@ -115,11 +115,17 @@
                             <outlet property="delegate" destination="0Jf-Y0-sne" id="2l3-iV-m7u"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Browse" id="kIT-wL-45w"/>
+                    <tabBarItem key="tabBarItem" title="Browse" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="kIT-wL-45w"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="erB-zv-Bkg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3610" y="-427"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cart" catalog="system" width="64" height="50"/>
+        <image name="eye" catalog="system" width="64" height="40"/>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+        <image name="person" catalog="system" width="64" height="58"/>
+    </resources>
 </document>

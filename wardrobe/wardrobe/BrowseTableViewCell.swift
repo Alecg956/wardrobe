@@ -14,7 +14,6 @@ class BrowseTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
-        label.textColor = .green
         
         return label
     }()
@@ -24,6 +23,7 @@ class BrowseTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        self.contentView.backgroundColor = Global.greenBG
         setupUI()
     }
     
