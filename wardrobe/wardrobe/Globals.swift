@@ -1,11 +1,12 @@
 enum Gender {
-    case Male
-    case Female
-    case Other
+    case male
+    case female
+    case other
 }
 
-//Add global variables to this struct
+// Add global variables to this struct
 struct Global {
-    //model gender
-    var Gender:Gender = .other
+    
+    // default state is .other
+    var gender: Gender = .other
 }
