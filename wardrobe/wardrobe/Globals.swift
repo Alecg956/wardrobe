@@ -1,3 +1,5 @@
+import UIKit
+
 enum Gender {
     case male
     case female
@@ -8,5 +10,9 @@ enum Gender {
 struct Global {
     
     // default state is .other
-    var gender: Gender = .other
+    static var gender: Gender = .other
+    
+    static let greenBG = UIColor(red: 186/255, green: 255/255, blue: 201/255, alpha: 1)
+    
+    static var selectedItem:String = ""
 }

@@ -27,9 +27,11 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        button.backgroundColor = .green
-        button.tintColor = .green
-        button.setTitle("Scale Up", for: .normal)
+        button.tintColor = Global.greenBG
+        button.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
+        button.imageView?.contentMode = .scaleToFill
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapScaleUp))
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(didPressScaleUp))
@@ -43,8 +45,12 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .red
-        button.setTitle("Scale Down", for: .normal)
+        
+        button.tintColor = Global.greenBG
+        button.setImage(UIImage(systemName: "minus.circle.fill"), for: .normal)
+        button.imageView?.contentMode = .scaleToFill
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapScaleDown))
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(didPressScaleDown))
@@ -58,8 +64,12 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .blue
-        button.setTitle("RR", for: .normal)
+        
+        button.tintColor = Global.greenBG
+        button.setImage(UIImage(systemName: "arrow.counterclockwise.circle.fill"), for: .normal)
+        button.imageView?.contentMode = .scaleToFill
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapRotateRight))
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(didPressRotateRight))
@@ -73,8 +83,12 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .blue
-        button.setTitle("RL", for: .normal)
+        
+        button.tintColor = Global.greenBG
+        button.setImage(UIImage(systemName: "arrow.clockwise.circle.fill"), for: .normal)
+        button.imageView?.contentMode = .scaleToFill
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapRotateLeft))
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(didPressRotateLeft))
@@ -96,6 +110,10 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         // create a gesture recognizer for tapping to insert the model
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapScreen(_:)))
         sceneView.addGestureRecognizer(tapGestureRecognizer)
+        
+        self.tabBarController?.tabBar.backgroundColor = .clear
+        self.tabBarController?.tabBar.isTranslucent = true
+        self.sceneView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
         // set up the UI
         setupUI()
@@ -227,7 +245,8 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-    // Set up the initial state of the scene
+    // Set up the initial state of the scene, this is called
+    // anytime the tab is tapped (we should update the model here)
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -317,19 +336,24 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         NSLayoutConstraint.activate([
             
             scaleDownButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: -50.0),
-            scaleDownButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -25.0),
+            scaleDownButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -35.0),
             
             scaleUpButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 50.0),
-            scaleUpButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -25.0),
+            scaleUpButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -35.0),
+            scaleUpButton.heightAnchor.constraint(equalToConstant: 50),
+            scaleUpButton.widthAnchor.constraint(equalToConstant: 50),
             
-            rotateRightButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 50.0),
-            rotateRightButton.bottomAnchor.constraint(equalTo: self.scaleDownButton.topAnchor, constant: -50.0),
+            
+            rotateRightButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -18),
+            rotateRightButton.bottomAnchor.constraint(equalTo: self.scaleDownButton.topAnchor, constant: -55.0),
             rotateRightButton.heightAnchor.constraint(equalToConstant: 50.0),
             rotateRightButton.widthAnchor.constraint(equalToConstant: 50.0),
+            scaleDownButton.heightAnchor.constraint(equalToConstant: 50),
+            scaleDownButton.widthAnchor.constraint(equalToConstant: 50),
             
             
-            rotateLeftButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: -50.0),
-            rotateLeftButton.bottomAnchor.constraint(equalTo: self.scaleDownButton.topAnchor, constant: -50.0),
+            rotateLeftButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 18),
+            rotateLeftButton.bottomAnchor.constraint(equalTo: self.scaleDownButton.topAnchor, constant: -55.0),
             rotateLeftButton.heightAnchor.constraint(equalToConstant: 50.0),
             rotateLeftButton.widthAnchor.constraint(equalToConstant: 50.0),
         
