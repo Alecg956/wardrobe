@@ -8,7 +8,26 @@
 
 import UIKit
 
-class PurchaseViewController: UIViewController {
+class PurchaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    let clothes: NSArray = ["Blue T-Shirt","Grey Sweatpants","Green Sweatshirt"]
+    var myTableView: UITableView!
+
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Num: \(indexPath.row)")
+        print("Value: \(clothes[indexPath.row])")
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return clothes.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
+        cell.textLabel!.text = "\(clothes[indexPath.row])"
+        return cell
+    }
+    
     
     
     lazy var purchaseButton: UIButton = {
@@ -54,5 +73,23 @@ class PurchaseViewController: UIViewController {
         
         ])
         
+        
+        let barHeight: CGFloat = view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        let displayWidth: CGFloat = self.view.frame.width
+        let displayHeight: CGFloat = self.view.frame.height / 4
+
+        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight + 150, width: displayWidth, height: displayHeight - barHeight))
+        myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        myTableView.dataSource = self
+        myTableView.delegate = self
+        self.view.addSubview(myTableView)
+        
+        // make label for cart text
+        let cartLabel = UILabel()
+        cartLabel.text = "Your Cart"
+        cartLabel.textAlignment = .center
+        cartLabel.font = cartLabel.font.withSize(30)
+        cartLabel.frame = CGRect(x: 0, y: barHeight + 50, width: displayWidth, height: 100)
+        self.view.addSubview(cartLabel)
     }
 }
