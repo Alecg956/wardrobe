@@ -19,6 +19,8 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
     static let scaleDownSmall = SCNAction.scale(by: 0.9, duration: 0.05)
     
     var timer: Timer = Timer()
+    
+    var modelFileName : String = "other_model"
 
     @IBOutlet var sceneView: ARSCNView!
     
@@ -122,7 +124,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
     // Handler for tapping scale up button
     @objc func didTapScaleUp() {
         
-        if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
+        if let node = sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: false) {
             node.runAction(ARTestViewController.scaleUpSmall)
         }
     }
@@ -130,7 +132,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
     // handler for tapping scale down button
     @objc func didTapScaleDown () {
         
-        if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
+        if let node = sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: false) {
             node.runAction(ARTestViewController.scaleDownSmall)
         }
     }
@@ -156,7 +158,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
     // handler for tapping rotate right button
     @objc func didTapRotateRight (gesture: UITapGestureRecognizer) {
         
-        if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
+        if let node = sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: false) {
             node.runAction(ARTestViewController.rotateRightSmall)
         }
     }
@@ -164,7 +166,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
     // handler for tapping rotate left button
     @objc func didTapRotateLeft () {
         
-        if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
+        if let node = sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: false) {
             node.runAction(ARTestViewController.rotateLeftSmall)
         }
     }
@@ -207,7 +209,6 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         
         // add item to our scene
         addItemToPosition(position)
-        
     }
     
     // Add an item to the scene on tap
@@ -217,30 +218,48 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
             return
         }
         
-        guard let url = Bundle.main.url(forResource: "human_male", withExtension: "usdz", subdirectory: "art.scnassets") else { return }
-        
-        let scene: SCNScene
-        
-        do {
-            scene = try SCNScene(url: url, options: [.checkConsistency: true])
-        } catch {
-            fatalError()
+        // Load model based on gender
+        switch (Global.gender) {
+            case .male:
+                modelFileName = "male_model"
+            
+            case .female:
+                modelFileName = "female_model"
+            
+            default:
+                modelFileName = "other_model"
         }
         
+        let scene = SCNScene(named: "art.scnassets/" + modelFileName + ".scn")
+    
         // add to the scene in the background to not block the UI
         DispatchQueue.main.async {
-            
-            if let node = scene.rootNode.childNode(withName: "human_male", recursively: false) {
-                
+            if let node = scene?.rootNode.childNode(withName: self.modelFileName, recursively: false) {
                 self.numModels += 1
                 
+                print(self.modelFileName)
+                print(self.numModels)
+                
                 node.position = position
-                node.scale = SCNVector3Make(0.9, 0.9, 0.9)
+                node.scale = SCNVector3Make(0.005, 0.005, 0.005)
                 
                 self.sceneView.automaticallyUpdatesLighting = true
                 self.sceneView.autoenablesDefaultLighting = true
                 self.sceneView.scene.rootNode.addChildNode(node)
+            }
+        }
+    }
+    
+    func addClothingToModel() {
+        let scene = SCNScene(named: "art.scnassets/tshirt.scn")
+
+        DispatchQueue.main.async {
+            if let node = scene?.rootNode.childNode(withName: "tshirt", recursively: false) {
+                node.scale = SCNVector3Make(0.005, 0.005, 0.005)
                 
+                self.sceneView.automaticallyUpdatesLighting = true
+                self.sceneView.autoenablesDefaultLighting = true
+                self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true)?.addChildNode(node)
             }
         }
     }
@@ -263,6 +282,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
 
         // Run the view's session
         sceneView.session.run(configuration)
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
