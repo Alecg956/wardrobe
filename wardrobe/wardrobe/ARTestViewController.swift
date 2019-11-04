@@ -288,16 +288,17 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
 
             //check to see if item already on model
             if(!self.sceneView.scene.rootNode.childNodes.isEmpty) {
-                let oldNode = self.sceneView.scene.rootNode.childNode(withName: "tshirt", recursively: true)
-                let scene = SCNScene(named: "art.scnassets/tshirt.scn")
-                let node = scene?.rootNode.childNode(withName: "tshirt", recursively: false)
-                self.sceneView.scene.rootNode.replaceChildNode(oldNode, with: node)
+                if let oldNode = self.sceneView.scene.rootNode.childNode(withName: "tshirt", recursively: true) {
+                    let scene = SCNScene(named: "art.scnassets/tshirt.scn")
+                    if let node = scene?.rootNode.childNode(withName: "tshirt", recursively: false) {
+                        self.sceneView.scene.rootNode.replaceChildNode(oldNode, with: node)
+                    }
+                }
             //just add the item otherwise
             else {
                 self.addClothingToModel()
             }
         }
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
