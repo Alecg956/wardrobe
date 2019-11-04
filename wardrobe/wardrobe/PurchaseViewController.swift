@@ -9,7 +9,7 @@
 import UIKit
 
 class PurchaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    let clothes: NSArray = ["Blue T-Shirt","Grey Sweatpants","Green Sweatshirt"]
+    var clothes: [String] = []
     var myTableView: UITableView!
 
 
@@ -52,6 +52,12 @@ class PurchaseViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         
         setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        clothes.append(Global.selectedItem)
     }
     
     // Handler for tapping purchase button
