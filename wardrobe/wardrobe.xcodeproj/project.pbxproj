@@ -25,7 +25,7 @@
 /* Begin PBXFileReference section */
 		0623963C236AA4D30012C6C7 /* CustomizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeViewController.swift; sourceTree = "<group>"; };
 		067CCA7A236E4DC7000EA7C4 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
-		1025E612235CFBD90017E7DA /* wardrobe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wardrobe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1025E612235CFBD90017E7DA /* Wardrobe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wardrobe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1025E615235CFBD90017E7DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1025E617235CFBD90017E7DA /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		1025E619235CFBD90017E7DA /* ARTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARTestViewController.swift; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		1025E613235CFBD90017E7DA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1025E612235CFBD90017E7DA /* wardrobe.app */,
+				1025E612235CFBD90017E7DA /* Wardrobe.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,7 +105,7 @@
 			);
 			name = wardrobe;
 			productName = wardrobe;
-			productReference = 1025E612235CFBD90017E7DA /* wardrobe.app */;
+			productReference = 1025E612235CFBD90017E7DA /* Wardrobe.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -320,7 +320,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = swang2798.wardrobe;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Wardrobe;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -338,7 +338,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = swang2798.wardrobe;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Wardrobe;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
