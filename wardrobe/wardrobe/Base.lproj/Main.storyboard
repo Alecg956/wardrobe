@@ -10,7 +10,7 @@
         <!--Purchase-->
         <scene sceneID="nhT-pk-jpd">
             <objects>
-                <viewController id="lOb-Ok-a0w" sceneMemberID="viewController">
+                <viewController id="lOb-Ok-a0w" customClass="PurchaseViewController" customModule="wardrobe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JSi-uy-1Rw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
