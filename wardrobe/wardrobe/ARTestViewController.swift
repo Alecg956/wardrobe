@@ -282,20 +282,24 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
 
         // Run the view's session
         sceneView.session.run(configuration)
-
+        
         //check to see if item is selected
         if(Global.selectedItem != "") {
-
             //check to see if item already on model
-            if(!self.sceneView.scene.rootNode.childNodes.isEmpty) {
+            if((self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true)!.childNodes.count > 1)) {
+                print("1")
                 if let oldNode = self.sceneView.scene.rootNode.childNode(withName: "tshirt", recursively: true) {
+                    print("2")
                     let scene = SCNScene(named: "art.scnassets/tshirt.scn")
                     if let node = scene?.rootNode.childNode(withName: "tshirt", recursively: false) {
+                        print("3")
                         self.sceneView.scene.rootNode.replaceChildNode(oldNode, with: node)
                     }
                 }
+            }
             //just add the item otherwise
             else {
+                print(Global.selectedItem)
                 self.addClothingToModel()
             }
         }
