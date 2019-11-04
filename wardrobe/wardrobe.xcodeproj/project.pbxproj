@@ -20,6 +20,7 @@
 		10752A3C236DEDD4001B773E /* BrowseDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10752A3B236DEDD4001B773E /* BrowseDetailTableViewCell.swift */; };
 		10B7FBFB236DDCBB00AA997C /* BrowseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B7FBFA236DDCBB00AA997C /* BrowseTableViewController.swift */; };
 		10F44016236C793100435BC9 /* BrowseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F44015236C793100435BC9 /* BrowseTableViewCell.swift */; };
+		36C77CC2236FB2600022FE4B /* BrowseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C77CC1236FB2600022FE4B /* BrowseTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		10752A3B236DEDD4001B773E /* BrowseDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDetailTableViewCell.swift; sourceTree = "<group>"; };
 		10B7FBFA236DDCBB00AA997C /* BrowseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BrowseTableViewController.swift; path = "/Users/alecgoldberg/Desktop/EECS 441/Misc/eecs-441-f19/wardrobe/wardrobe/BrowseTableViewController.swift"; sourceTree = "<absolute>"; };
 		10F44015236C793100435BC9 /* BrowseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseTableViewCell.swift; sourceTree = "<group>"; };
+		36C77CC1236FB2600022FE4B /* BrowseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +72,11 @@
 		1025E614235CFBD90017E7DA /* wardrobe */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				10B7FBFA236DDCBB00AA997C /* BrowseTableViewController.swift */,
+=======
+				36C77CC1236FB2600022FE4B /* BrowseTableViewController.swift */,
+>>>>>>> ar-display-model
 				10752A39236DE734001B773E /* BrowseDetailTableViewController.swift */,
 				10F44015236C793100435BC9 /* BrowseTableViewCell.swift */,
 				10752A3B236DEDD4001B773E /* BrowseDetailTableViewCell.swift */,
@@ -169,6 +175,7 @@
 				1025E616235CFBD90017E7DA /* AppDelegate.swift in Sources */,
 				10B7FBFB236DDCBB00AA997C /* BrowseTableViewController.swift in Sources */,
 				0623963D236AA4D30012C6C7 /* CustomizeViewController.swift in Sources */,
+				36C77CC2236FB2600022FE4B /* BrowseTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,13 +320,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = 3U7979Q2XJ;
+=======
+				DEVELOPMENT_TEAM = XR228W54TT;
+>>>>>>> ar-display-model
 				INFOPLIST_FILE = wardrobe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+<<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = alechg.wardrobe;
+=======
+				PRODUCT_BUNDLE_IDENTIFIER = swang2798.wardrobe;
+>>>>>>> ar-display-model
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -330,15 +345,25 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = 3U7979Q2XJ;
+=======
+				DEVELOPMENT_TEAM = XR228W54TT;
+>>>>>>> ar-display-model
 				INFOPLIST_FILE = wardrobe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+<<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = alechg.wardrobe;
+=======
+				PRODUCT_BUNDLE_IDENTIFIER = swang2798.wardrobe;
+>>>>>>> ar-display-model
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

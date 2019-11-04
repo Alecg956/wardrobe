@@ -19,6 +19,10 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
     static let scaleDownSmall = SCNAction.scale(by: 0.9, duration: 0.05)
     
     var timer: Timer = Timer()
+    
+    var modelFileName : String = ""
+    
+    var previousGenderSelected : Gender = Global.gender
 
     @IBOutlet var sceneView: ARSCNView!
     
@@ -107,7 +111,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
-        // create a gesture recognizer for tapping to insert the model
+        // Create a gesture recognizer for tapping to insert the model
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapScreen(_:)))
         sceneView.addGestureRecognizer(tapGestureRecognizer)
         
@@ -115,27 +119,27 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         self.tabBarController?.tabBar.isTranslucent = true
         self.sceneView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
-        // set up the UI
+        // Set up the UI
         setupUI()
     }
     
     // Handler for tapping scale up button
     @objc func didTapScaleUp() {
         
-        if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
+        if let node = sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: false) {
             node.runAction(ARTestViewController.scaleUpSmall)
         }
     }
     
-    // handler for tapping scale down button
+    // Handler for tapping scale down button
     @objc func didTapScaleDown () {
         
-        if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
+        if let node = sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: false) {
             node.runAction(ARTestViewController.scaleDownSmall)
         }
     }
     
-    // handler for holding scale up button
+    // Handler for holding scale up button
     @IBAction func didPressScaleUp(gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
             timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(didTapScaleUp), userInfo: nil, repeats: true)
@@ -144,7 +148,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-    // handler for holding scale down button
+    // Handler for holding scale down button
     @IBAction func didPressScaleDown(gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
             timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(didTapScaleDown), userInfo: nil, repeats: true)
@@ -153,23 +157,23 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-    // handler for tapping rotate right button
+    // Handler for tapping rotate right button
     @objc func didTapRotateRight (gesture: UITapGestureRecognizer) {
         
-        if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
+        if let node = sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: false) {
             node.runAction(ARTestViewController.rotateRightSmall)
         }
     }
     
-    // handler for tapping rotate left button
+    // Handler for tapping rotate left button
     @objc func didTapRotateLeft () {
         
-        if let node = sceneView.scene.rootNode.childNode(withName: "human_male", recursively: false) {
+        if let node = sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: false) {
             node.runAction(ARTestViewController.rotateLeftSmall)
         }
     }
     
-    // handler for holding rotate right button
+    // Handler for holding rotate right button
     @IBAction func didPressRotateRight(gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
             timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(didTapRotateRight), userInfo: nil, repeats: true)
@@ -178,7 +182,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-    // handler for holding rotate left button
+    // Handler for holding rotate left button
     @IBAction func didPressRotateLeft(gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
             timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(didTapRotateLeft), userInfo: nil, repeats: true)
@@ -190,63 +194,123 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
     // Handler for adding the model to the scene
     @objc func didTapScreen(_ gesture: UITapGestureRecognizer) {
         
-        // get the scene view and the coordinates of the tap
+        // Get the scene view and the coordinates of the tap
         let sceneView = gesture.view as? ARSCNView
         let touchCoords = gesture.location(in: sceneView)
         
-        // create hit test object, allows us to determine if a plane tapped
+        // Create hit test object, allows us to determine if a plane tapped
         guard let hitTest = sceneView?.hitTest(touchCoords, types: .existingPlaneUsingExtent), !hitTest.isEmpty, let hitTestRes = hitTest.first else {
             
             return
         }
         
-        // get the position of the center of the plane
+        // Get the position of the center of the plane
         let position = SCNVector3Make(hitTestRes.worldTransform.columns.3.x, hitTestRes.worldTransform.columns.3.y, hitTestRes.worldTransform.columns.3.z)
-        
-        print(position)
-        
-        // add item to our scene
-        addItemToPosition(position)
-        
+                
+        // Add item to our scene
+        addModelToPosition(position)
     }
     
-    // Add an item to the scene on tap
-    func addItemToPosition(_ position: SCNVector3) {
+    func setModelFileName() {
+        switch (Global.gender) {
+            case .male:
+                modelFileName = "male_model"
+                previousGenderSelected = .male
+            
+            case .female:
+                modelFileName = "female_model"
+                previousGenderSelected = .female
+            
+            default:
+                modelFileName = "other_model"
+                previousGenderSelected = .other
+        }
+    }
+    
+    // Add a model to the scene on tap
+    func addModelToPosition(_ position: SCNVector3) {
         
         if numModels >= 1 {
             return
         }
         
-        guard let url = Bundle.main.url(forResource: "human_male", withExtension: "usdz", subdirectory: "art.scnassets") else { return }
+        // Load model based on gender
+        setModelFileName()
         
-        let scene: SCNScene
-        
-        do {
-            scene = try SCNScene(url: url, options: [.checkConsistency: true])
-        } catch {
-            fatalError()
-        }
-        
-        // add to the scene in the background to not block the UI
+        let scene = SCNScene(named: "art.scnassets/" + modelFileName + ".scn")
+    
+        // Add to the scene in the background to not block the UI
         DispatchQueue.main.async {
-            
-            if let node = scene.rootNode.childNode(withName: "human_male", recursively: false) {
-                
+            if let node = scene?.rootNode.childNode(withName: self.modelFileName, recursively: false) {
                 self.numModels += 1
                 
+                print(self.modelFileName)
+                print(self.numModels)
+                
                 node.position = position
-                node.scale = SCNVector3Make(0.9, 0.9, 0.9)
+                node.scale = SCNVector3Make(0.005, 0.005, 0.005)
                 
                 self.sceneView.automaticallyUpdatesLighting = true
                 self.sceneView.autoenablesDefaultLighting = true
                 self.sceneView.scene.rootNode.addChildNode(node)
-                
+            }
+        }
+    }
+    
+    // Add clothing item to model
+    func addClothingToModel() {
+        let scene = SCNScene(named: "art.scnassets/" + Global.selectedItem + ".scn")
+
+        DispatchQueue.main.async {
+            if let node = scene?.rootNode.childNode(withName: "shirt", recursively: false) {
+                node.scale = SCNVector3Make(105, 105, 105)
+                node.position = SCNVector3Make(1.5, 40, 2)
+                self.sceneView.automaticallyUpdatesLighting = true
+                self.sceneView.autoenablesDefaultLighting = true
+                self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true)!.addChildNode(node)
+            }
+        }
+    }
+    
+    // Replace old item with new item (Hard coded at the moment)
+    func replaceClothingOnModel() {
+        if let oldNode = self.sceneView.scene.rootNode.childNode(withName: "shirt", recursively: true) {
+            let scene = SCNScene(named: "art.scnassets/" + Global.selectedItem + ".scn")
+            if let newNode = scene?.rootNode.childNode(withName: "shirt", recursively: true) {
+                newNode.scale = SCNVector3Make(105, 105, 105)
+                newNode.position = SCNVector3Make(1.5, 40, 2)
+                self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true)!.replaceChildNode(oldNode, with: newNode)
+            }
+        }
+    }
+    
+    // Replace model when a different gender has beens selected
+    func replaceModel() {
+        print("Replace model")
+        
+        let oldModelFileName : String = modelFileName
+        
+        setModelFileName();
+        
+        if let oldNode = self.sceneView.scene.rootNode.childNode(withName: oldModelFileName, recursively: true) {
+            print(oldModelFileName)
+            let scene = SCNScene(named: "art.scnassets/" + modelFileName + ".scn")
+            if let newNode = scene?.rootNode.childNode(withName: modelFileName, recursively: true) {
+                print(modelFileName)
+                // Give old node's child nodes to the new node
+                for childNode in oldNode.childNodes {
+                    newNode.addChildNode(childNode)
+                }
+                newNode.position = oldNode.position;
+                newNode.scale = oldNode.scale;
+                self.sceneView.scene.rootNode.replaceChildNode(oldNode, with: newNode)
+                print(self.sceneView.scene.rootNode.childNodes.count)
             }
         }
     }
     
     // Set up the initial state of the scene, this is called
-    // anytime the tab is tapped (we should update the model here)
+    // Anytime the tab is tapped (we should update the model here)
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -263,7 +327,27 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
 
         // Run the view's session
         sceneView.session.run(configuration)
+        
+        // Check to see if a new item has been selected
+        if (Global.selectedItem != "") {
+            // Check if model has clothing type on it already
+            if (self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true)!.childNodes.count > 0) {
+                replaceClothingOnModel()
+            }
+            else {
+                print(Global.selectedItem)
+                addClothingToModel()
+            }
+        }
+        
+        // Check if gender has been changed
+        // Check count to see if a model is there already
+        if (previousGenderSelected != Global.gender && self.sceneView.scene.rootNode.childNodes.count > 4) {
+            replaceModel()
+        }
     }
+    
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

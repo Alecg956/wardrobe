@@ -57,8 +57,8 @@ class BrowseDetailTableViewController: UITableViewController {
     
     func getItems() {
         
-        if (pageTitle == "T-Shirts") {
-            pageItems = ["Blue T-Shirt", "Red T-Shirt", "Black T-Shirt", "Purple T-Shirt"]
+        if (pageTitle == "Shirts") {
+            pageItems = ["Red_Shirt", "Blue_Shirt"]
         } else {
             pageItems = ["Item 1", "Item 2", "Item 3", "Item 4"]
         }
