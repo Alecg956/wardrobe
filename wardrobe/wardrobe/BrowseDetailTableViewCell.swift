@@ -14,7 +14,6 @@ class BrowseDetailTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
-//        label.textColor = UIColor(red: 186/255, green: 255/255, blue: 201/255, alpha: 1)
         
         return label
     }()
@@ -33,7 +32,7 @@ class BrowseDetailTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.contentView.backgroundColor = Global.greenBG
+        // self.contentView.backgroundColor = Global.greenBG
         setupUI()
     }
     
@@ -68,11 +67,6 @@ class BrowseDetailTableViewCell: UITableViewCell {
             itemImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10),
             itemImageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -10),
             itemImageView.widthAnchor.constraint(equalToConstant: 60),
-//            itemImageView.heightAnchor.constraint(equalToConstant: 10)
-            
-            
-            
-            
         ])
     }
 

@@ -23,7 +23,7 @@ class BrowseTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.contentView.backgroundColor = Global.greenBG
+        // gself.contentView.backgroundColor = Global.greenBG
         setupUI()
     }
     
