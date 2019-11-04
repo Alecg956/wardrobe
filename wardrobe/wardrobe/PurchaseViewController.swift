@@ -56,15 +56,41 @@ class PurchaseViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
+        myTableView.reloadData()
+        
+        clothes.removeAll()
         clothes.append(Global.selectedItem)
+        
+        
+        if Global.selectedItem == "" {
+            purchaseButton.isEnabled = false
+            purchaseButton.alpha = 0.5
+        } else {
+            purchaseButton.isEnabled = true
+            purchaseButton.alpha = 1.0
+        }
     }
     
+    func getURL() -> String {
+        var url = ""
+        switch Global.selectedItem {
+        case "Red_Shirt":
+            url = "https://www.amazon.com/Soffe-Long-Sleeve-Cotton-T-Shirt-Cardinal/dp/B003AU5WIC/ref=sr_1_33?dchild=1&keywords=red+t+shirt&psc=1&qid=1572904360&s=apparel&sr=1-33"
+        case "Blue_Shirt":
+            url = "https://www.amazon.com/Soffe-Long-Sleeve-Cotton-T-Shirt-Royal/dp/B003AU5WH8/ref=sr_1_39?dchild=1&keywords=blue+t+shirt&psc=1&qid=1572901755&s=apparel&sr=1-39"
+        default:
+            url = "https://www.amazon.com"
+        }
+        return url
+    }
+ 
     // Handler for tapping purchase button
     @objc func didTapPurchase() {
-        let url = URL(string: "https://www.amazon.com")!
-
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        
+        if let url = URL(string: getURL()) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     //setup buttons
