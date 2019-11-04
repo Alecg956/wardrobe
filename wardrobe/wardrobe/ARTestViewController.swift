@@ -251,15 +251,15 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
     }
     
     func addClothingToModel() {
-        let scene = SCNScene(named: "art.scnassets/tshirt.scn")
+        let scene = SCNScene(named: "art.scnassets/" + Global.selectedItem + ".scn")
 
         DispatchQueue.main.async {
-            if let node = scene?.rootNode.childNode(withName: "tshirt", recursively: false) {
-                node.scale = SCNVector3Make(0.005, 0.005, 0.005)
-                
+            if let node = scene?.rootNode.childNode(withName: "shirt", recursively: false) {
+                node.scale = SCNVector3Make(105, 105, 105)
+                node.position = SCNVector3Make(1.5, 40, 2)
                 self.sceneView.automaticallyUpdatesLighting = true
                 self.sceneView.autoenablesDefaultLighting = true
-                self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true)?.addChildNode(node)
+                self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true)!.addChildNode(node)
             }
         }
     }
@@ -285,17 +285,18 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         
         //check to see if item is selected
         if(Global.selectedItem != "") {
-            //check to see if item already on model
+            //check to see if item already on model (BUGGY)
             if((self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true)!.childNodes.count > 1)) {
-                print("1")
-                if let oldNode = self.sceneView.scene.rootNode.childNode(withName: "tshirt", recursively: true) {
-                    print("2")
-                    let scene = SCNScene(named: "art.scnassets/tshirt.scn")
-                    if let node = scene?.rootNode.childNode(withName: "tshirt", recursively: false) {
-                        print("3")
-                        self.sceneView.scene.rootNode.replaceChildNode(oldNode, with: node)
-                    }
-                }
+//                print(1);
+//                if let oldNode = self.sceneView.scene.rootNode.childNode(withName: "shirt", recursively: true) {
+//                    print(2);
+//                    let scene = SCNScene(named: "art.scnassets/" + Global.selectedItem + ".scn")
+//                    if let newNode = scene?.rootNode.childNode(withName: self.modelFileName, recursively: true)!.childNode(withName: "shirt", recursively: true) {
+//                        print(3);
+//                        newNode.position = SCNVector3Make(0, 0, 0)
+//                        self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true)!.replaceChildNode(oldNode, with: newNode)
+//                    }
+//                }
             }
             //just add the item otherwise
             else {

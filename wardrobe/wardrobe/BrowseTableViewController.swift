@@ -12,7 +12,7 @@ import UIKit
 
 class BrowseTableViewController: UITableViewController {
     
-    var categories: [String] = ["T-Shirts", "Sweaters", "Jackets", "Pants", "Underwear"]
+    var categories: [String] = ["Shirts", "Sweaters", "Jackets", "Pants", "Underwear"]
     var sectionTitles: [String] = ["Categories"]
 
     override func viewDidLoad() {
