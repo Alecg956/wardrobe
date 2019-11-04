@@ -256,6 +256,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         DispatchQueue.main.async {
             if let node = scene?.rootNode.childNode(withName: "tshirt", recursively: false) {
                 node.scale = SCNVector3Make(0.005, 0.005, 0.005)
+                node.position = SCNVector3(0,0,0)
                 
                 self.sceneView.automaticallyUpdatesLighting = true
                 self.sceneView.autoenablesDefaultLighting = true
@@ -287,12 +288,13 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         if(Global.selectedItem != "") {
             //check to see if item already on model
             if((self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true)!.childNodes.count > 1)) {
-                print("1")
+                //print("1")
                 if let oldNode = self.sceneView.scene.rootNode.childNode(withName: "tshirt", recursively: true) {
-                    print("2")
+                    //print("2")
                     let scene = SCNScene(named: "art.scnassets/tshirt.scn")
                     if let node = scene?.rootNode.childNode(withName: "tshirt", recursively: false) {
-                        print("3")
+                        //print("3")
+                        node.position = SCNVector3(0,0,0)
                         self.sceneView.scene.rootNode.replaceChildNode(oldNode, with: node)
                     }
                 }
