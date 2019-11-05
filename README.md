@@ -5,9 +5,10 @@ Directory Structure:
 ```
 .
 ├── 441StarterAppBackend
+│   ├── README.md
 │   ├── chatter
-│   │   ├── admin.py
 │   │   ├── __init__.py
+│   │   ├── admin.py
 │   │   ├── migrations
 │   │   │   └── __init__.py
 │   │   ├── models.py
@@ -19,8 +20,8 @@ Directory Structure:
 │   │   ├── settings.py.orig
 │   │   ├── urls.py
 │   │   └── wsgi.py
-│   ├── manage.py
-│   └── README.md
+│   └── manage.py
+|
 ├── 441StarterAppiOS
 │   ├── 441StarterApp
 │   │   ├── AppDelegate.swift
@@ -35,6 +36,7 @@ Directory Structure:
 │   │   ├── ChatterTableViewController.swift
 │   │   ├── ComposeViewController.swift
 │   │   └── Info.plist
+|   |
 │   └── 441StarterApp.xcodeproj
 │       ├── project.pbxproj
 │       ├── project.xcworkspace
@@ -50,22 +52,90 @@ Directory Structure:
 │               │   └── Breakpoints_v2.xcbkptlist
 │               └── xcschemes
 │                   └── xcschememanagement.plist
+|
+├── Database_Firebase
+│   └── wardrobe
+│       ├── DerivedData
+│       ├── Podfile
+│       ├── Podfile.lock
+│       ├── wardrobe
+│       │   ├── AppDelegate.swift
+│       │   ├── Assets.xcassets
+│       │   │   ├── AppIcon.appiconset
+│       │   │   │   └── Contents.json
+│       │   │   └── Contents.json
+│       │   ├── Base.lproj
+│       │   │   ├── LaunchScreen.storyboard
+│       │   │   └── Main.storyboard
+│       │   ├── DatabaseControllerViewController.swift
+│       │   ├── GoogleService-Info.plist
+│       │   ├── Info.plist
+│       │   └── ViewController.swift
+│       ├── wardrobe.xcodeproj
+│       │   ├── project.pbxproj
+│       │   ├── project.xcworkspace
+│       │   │   ├── contents.xcworkspacedata
+│       │   │   ├── xcshareddata
+│       │   │   │   └── IDEWorkspaceChecks.plist
+│       │   │   └── xcuserdata
+│       │   │       └── jmandwee.xcuserdatad
+│       │   │           └── UserInterfaceState.xcuserstate
+│       │   └── xcuserdata
+│       │       ├── chualan.xcuserdatad
+│       │       │   └── xcschemes
+│       │       │       └── xcschememanagement.plist
+│       │       └── jmandwee.xcuserdatad
+│       │           └── xcschemes
+│       │               └── xcschememanagement.plist
+│       └── wardrobe.xcworkspace
+│           ├── contents.xcworkspacedata
+│           ├── xcshareddata
+│           │   └── IDEWorkspaceChecks.plist
+│           └── xcuserdata
+│               ├── chualan.xcuserdatad
+│               │   └── UserInterfaceState.xcuserstate
+│               └── jmandwee.xcuserdatad
+│                   └── UserInterfaceState.xcuserstate
+|
 ├── README.md
 └── wardrobe
     ├── wardrobe
+    │   ├── ARTestViewController.swift
     │   ├── AppDelegate.swift
-    │   ├── art.scnassets
-    │   │   ├── ship.scn
-    │   │   └── texture.png
     │   ├── Assets.xcassets
     │   │   ├── AppIcon.appiconset
+    │   │   │   ├── 1024.png
+    │   │   │   ├── 120.png
+    │   │   │   ├── 152.png
+    │   │   │   ├── 167.png
+    │   │   │   ├── 180.png
+    │   │   │   ├── 76.png
     │   │   │   └── Contents.json
-    │   │   └── Contents.json
+    │   │   ├── Contents.json
+    │   │   └── sample.imageset
+    │   │       ├── Contents.json
+    │   │       └── download.png
+    │   │  
     │   ├── Base.lproj
     │   │   ├── LaunchScreen.storyboard
     │   │   └── Main.storyboard
+    │   ├── BrowseDetailTableViewCell.swift
+    │   ├── BrowseDetailTableViewController.swift
+    │   ├── BrowseTableViewCell.swift
+    │   ├── BrowseTableViewController.swift
+    │   ├── CustomizeViewController.swift
+    │   ├── Globals.swift
     │   ├── Info.plist
-    │   └── ViewController.swift
+    │   ├── PurchaseViewController.swift
+    │   └── art.scnassets
+    │       ├── Blue_Shirt.scn
+    │       ├── Red_Shirt.scn
+    │       ├── female_model.scn
+    │       ├── female_temp.scn
+    │       ├── human_male.usdz
+    │       ├── male_model.scn
+    │       └── other_model.scn
+    │  
     └── wardrobe.xcodeproj
         ├── project.pbxproj
         ├── project.xcworkspace
@@ -73,7 +143,11 @@ Directory Structure:
         │   ├── xcshareddata
         │   │   └── IDEWorkspaceChecks.plist
         │   └── xcuserdata
-        │       └── alecgoldberg.xcuserdatad
+        │       ├── alecgoldberg.xcuserdatad
+        │       │   └── UserInterfaceState.xcuserstate
+        │       ├── jacksonmcintyre.xcuserdatad
+        │       │   └── UserInterfaceState.xcuserstate
+        │       └── swang.xcuserdatad
         │           └── UserInterfaceState.xcuserstate
         ├── xcshareddata
         │   └── xcschemes
@@ -84,6 +158,8 @@ Directory Structure:
                 │   └── Breakpoints_v2.xcbkptlist
                 └── xcschemes
                     └── xcschememanagement.plist
+
+1206 directories, 4261 files
 
 ```
 
