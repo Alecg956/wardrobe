@@ -16,7 +16,12 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         let ref = Database.database().reference()
-        ref.child("Customer/Customer1/Name").setValue("Bob")
+        ref.child("Clothing/Shirt").setValue("Blue")
+        ref.child("Clothing/Shirt").setValue("Red")
+        ref.child("Clothing/Pants").setValue("Item1")
+        ref.child("Clothing/Pants").setValue("Item2")
+        ref.child("Clothing/Pants").setValue("Item3")
+        ref.child("Clothing/Pants").setValue("Item4")
     }
 
 
