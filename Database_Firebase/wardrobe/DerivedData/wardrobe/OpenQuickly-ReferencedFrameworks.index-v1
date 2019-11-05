@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>GoogleMobileAds</string>
+	<string>FirebasePerformance</string>
+	<string>CommonCrypto</string>
+	<string>FirebaseDynamicLinks</string>
+	<string>FirebaseMLNLTranslate</string>
+	<string>objc</string>
+	<string>FirebaseAuth</string>
+	<string>GoogleUtilities</string>
+	<string>Firebase</string>
+	<string>GoogleDataTransport</string>
+	<string>FirebaseInAppMessaging</string>
+	<string>FirebaseCore</string>
+	<string>FirebaseMessaging</string>
+	<string>sys</string>
+	<string>nanopb</string>
+	<string>FirebaseInstanceID</string>
+	<string>FirebaseMLNLSmartReply</string>
+	<string>FirebaseMLVisionLabelModel</string>
+	<string>FirebaseFirestore</string>
+	<string>FirebaseMLVisionFaceModel</string>
+	<string>FirebaseDatabase</string>
+	<string>FirebaseMLNLLanguageID</string>
+	<string>unicode</string>
+	<string>CoreServices</string>
+	<string>FirebaseRemoteConfig</string>
+	<string>FirebaseAuthInterop</string>
+	<string>FirebaseMLNaturalLanguage</string>
+	<string>FirebaseMLCommon</string>
+	<string>Crashlytics</string>
+	<string>FirebaseMLVision</string>
+	<string>FirebaseMLVisionBarcodeModel</string>
+	<string>FirebaseMLVisionTextModel</string>
+	<string>Foundation</string>
+	<string>Fabric</string>
+	<string>FirebaseMLModelInterpreter</string>
+	<string>Security</string>
+	<string>AppKit</string>
+	<string>FirebaseMLVisionAutoML</string>
+	<string>netinet</string>
+	<string>FirebaseMLVisionObjectDetection</string>
+	<string>FirebaseStorage</string>
+	<string>SystemConfiguration</string>
+	<string>FirebaseFunctions</string>
+	<string>FirebaseAnalytics</string>
+	<string>FirebaseCoreDiagnosticsInterop</string>
+	<string>UIKit</string>
+</array>
+</plist>

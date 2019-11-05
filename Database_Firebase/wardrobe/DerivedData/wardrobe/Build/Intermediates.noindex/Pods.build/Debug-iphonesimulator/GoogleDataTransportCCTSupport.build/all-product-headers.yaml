@@ -1,0 +1,856 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/FirebaseCore/FirebaseCore.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "FIRApp.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Public/FIRApp.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRConfiguration.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Public/FIRConfiguration.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRLoggerLevel.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Public/FIRLoggerLevel.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIROptions.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Public/FIROptions.h"
+        },
+        {
+          'type': 'file',
+          'name': "FirebaseCore-Swift.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/FirebaseCore/FirebaseCore.framework/Headers/FirebaseCore-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "FirebaseCore-umbrella.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/Target Support Files/FirebaseCore/FirebaseCore-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "FirebaseCore.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Public/FirebaseCore.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/FirebaseCore/FirebaseCore.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/FirebaseCore.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/FirebaseCore/FirebaseCore.framework/PrivateHeaders",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "FIRAnalyticsConfiguration.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Private/FIRAnalyticsConfiguration.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRAppAssociationRegistration.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Private/FIRAppAssociationRegistration.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRAppInternal.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Private/FIRAppInternal.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRBundleUtil.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Private/FIRBundleUtil.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRComponent.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Private/FIRComponent.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRComponentContainer.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Private/FIRComponentContainer.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRComponentContainerInternal.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Private/FIRComponentContainerInternal.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRComponentType.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Private/FIRComponentType.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRConfigurationInternal.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Private/FIRConfigurationInternal.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRCoreDiagnosticsConnector.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Private/FIRCoreDiagnosticsConnector.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRDependency.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Private/FIRDependency.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRDiagnosticsData.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Private/FIRDiagnosticsData.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRErrorCode.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Private/FIRErrorCode.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRErrors.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Private/FIRErrors.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRLibrary.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Private/FIRLibrary.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRLogger.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Private/FIRLogger.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIROptionsInternal.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Private/FIROptionsInternal.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRVersion.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCore/Firebase/Core/Private/FIRVersion.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "FIRCoreDiagnosticsDateFileStorage.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCoreDiagnostics/Firebase/CoreDiagnostics/FIRCDLibrary/FIRCoreDiagnosticsDateFileStorage.h"
+        },
+        {
+          'type': 'file',
+          'name': "FirebaseCoreDiagnostics-Swift.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework/Headers/FirebaseCoreDiagnostics-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "FirebaseCoreDiagnostics-umbrella.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/Target Support Files/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "firebasecore.nanopb.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseCoreDiagnostics/Firebase/CoreDiagnostics/FIRCDLibrary/Protogen/nanopb/firebasecore.nanopb.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/FirebaseCoreDiagnostics.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/FirebaseDatabase/FirebaseDatabase.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "FIRDataEventType.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseDatabase/Firebase/Database/Public/FIRDataEventType.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRDataSnapshot.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseDatabase/Firebase/Database/Public/FIRDataSnapshot.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRDatabase.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseDatabase/Firebase/Database/Public/FIRDatabase.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRDatabaseQuery.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseDatabase/Firebase/Database/Public/FIRDatabaseQuery.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRDatabaseReference.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseDatabase/Firebase/Database/Public/FIRDatabaseReference.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRMutableData.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseDatabase/Firebase/Database/Public/FIRMutableData.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRServerValue.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseDatabase/Firebase/Database/Public/FIRServerValue.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRTransactionResult.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseDatabase/Firebase/Database/Public/FIRTransactionResult.h"
+        },
+        {
+          'type': 'file',
+          'name': "FirebaseDatabase-Swift.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/FirebaseDatabase/FirebaseDatabase.framework/Headers/FirebaseDatabase-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "FirebaseDatabase-umbrella.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/Target Support Files/FirebaseDatabase/FirebaseDatabase-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "FirebaseDatabase.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseDatabase/Firebase/Database/Public/FirebaseDatabase.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/FirebaseDatabase/FirebaseDatabase.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/FirebaseDatabase.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/FirebaseInstanceID/FirebaseInstanceID.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "FIRInstanceID.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseInstanceID/Firebase/InstanceID/Public/FIRInstanceID.h"
+        },
+        {
+          'type': 'file',
+          'name': "FirebaseInstanceID-Swift.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/FirebaseInstanceID/FirebaseInstanceID.framework/Headers/FirebaseInstanceID-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "FirebaseInstanceID-umbrella.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/Target Support Files/FirebaseInstanceID/FirebaseInstanceID-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "FirebaseInstanceID.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseInstanceID/Firebase/InstanceID/Public/FirebaseInstanceID.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/FirebaseInstanceID/FirebaseInstanceID.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/FirebaseInstanceID.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/FirebaseInstanceID/FirebaseInstanceID.framework/PrivateHeaders",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "FIRInstanceID+Private.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseInstanceID/Firebase/InstanceID/Private/FIRInstanceID+Private.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRInstanceIDCheckinPreferences.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseInstanceID/Firebase/InstanceID/Private/FIRInstanceIDCheckinPreferences.h"
+        },
+        {
+          'type': 'file',
+          'name': "FIRInstanceID_Private.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/FirebaseInstanceID/Firebase/InstanceID/Private/FIRInstanceID_Private.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/GoogleDataTransport/GoogleDataTransport.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "GDTCORAssert.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORAssert.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORClock.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORClock.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORConsoleLogger.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORConsoleLogger.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORDataFuture.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORDataFuture.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCOREvent.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCOREvent.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCOREventDataObject.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCOREventDataObject.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCOREventTransformer.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCOREventTransformer.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORLifecycle.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORLifecycle.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORPlatform.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORPlatform.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORPrioritizer.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORPrioritizer.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORRegistrar.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORRegistrar.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORStoredEvent.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORStoredEvent.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORTargets.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORTargets.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORTransport.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORTransport.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORUploadPackage.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORUploadPackage.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORUploader.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORUploader.h"
+        },
+        {
+          'type': 'file',
+          'name': "GoogleDataTransport-Swift.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/GoogleDataTransport/GoogleDataTransport.framework/Headers/GoogleDataTransport-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "GoogleDataTransport-umbrella.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/Target Support Files/GoogleDataTransport/GoogleDataTransport-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "GoogleDataTransport.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/GoogleDataTransport/GoogleDataTransport.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/GoogleDataTransport.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/GoogleDataTransport/GoogleDataTransport.framework/PrivateHeaders",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "GDTCOREvent_Private.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCOREvent_Private.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORReachability.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORReachability.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORReachability_Private.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORReachability_Private.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORRegistrar_Private.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORRegistrar_Private.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORStorage.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORStorage.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORStorage_Private.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORStorage_Private.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORTransformer.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORTransformer.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORTransformer_Private.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORTransformer_Private.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORTransport_Private.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORTransport_Private.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORUploadCoordinator.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORUploadCoordinator.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCORUploadPackage_Private.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Private/GDTCORUploadPackage_Private.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/GoogleDataTransportCCTSupport/GoogleDataTransportCCTSupport.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "GoogleDataTransportCCTSupport-Swift.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/GoogleDataTransportCCTSupport/GoogleDataTransportCCTSupport.framework/Headers/GoogleDataTransportCCTSupport-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "GoogleDataTransportCCTSupport-umbrella.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/Target Support Files/GoogleDataTransportCCTSupport/GoogleDataTransportCCTSupport-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "cct.nanopb.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransportCCTSupport/GoogleDataTransportCCTSupport/GDTCCTLibrary/Protogen/nanopb/cct.nanopb.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/GoogleDataTransportCCTSupport/GoogleDataTransportCCTSupport.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/GoogleDataTransportCCTSupport.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/GoogleDataTransportCCTSupport/GoogleDataTransportCCTSupport.framework/PrivateHeaders",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "GDTCCTNanopbHelpers.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransportCCTSupport/GoogleDataTransportCCTSupport/GDTCCTLibrary/Private/GDTCCTNanopbHelpers.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCCTPrioritizer.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransportCCTSupport/GoogleDataTransportCCTSupport/GDTCCTLibrary/Private/GDTCCTPrioritizer.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTCCTUploader.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransportCCTSupport/GoogleDataTransportCCTSupport/GDTCCTLibrary/Private/GDTCCTUploader.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTFLLPrioritizer.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransportCCTSupport/GoogleDataTransportCCTSupport/GDTCCTLibrary/Private/GDTFLLPrioritizer.h"
+        },
+        {
+          'type': 'file',
+          'name': "GDTFLLUploader.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleDataTransportCCTSupport/GoogleDataTransportCCTSupport/GDTCCTLibrary/Private/GDTFLLUploader.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/GoogleUtilities/GoogleUtilities.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "GULLoggerCodes.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleUtilities/GoogleUtilities/Common/GULLoggerCodes.h"
+        },
+        {
+          'type': 'file',
+          'name': "GULLoggerLevel.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleUtilities/GoogleUtilities/Logger/Public/GULLoggerLevel.h"
+        },
+        {
+          'type': 'file',
+          'name': "GULNSData+zlib.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleUtilities/GoogleUtilities/NSData+zlib/GULNSData+zlib.h"
+        },
+        {
+          'type': 'file',
+          'name': "GoogleUtilities-Swift.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/GoogleUtilities/GoogleUtilities.framework/Headers/GoogleUtilities-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "GoogleUtilities-umbrella.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/Target Support Files/GoogleUtilities/GoogleUtilities-umbrella.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/GoogleUtilities/GoogleUtilities.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/GoogleUtilities.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/GoogleUtilities/GoogleUtilities.framework/PrivateHeaders",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "GULAppDelegateSwizzler.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleUtilities/GoogleUtilities/AppDelegateSwizzler/Private/GULAppDelegateSwizzler.h"
+        },
+        {
+          'type': 'file',
+          'name': "GULAppEnvironmentUtil.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleUtilities/GoogleUtilities/Environment/third_party/GULAppEnvironmentUtil.h"
+        },
+        {
+          'type': 'file',
+          'name': "GULApplication.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleUtilities/GoogleUtilities/AppDelegateSwizzler/Private/GULApplication.h"
+        },
+        {
+          'type': 'file',
+          'name': "GULLogger.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleUtilities/GoogleUtilities/Logger/Private/GULLogger.h"
+        },
+        {
+          'type': 'file',
+          'name': "GULMutableDictionary.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleUtilities/GoogleUtilities/Network/Private/GULMutableDictionary.h"
+        },
+        {
+          'type': 'file',
+          'name': "GULNetwork.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleUtilities/GoogleUtilities/Network/Private/GULNetwork.h"
+        },
+        {
+          'type': 'file',
+          'name': "GULNetworkConstants.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleUtilities/GoogleUtilities/Network/Private/GULNetworkConstants.h"
+        },
+        {
+          'type': 'file',
+          'name': "GULNetworkLoggerProtocol.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleUtilities/GoogleUtilities/Network/Private/GULNetworkLoggerProtocol.h"
+        },
+        {
+          'type': 'file',
+          'name': "GULNetworkMessageCode.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleUtilities/GoogleUtilities/Network/Private/GULNetworkMessageCode.h"
+        },
+        {
+          'type': 'file',
+          'name': "GULNetworkURLSession.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleUtilities/GoogleUtilities/Network/Private/GULNetworkURLSession.h"
+        },
+        {
+          'type': 'file',
+          'name': "GULOriginalIMPConvenienceMacros.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleUtilities/GoogleUtilities/MethodSwizzler/Private/GULOriginalIMPConvenienceMacros.h"
+        },
+        {
+          'type': 'file',
+          'name': "GULReachabilityChecker.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleUtilities/GoogleUtilities/Reachability/Private/GULReachabilityChecker.h"
+        },
+        {
+          'type': 'file',
+          'name': "GULReachabilityMessageCode.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleUtilities/GoogleUtilities/Reachability/Private/GULReachabilityMessageCode.h"
+        },
+        {
+          'type': 'file',
+          'name': "GULSwizzler.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleUtilities/GoogleUtilities/MethodSwizzler/Private/GULSwizzler.h"
+        },
+        {
+          'type': 'file',
+          'name': "GULUserDefaults.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/GoogleUtilities/GoogleUtilities/UserDefaults/Private/GULUserDefaults.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/Pods_wardrobe.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "Pods-wardrobe-umbrella.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/Target Support Files/Pods-wardrobe/Pods-wardrobe-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "Pods_wardrobe-Swift.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/Pods_wardrobe.framework/Headers/Pods_wardrobe-Swift.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/Pods_wardrobe.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/Pods-wardrobe.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/leveldb-library/leveldb.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "c.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/leveldb-library/include/leveldb/c.h"
+        },
+        {
+          'type': 'file',
+          'name': "cache.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/leveldb-library/include/leveldb/cache.h"
+        },
+        {
+          'type': 'file',
+          'name': "comparator.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/leveldb-library/include/leveldb/comparator.h"
+        },
+        {
+          'type': 'file',
+          'name': "db.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/leveldb-library/include/leveldb/db.h"
+        },
+        {
+          'type': 'file',
+          'name': "dumpfile.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/leveldb-library/include/leveldb/dumpfile.h"
+        },
+        {
+          'type': 'file',
+          'name': "env.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/leveldb-library/include/leveldb/env.h"
+        },
+        {
+          'type': 'file',
+          'name': "export.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/leveldb-library/include/leveldb/export.h"
+        },
+        {
+          'type': 'file',
+          'name': "filter_policy.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/leveldb-library/include/leveldb/filter_policy.h"
+        },
+        {
+          'type': 'file',
+          'name': "iterator.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/leveldb-library/include/leveldb/iterator.h"
+        },
+        {
+          'type': 'file',
+          'name': "leveldb-Swift.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/leveldb-library/leveldb.framework/Headers/leveldb-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "leveldb-library-umbrella.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/Target Support Files/leveldb-library/leveldb-library-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "options.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/leveldb-library/include/leveldb/options.h"
+        },
+        {
+          'type': 'file',
+          'name': "slice.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/leveldb-library/include/leveldb/slice.h"
+        },
+        {
+          'type': 'file',
+          'name': "status.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/leveldb-library/include/leveldb/status.h"
+        },
+        {
+          'type': 'file',
+          'name': "table.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/leveldb-library/include/leveldb/table.h"
+        },
+        {
+          'type': 'file',
+          'name': "table_builder.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/leveldb-library/include/leveldb/table_builder.h"
+        },
+        {
+          'type': 'file',
+          'name': "write_batch.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/leveldb-library/include/leveldb/write_batch.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/leveldb-library/leveldb.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/leveldb-library.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/nanopb/nanopb.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "nanopb-Swift.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/nanopb/nanopb.framework/Headers/nanopb-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "nanopb-umbrella.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/Target Support Files/nanopb/nanopb-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "pb.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/nanopb/pb.h"
+        },
+        {
+          'type': 'file',
+          'name': "pb_common.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/nanopb/pb_common.h"
+        },
+        {
+          'type': 'file',
+          'name': "pb_decode.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/nanopb/pb_decode.h"
+        },
+        {
+          'type': 'file',
+          'name': "pb_encode.h",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/Pods/nanopb/pb_encode.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Products/Debug-iphonesimulator/nanopb/nanopb.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/DerivedData/wardrobe/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/nanopb.build/module.modulemap"
+        }
+      ]
+    }
+  ]
+}
