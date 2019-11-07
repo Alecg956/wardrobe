@@ -11,7 +11,7 @@ import UIKit
 class BrowseDetailTableViewController: UITableViewController {
     
     var pageTitle: String = ""
-    var pageItems: [String] = []
+    var pageItems: [pageItem] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,13 +43,14 @@ class BrowseDetailTableViewController: UITableViewController {
             
         }
             
-        cell.itemLabel.text = pageItems[indexPath.row]
+        cell.itemLabel.text = pageItems[indexPath.row].itemName
+        cell.itemImageView.image = UIImage(named: pageItems[indexPath.row].imageName)  
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        Global.selectedItem = pageItems[indexPath.row]
+        Global.selectedItem = pageItems[indexPath.row].itemName
         
         print(Global.selectedItem)
         dismiss(animated: true)
@@ -58,10 +59,13 @@ class BrowseDetailTableViewController: UITableViewController {
     func getItems() {
         
         if (pageTitle == "Shirts") {
-            pageItems = ["Red_Shirt", "Blue_Shirt"]
-        } else {
-            pageItems = ["Item 1", "Item 2", "Item 3", "Item 4"]
+            pageItems.append(pageItem(itemName: "Red_Shirt", imageName: "red_shirt"))
+            pageItems.append(pageItem(itemName: "Blue_Shirt", imageName: "blue_shirt"))
         }
-        
     }
+}
+
+struct pageItem {
+    var itemName: String = ""
+    var imageName: String = ""
 }

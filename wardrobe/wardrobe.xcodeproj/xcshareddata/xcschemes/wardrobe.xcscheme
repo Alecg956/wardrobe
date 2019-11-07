@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1025E611235CFBD90017E7DA"
-               BuildableName = "wardrobe.app"
+               BuildableName = "Wardrobe.app"
                BlueprintName = "wardrobe"
                ReferencedContainer = "container:wardrobe.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1025E611235CFBD90017E7DA"
-            BuildableName = "wardrobe.app"
+            BuildableName = "Wardrobe.app"
             BlueprintName = "wardrobe"
             ReferencedContainer = "container:wardrobe.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1025E611235CFBD90017E7DA"
-            BuildableName = "wardrobe.app"
+            BuildableName = "Wardrobe.app"
             BlueprintName = "wardrobe"
             ReferencedContainer = "container:wardrobe.xcodeproj">
          </BuildableReference>

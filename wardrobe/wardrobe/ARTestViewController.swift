@@ -26,6 +26,21 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
+    lazy var scaleSlider: UISlider = {
+        
+        let slider = UISlider(frame: CGRect(x: 0, y: 0, width: 300,height: 10))
+        
+        slider.translatesAutoresizingMaskIntoConstraints = false
+        
+        slider.minimumValue = 0
+        slider.maximumValue = 100
+        slider.isContinuous = true
+        slider.tintColor = Global.greenBG
+        slider.value = 50
+        
+        return slider
+    }()
+    
     lazy var scaleUpButton: UIButton = {
         
         let button = UIButton()
@@ -100,6 +115,20 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         button.addGestureRecognizer(longGesture)
         button.addGestureRecognizer(tapGesture)
         return button
+    }()
+    
+    lazy var sizeLabel: UILabel = {
+        let label = UILabel();
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.layer.cornerRadius = 8.0
+        label.layer.masksToBounds = true
+        label.backgroundColor = Global.greenBG
+        label.text = "Size: M"
+        label.textColor = .gray
+        label.textAlignment = .center
+        
+        return label
     }()
     
     override func viewDidLoad() {
@@ -410,17 +439,25 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
     // Set up the UI (not AR related)
     func setupUI() {
         
+        self.view.addSubview(scaleSlider)
         self.view.addSubview(scaleUpButton)
         self.view.addSubview(scaleDownButton)
         self.view.addSubview(rotateRightButton)
         self.view.addSubview(rotateLeftButton)
+        self.view.addSubview(sizeLabel)
         
         NSLayoutConstraint.activate([
             
-            scaleDownButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: -50.0),
+            scaleSlider.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            scaleSlider.widthAnchor.constraint(equalToConstant: 130),
+            scaleSlider.heightAnchor.constraint(equalToConstant: 10),
+            scaleSlider.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
+            
+            
+            scaleDownButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: -75.0),
             scaleDownButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -35.0),
             
-            scaleUpButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 50.0),
+            scaleUpButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 75.0),
             scaleUpButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -35.0),
             scaleUpButton.heightAnchor.constraint(equalToConstant: 50),
             scaleUpButton.widthAnchor.constraint(equalToConstant: 50),
@@ -438,6 +475,17 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
             rotateLeftButton.bottomAnchor.constraint(equalTo: self.scaleDownButton.topAnchor, constant: -55.0),
             rotateLeftButton.heightAnchor.constraint(equalToConstant: 50.0),
             rotateLeftButton.widthAnchor.constraint(equalToConstant: 50.0),
+            
+            
+            sizeLabel.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
+            sizeLabel.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -45.0),
+            sizeLabel.heightAnchor.constraint(equalToConstant: 30),
+            sizeLabel.leadingAnchor.constraint(equalTo: scaleDownButton.trailingAnchor, constant: 8),
+            sizeLabel.trailingAnchor.constraint(equalTo: scaleUpButton.leadingAnchor, constant: -8)
+            
+//            sizeLabel.widthAnchor.constraint(equalToConstant: 50),
+            
+            
         
         ])
         
