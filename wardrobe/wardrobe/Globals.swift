@@ -15,4 +15,11 @@ struct Global {
     static let greenBG = UIColor(red: 186/255, green: 255/255, blue: 201/255, alpha: 1)
     
     static var selectedItem:String = ""
+    
+    // corresponds to a medium, negative is smaller, positive is higher
+    static var size:Int = 0
+    static var minSize = -1
+    static var maxSize = 1
+    
+    static var sizes: [Int: String] = [-1: "S", 0: "M", 1: "L"]
 }

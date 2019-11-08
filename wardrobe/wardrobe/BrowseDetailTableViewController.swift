@@ -58,9 +58,12 @@ class BrowseDetailTableViewController: UITableViewController {
     
     func getItems() {
         
+        // call database here
         if (pageTitle == "Shirts") {
             pageItems.append(pageItem(itemName: "Red_Shirt", imageName: "red_shirt"))
             pageItems.append(pageItem(itemName: "Blue_Shirt", imageName: "blue_shirt"))
+            pageItems.append(pageItem(itemName: "Green_Shirt", imageName: "green_shirt"))
+            pageItems.append(pageItem(itemName: "Yellow_Shirt", imageName: "yellow_shirt"))
         }
     }
 }

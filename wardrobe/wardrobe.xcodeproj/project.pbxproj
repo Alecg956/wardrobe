@@ -18,6 +18,7 @@
 		10281E74236DDE320091A473 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10281E73236DDE320091A473 /* Globals.swift */; };
 		10752A3A236DE734001B773E /* BrowseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10752A39236DE734001B773E /* BrowseDetailTableViewController.swift */; };
 		10752A3C236DEDD4001B773E /* BrowseDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10752A3B236DEDD4001B773E /* BrowseDetailTableViewCell.swift */; };
+		107903D323751113000A5DF3 /* testUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107903D223751113000A5DF3 /* testUIButton.swift */; };
 		10B7FBFB236DDCBB00AA997C /* BrowseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B7FBFA236DDCBB00AA997C /* BrowseTableViewController.swift */; };
 		10F44016236C793100435BC9 /* BrowseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F44015236C793100435BC9 /* BrowseTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,7 @@
 		10281E73236DDE320091A473 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		10752A39236DE734001B773E /* BrowseDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDetailTableViewController.swift; sourceTree = "<group>"; };
 		10752A3B236DEDD4001B773E /* BrowseDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDetailTableViewCell.swift; sourceTree = "<group>"; };
+		107903D223751113000A5DF3 /* testUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testUIButton.swift; sourceTree = "<group>"; };
 		10B7FBFA236DDCBB00AA997C /* BrowseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseTableViewController.swift; sourceTree = "<group>"; };
 		10F44015236C793100435BC9 /* BrowseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +79,7 @@
 				1025E615235CFBD90017E7DA /* AppDelegate.swift */,
 				1025E617235CFBD90017E7DA /* art.scnassets */,
 				1025E619235CFBD90017E7DA /* ARTestViewController.swift */,
+				107903D223751113000A5DF3 /* testUIButton.swift */,
 				0623963C236AA4D30012C6C7 /* CustomizeViewController.swift */,
 				067CCA7A236E4DC7000EA7C4 /* PurchaseViewController.swift */,
 				10281E73236DDE320091A473 /* Globals.swift */,
@@ -163,6 +166,7 @@
 				1025E61A235CFBD90017E7DA /* ARTestViewController.swift in Sources */,
 				067CCA7B236E4DC7000EA7C4 /* PurchaseViewController.swift in Sources */,
 				10752A3A236DE734001B773E /* BrowseDetailTableViewController.swift in Sources */,
+				107903D323751113000A5DF3 /* testUIButton.swift in Sources */,
 				10752A3C236DEDD4001B773E /* BrowseDetailTableViewCell.swift in Sources */,
 				10F44016236C793100435BC9 /* BrowseTableViewCell.swift in Sources */,
 				10281E74236DDE320091A473 /* Globals.swift in Sources */,

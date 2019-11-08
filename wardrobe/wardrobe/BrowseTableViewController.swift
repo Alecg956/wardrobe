@@ -12,14 +12,20 @@ import UIKit
 
 class BrowseTableViewController: UITableViewController {
     
-    var categories: [String] = ["Shirts"]
+    var categories: [String] = []
     var sectionTitles: [String] = ["Categories"]
+    
+    func getCategories() {
+        categories = ["Shirts", "Pants"]
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.register(BrowseTableViewCell.self, forCellReuseIdentifier: BrowseTableViewCell.reuseIdentifier)
         self.clearsSelectionOnViewWillAppear = false
+        
+        getCategories()
     }
 
     // MARK: - Table view data source
