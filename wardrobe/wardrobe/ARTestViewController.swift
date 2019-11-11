@@ -24,26 +24,11 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
-    lazy var scaleSlider: UISlider = {
-        
-        let slider = UISlider(frame: CGRect(x: 0, y: 0, width: 300,height: 10))
-        
-        slider.translatesAutoresizingMaskIntoConstraints = false
-        
-        slider.minimumValue = 0
-        slider.maximumValue = 2
-        slider.isContinuous = true
-        slider.tintColor = Global.greenBG
-        slider.value = 1
-        
-        slider.addTarget(self, action: #selector(didSlideScale), for: .valueChanged)
-        
-        return slider
-    }()
-    
     lazy var sizeUpButton: UIButton = testUIButton(imageString: "plus.circle.fill")
-    
     lazy var sizeDownButton: UIButton = testUIButton(imageString: "minus.circle.fill")
+    lazy var modelSizeUpButton: UIButton = testUIButton(imageString: "person.crop.circle.fill.badge.plus")
+    lazy var modelSizeDownButton: UIButton = testUIButton(imageString: "person.crop.circle.fill.badge.minus")
+    lazy var modelDeleteButton: UIButton = testUIButton(imageString: "person.crop.circle.fill.badge.xmark")
     
     lazy var sizeLabel: UILabel = {
         let label = UILabel();
@@ -91,9 +76,6 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
-        
         // Create a gesture recognizer for tapping to insert the model
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapScreen(_:)))
         sceneView.addGestureRecognizer(tapGestureRecognizer)
@@ -104,96 +86,6 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         
         // Set up the UI
         setupUI()
-    }
-    
-    // Handler for tapping scale up button
-    @objc func didTapSizeUp() {
-        
-        if Global.size < Global.maxSize {
-            
-            Global.size += 1
-            
-            if let newSize = Global.sizes[Global.size] {
-                sizeLabel.text = "Size \(newSize)"
-            }
-        }
-    }
-    
-    // Handler for tapping scale down button
-    @objc func didTapSizeDown () {
-        
-        if Global.size > Global.minSize {
-            
-            Global.size -= 1
-            
-            if let newSize = Global.sizes[Global.size] {
-                sizeLabel.text = "Size \(newSize)"
-            }
-        }
-    }
-    
-    var oldSliderVal:Float = 1
-    
-    @objc func didSlideScale(_ sender: UISlider) {
-        
-
-        print("should adjust scale")
-        
-        if (oldSliderVal > sender.value) {
-            didTapScaleDown()
-        } else {
-            didTapScaleUp()
-        }
-    }
-    
-    // Handler for tapping scale up button
-    @objc func didTapScaleUp() {
-        
-        if let node = sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: false) {
-            node.runAction(ARTestViewController.scaleUpSmall)
-        }
-    }
-    
-    // Handler for tapping scale down button
-    @objc func didTapScaleDown () {
-        
-        if let node = sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: false) {
-            node.runAction(ARTestViewController.scaleDownSmall)
-        }
-    }
-    
-    // Handler for tapping rotate right button
-    @objc func didTapRotateRight (gesture: UITapGestureRecognizer) {
-        
-        if let node = sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: false) {
-            node.runAction(ARTestViewController.rotateRightSmall)
-        }
-    }
-    
-    // Handler for tapping rotate left button
-    @objc func didTapRotateLeft () {
-        
-        if let node = sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: false) {
-            node.runAction(ARTestViewController.rotateLeftSmall)
-        }
-    }
-    
-    // Handler for holding rotate right button
-    @IBAction func didPressRotateRight(gesture: UILongPressGestureRecognizer) {
-        if gesture.state == .began {
-            timer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(didTapRotateRight), userInfo: nil, repeats: true)
-        } else if gesture.state == .ended || gesture.state == .cancelled {
-            timer.invalidate()
-        }
-    }
-    
-    // Handler for holding rotate left button
-    @IBAction func didPressRotateLeft(gesture: UILongPressGestureRecognizer) {
-        if gesture.state == .began {
-            timer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(didTapRotateLeft), userInfo: nil, repeats: true)
-        } else if gesture.state == .ended || gesture.state == .cancelled {
-            timer.invalidate()
-        }
     }
     
     // Handler for adding the model to the scene
@@ -217,6 +109,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
     }
     
     func setModelFileName() {
+        
         switch (Global.gender) {
             case .male:
                 modelFileName = "male_model"
@@ -246,7 +139,9 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
     
         // Add to the scene in the background to not block the UI
         DispatchQueue.main.async {
+            
             if let node = scene?.rootNode.childNode(withName: self.modelFileName, recursively: false) {
+                
                 self.numModels += 1
                 
                 print(self.modelFileName)
@@ -258,18 +153,24 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
                 self.sceneView.automaticallyUpdatesLighting = true
                 self.sceneView.autoenablesDefaultLighting = true
                 self.sceneView.scene.rootNode.addChildNode(node)
+                
+                self.addModelButtons()
             }
         }
     }
     
     // Add clothing item to model
     func addClothingToModel() {
+        
         let scene = SCNScene(named: "art.scnassets/" + Global.selectedItem + ".scn")
 
         DispatchQueue.main.async {
+            
             if let node = scene?.rootNode.childNode(withName: "shirt", recursively: false) {
+                
                 node.scale = SCNVector3Make(105, 105, 105)
                 node.position = SCNVector3Make(1.5, 40, 2)
+                
                 self.sceneView.automaticallyUpdatesLighting = true
                 self.sceneView.autoenablesDefaultLighting = true
                 self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true)!.addChildNode(node)
@@ -279,9 +180,13 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
     
     // Replace old item with new item (Hard coded at the moment)
     func replaceClothingOnModel() {
+        
         if let oldNode = self.sceneView.scene.rootNode.childNode(withName: "shirt", recursively: true) {
+            
             let scene = SCNScene(named: "art.scnassets/" + Global.selectedItem + ".scn")
+            
             if let newNode = scene?.rootNode.childNode(withName: "shirt", recursively: true) {
+                
                 newNode.scale = SCNVector3Make(105, 105, 105)
                 newNode.position = SCNVector3Make(1.5, 40, 2)
                 self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true)!.replaceChildNode(oldNode, with: newNode)
@@ -291,19 +196,26 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
     
     // Replace model when a different gender has beens selected
     func replaceModel() {
+        
         let oldModelFileName : String = modelFileName
         
         setModelFileName();
         
         if let oldNode = self.sceneView.scene.rootNode.childNode(withName: oldModelFileName, recursively: true) {
+            
             print(oldModelFileName)
+            
             let scene = SCNScene(named: "art.scnassets/" + modelFileName + ".scn")
+            
             if let newNode = scene?.rootNode.childNode(withName: modelFileName, recursively: true) {
+                
                 print(modelFileName)
+                
                 // Give old node's child nodes to the new node
                 for childNode in oldNode.childNodes {
                     newNode.addChildNode(childNode)
                 }
+                
                 newNode.position = oldNode.position;
                 newNode.scale = oldNode.scale;
                 self.sceneView.scene.rootNode.replaceChildNode(oldNode, with: newNode)
@@ -322,7 +234,6 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         
         // Enable plane detection
         configuration.planeDetection = .horizontal
-        
         configuration.isLightEstimationEnabled = true
         
         // show feature points
@@ -333,8 +244,10 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         
         // Check to see if a new item has been selected and there is a model on screen
         if (Global.selectedItem != "" && self.sceneView.scene.rootNode.childNodes.count > 4) {
+            
             // Check if model has clothing type on it already
-            if (self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true)!.childNodes.count > 0) {
+            if let node = self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true), node.childNodes.count > 0 {
+                
                 replaceClothingOnModel()
             }
             else {
@@ -349,8 +262,6 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
             replaceModel()
         }
     }
-    
-    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -418,7 +329,6 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         sizeDownButton.addTarget(self, action: #selector(didTapSizeDown), for: .touchUpInside)
         sizeUpButton.addTarget(self, action: #selector(didTapSizeUp), for: .touchUpInside)
         
-        self.view.addSubview(scaleSlider)
         self.view.addSubview(sizeUpButton)
         self.view.addSubview(sizeDownButton)
         self.view.addSubview(rotateRightButton)
@@ -427,28 +337,20 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         
         NSLayoutConstraint.activate([
             
-            scaleSlider.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 30),
-            scaleSlider.widthAnchor.constraint(equalToConstant: 130),
-            scaleSlider.heightAnchor.constraint(equalToConstant: 10),
-            scaleSlider.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
-            
-            
             sizeDownButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: -75.0),
-            sizeDownButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -35.0),
+            sizeDownButton.centerYAnchor.constraint(equalTo: sizeLabel.centerYAnchor),
+            sizeDownButton.heightAnchor.constraint(equalToConstant: 40),
+            sizeDownButton.widthAnchor.constraint(equalToConstant: 40),
             
             sizeUpButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 75.0),
-            sizeUpButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -35.0),
-            sizeUpButton.heightAnchor.constraint(equalToConstant: 50),
-            sizeUpButton.widthAnchor.constraint(equalToConstant: 50),
-            
+            sizeUpButton.centerYAnchor.constraint(equalTo: sizeLabel.centerYAnchor),
+            sizeUpButton.heightAnchor.constraint(equalToConstant: 40),
+            sizeUpButton.widthAnchor.constraint(equalToConstant: 40),
             
             rotateRightButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -18),
             rotateRightButton.bottomAnchor.constraint(equalTo: self.sizeDownButton.topAnchor, constant: -55.0),
             rotateRightButton.heightAnchor.constraint(equalToConstant: 50.0),
             rotateRightButton.widthAnchor.constraint(equalToConstant: 50.0),
-            sizeDownButton.heightAnchor.constraint(equalToConstant: 50),
-            sizeDownButton.widthAnchor.constraint(equalToConstant: 50),
-            
             
             rotateLeftButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 18),
             rotateLeftButton.bottomAnchor.constraint(equalTo: self.sizeDownButton.topAnchor, constant: -55.0),
@@ -461,12 +363,122 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
             sizeLabel.heightAnchor.constraint(equalToConstant: 30),
             sizeLabel.leadingAnchor.constraint(equalTo: sizeDownButton.trailingAnchor, constant: 8),
             sizeLabel.trailingAnchor.constraint(equalTo: sizeUpButton.leadingAnchor, constant: -8)
-            
-//            sizeLabel.widthAnchor.constraint(equalToConstant: 50),
-            
-            
-        
         ])
         
+    }
+    
+    func addModelButtons() {
+        
+        modelSizeUpButton.addTarget(self, action: #selector(didTapScaleUp), for: .touchUpInside)
+        modelSizeDownButton.addTarget(self, action: #selector(didTapScaleDown), for: .touchUpInside)
+        modelDeleteButton.addTarget(self, action: #selector(modelDeleteTapped), for: .touchUpInside)
+        
+        self.view.addSubview(modelSizeUpButton)
+        self.view.addSubview(modelSizeDownButton)
+        self.view.addSubview(modelDeleteButton)
+        
+        NSLayoutConstraint.activate([
+            modelSizeUpButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15.0),
+            modelSizeUpButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20.0),
+            modelSizeUpButton.heightAnchor.constraint(equalToConstant: 40),
+            modelSizeUpButton.widthAnchor.constraint(equalToConstant: 50),
+            
+            modelSizeDownButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15.0),
+            modelSizeDownButton.topAnchor.constraint(equalTo: modelSizeUpButton.bottomAnchor, constant: 10.0),
+            modelSizeDownButton.heightAnchor.constraint(equalToConstant: 40),
+            modelSizeDownButton.widthAnchor.constraint(equalToConstant: 50),
+            
+            modelDeleteButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15.0),
+            modelDeleteButton.topAnchor.constraint(equalTo: modelSizeDownButton.bottomAnchor, constant: 10.0),
+            modelDeleteButton.heightAnchor.constraint(equalToConstant: 40),
+            modelDeleteButton.widthAnchor.constraint(equalToConstant: 50),
+        ])
+    }
+    
+    @objc func modelDeleteTapped() {
+        
+        if let node = sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: false) {
+            node.removeFromParentNode()
+            numModels -= 1
+            modelDeleteButton.removeFromSuperview()
+            modelSizeUpButton.removeFromSuperview()
+            modelSizeDownButton.removeFromSuperview()
+        }
+    }
+    
+    // Handler for tapping scale up button
+    @objc func didTapSizeUp() {
+        
+        if Global.size < Global.maxSize {
+            
+            Global.size += 1
+            
+            if let newSize = Global.sizes[Global.size] {
+                sizeLabel.text = "Size \(newSize)"
+            }
+        }
+    }
+    
+    // Handler for tapping scale down button
+    @objc func didTapSizeDown () {
+        
+        if Global.size > Global.minSize {
+            
+            Global.size -= 1
+            
+            if let newSize = Global.sizes[Global.size] {
+                sizeLabel.text = "Size \(newSize)"
+            }
+        }
+    }
+    
+    // Handler for tapping scale down button
+    @objc func didTapScaleDown () {
+        
+        if let node = sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: false) {
+            node.runAction(ARTestViewController.scaleDownSmall)
+        }
+    }
+    
+    // Handler for tapping scale down button
+    @objc func didTapScaleUp () {
+        
+        if let node = sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: false) {
+            node.runAction(ARTestViewController.scaleUpSmall)
+        }
+    }
+    
+    // Handler for tapping rotate right button
+    @objc func didTapRotateRight (gesture: UITapGestureRecognizer) {
+        
+        if let node = sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: false) {
+            node.runAction(ARTestViewController.rotateRightSmall)
+        }
+    }
+    
+    // Handler for tapping rotate left button
+    @objc func didTapRotateLeft () {
+        
+        if let node = sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: false) {
+            node.runAction(ARTestViewController.rotateLeftSmall)
+        }
+    }
+    
+    // Handler for holding rotate right button
+    @IBAction func didPressRotateRight(gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            timer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(didTapRotateRight), userInfo: nil, repeats: true)
+        } else if gesture.state == .ended || gesture.state == .cancelled {
+            timer.invalidate()
+        }
+    }
+    
+    // Handler for holding rotate left button
+    @IBAction func didPressRotateLeft(gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            timer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(didTapRotateLeft), userInfo: nil, repeats: true)
+        } else if gesture.state == .ended || gesture.state == .cancelled {
+            timer.invalidate()
+        }
     }
 }

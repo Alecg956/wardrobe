@@ -14,9 +14,24 @@ class BrowseTableViewController: UITableViewController {
     
     var categories: [String] = []
     var sectionTitles: [String] = ["Categories"]
+    var gender: Gender = .other
     
     func getCategories() {
-        categories = ["Shirts", "Pants"]
+        
+        switch Global.gender {
+        case .male:
+            categories = ["Shirts", "Jackets", "Bottoms", "Underwear"]
+        case .female:
+            categories = ["Shirts", "Jackets", "Skirts", "Dresses", "Bottoms", "Underwear"]
+        case .other:
+            categories = ["Shirts", "Jackets", "Bottoms", "Underwear"]
+        }
+        
+        if Global.gender != gender {
+            tableView.reloadData()
+        }
+        
+        gender = Global.gender
     }
 
     override func viewDidLoad() {
@@ -24,7 +39,10 @@ class BrowseTableViewController: UITableViewController {
         
         tableView.register(BrowseTableViewCell.self, forCellReuseIdentifier: BrowseTableViewCell.reuseIdentifier)
         self.clearsSelectionOnViewWillAppear = false
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         getCategories()
     }
 
@@ -58,6 +76,6 @@ class BrowseTableViewController: UITableViewController {
         let newVC = BrowseDetailTableViewController()
         newVC.pageTitle = categories[indexPath.row]
         
-        self.present(newVC, animated: true)
+        self.navigationController?.pushViewController(newVC, animated: true)
     }
 }

@@ -10,7 +10,7 @@
         <!--Purchase-->
         <scene sceneID="nhT-pk-jpd">
             <objects>
-                <viewController id="lOb-Ok-a0w" customClass="PurchaseViewController" customModule="wardrobe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lOb-Ok-a0w" customClass="PurchaseViewController" customModule="Wardrobe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JSi-uy-1Rw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,7 +35,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="avf-8g-qkC" kind="relationship" relationship="viewControllers" id="TLu-tz-iTS"/>
-                        <segue destination="0Jf-Y0-sne" kind="relationship" relationship="viewControllers" id="3dv-13-c0k"/>
+                        <segue destination="g4X-Pv-O4e" kind="relationship" relationship="viewControllers" id="aZP-84-8ii"/>
                         <segue destination="BV1-FR-VrT" kind="relationship" relationship="viewControllers" id="Wcx-zf-pNb"/>
                         <segue destination="lOb-Ok-a0w" kind="relationship" relationship="viewControllers" id="6Wm-kf-xEa"/>
                     </connections>
@@ -47,7 +47,7 @@
         <!--Customize-->
         <scene sceneID="ykj-We-Pac">
             <objects>
-                <viewController id="avf-8g-qkC" customClass="CustomizeViewController" customModule="wardrobe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="avf-8g-qkC" customClass="CustomizeViewController" customModule="Wardrobe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m3V-Rb-b2x">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,7 +64,7 @@
         <!--Test-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="ARTestViewController" customModule="wardrobe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="ARTestViewController" customModule="Wardrobe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U0K-SW-4ec">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -93,9 +93,28 @@
             <point key="canvasLocation" x="-3610.144927536232" y="334.82142857142856"/>
         </scene>
         <!--Browse-->
+        <scene sceneID="vYm-Mw-5KB">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P6Y-wF-auw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController id="g4X-Pv-O4e" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Browse" image="magnifyingglass" catalog="system" id="gfd-q3-acg"/>
+                    <navigationItem key="navigationItem" id="NIK-VC-nLh"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ISa-IQ-VCD">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="0Jf-Y0-sne" kind="relationship" relationship="rootViewController" id="Tsf-tN-2eM"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-3586" y="-421"/>
+        </scene>
+        <!--Browse-->
         <scene sceneID="H3k-wt-nHf">
             <objects>
-                <tableViewController id="0Jf-Y0-sne" customClass="BrowseTableViewController" customModule="wardrobe" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="erB-zv-Bkg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tableViewController id="0Jf-Y0-sne" customClass="BrowseTableViewController" customModule="Wardrobe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="n7Y-lI-V7i">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -116,10 +135,10 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Browse" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="kIT-wL-45w"/>
+                    <navigationItem key="navigationItem" id="SXc-yT-OdA"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="erB-zv-Bkg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3610" y="-427"/>
+            <point key="canvasLocation" x="-2636" y="-421"/>
         </scene>
     </scenes>
     <resources>

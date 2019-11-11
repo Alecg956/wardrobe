@@ -16,6 +16,7 @@
 		1025E61F235CFBDE0017E7DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1025E61E235CFBDE0017E7DA /* Assets.xcassets */; };
 		1025E622235CFBDE0017E7DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1025E620235CFBDE0017E7DA /* LaunchScreen.storyboard */; };
 		10281E74236DDE320091A473 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10281E73236DDE320091A473 /* Globals.swift */; };
+		10727591237A16F000F30019 /* customizeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10727590237A16EF00F30019 /* customizeButton.swift */; };
 		10752A3A236DE734001B773E /* BrowseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10752A39236DE734001B773E /* BrowseDetailTableViewController.swift */; };
 		10752A3C236DEDD4001B773E /* BrowseDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10752A3B236DEDD4001B773E /* BrowseDetailTableViewCell.swift */; };
 		107903D323751113000A5DF3 /* testUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107903D223751113000A5DF3 /* testUIButton.swift */; };
@@ -35,6 +36,7 @@
 		1025E621235CFBDE0017E7DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1025E623235CFBDE0017E7DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10281E73236DDE320091A473 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		10727590237A16EF00F30019 /* customizeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customizeButton.swift; sourceTree = "<group>"; };
 		10752A39236DE734001B773E /* BrowseDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDetailTableViewController.swift; sourceTree = "<group>"; };
 		10752A3B236DEDD4001B773E /* BrowseDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDetailTableViewCell.swift; sourceTree = "<group>"; };
 		107903D223751113000A5DF3 /* testUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testUIButton.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				1025E615235CFBD90017E7DA /* AppDelegate.swift */,
 				1025E617235CFBD90017E7DA /* art.scnassets */,
 				1025E619235CFBD90017E7DA /* ARTestViewController.swift */,
+				10727590237A16EF00F30019 /* customizeButton.swift */,
 				107903D223751113000A5DF3 /* testUIButton.swift */,
 				0623963C236AA4D30012C6C7 /* CustomizeViewController.swift */,
 				067CCA7A236E4DC7000EA7C4 /* PurchaseViewController.swift */,
@@ -167,6 +170,7 @@
 				067CCA7B236E4DC7000EA7C4 /* PurchaseViewController.swift in Sources */,
 				10752A3A236DE734001B773E /* BrowseDetailTableViewController.swift in Sources */,
 				107903D323751113000A5DF3 /* testUIButton.swift in Sources */,
+				10727591237A16F000F30019 /* customizeButton.swift in Sources */,
 				10752A3C236DEDD4001B773E /* BrowseDetailTableViewCell.swift in Sources */,
 				10F44016236C793100435BC9 /* BrowseTableViewCell.swift in Sources */,
 				10281E74236DDE320091A473 /* Globals.swift in Sources */,

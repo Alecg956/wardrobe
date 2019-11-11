@@ -53,7 +53,7 @@ class BrowseDetailTableViewController: UITableViewController {
         Global.selectedItem = pageItems[indexPath.row].itemName
         
         print(Global.selectedItem)
-        dismiss(animated: true)
+        self.tabBarController?.selectedIndex = 2
     }
     
     func getItems() {
