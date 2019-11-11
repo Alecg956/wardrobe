@@ -11,18 +11,8 @@ import UIKit
 class CustomizeViewController: UIViewController {
     
     //Male gender button
-    lazy var maleButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        button.backgroundColor = Global.greenBG
-        button.tintColor = Global.greenBG
-        button.layer.borderWidth = 5
-        button.layer.borderColor = Global.greenBG.cgColor
-        button.layer.cornerRadius = 5
-        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
-        button.setTitle("Male", for: .normal)
-        button.setTitleColor(UIColor.black, for: UIControl.State.normal)
+    lazy var maleButton: customizeButton = {
+        let button = customizeButton(title: "Male")
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapMale))
         
@@ -32,18 +22,8 @@ class CustomizeViewController: UIViewController {
     }()
     
     //Female gender button
-    lazy var femaleButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        button.backgroundColor = Global.greenBG
-        button.tintColor = Global.greenBG
-        button.layer.borderWidth = 5
-        button.layer.borderColor = Global.greenBG.cgColor
-        button.layer.cornerRadius = 5
-        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
-        button.setTitle("Female", for: .normal)
-        button.setTitleColor(UIColor.black, for: UIControl.State.normal)
+    lazy var femaleButton: customizeButton = {
+        let button = customizeButton(title: "Female")
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapFemale))
         
@@ -54,18 +34,11 @@ class CustomizeViewController: UIViewController {
 
     
     //Other gender button
-    lazy var otherButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
+    lazy var otherButton: customizeButton = {
+        let button = customizeButton(title: "Other")
         
         button.backgroundColor = .white
         button.tintColor = .white
-        button.layer.borderWidth = 5
-        button.layer.borderColor = Global.greenBG.cgColor
-        button.layer.cornerRadius = 5
-        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
-        button.setTitle("Other", for: .normal)
-        button.setTitleColor(UIColor.black, for: UIControl.State.normal)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOther))
         
@@ -100,13 +73,13 @@ class CustomizeViewController: UIViewController {
     }()
     
     //neck slider
-    lazy var neckSlider: UISlider = {
+    lazy var weightSlider: UISlider = {
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
         let slider = UISlider(frame: CGRect(x: displayWidth / 4, y: 400, width: displayWidth / 2, height: 20))
         
         slider.minimumValue = 0
-        slider.maximumValue = 100
+        slider.maximumValue = 300
         slider.isContinuous = true
         slider.tintColor = Global.greenBG
         slider.addTarget(self, action: #selector(CustomizeViewController.sliderValueDidChange(_:)), for: .valueChanged)
@@ -115,11 +88,11 @@ class CustomizeViewController: UIViewController {
         return slider
     }()
     
-    lazy var neckLabel: UILabel = {
+    lazy var weightLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         
-        label.text = "Neck: 0 Inches"
+        label.text = "Weight: 0 Pounds"
         
         return label
     }()
@@ -180,44 +153,35 @@ class CustomizeViewController: UIViewController {
         setupUI()
     }
     
+    // Switches the coloring of the buttons to represent current choice
+    func buttonSelected(selectedButton: customizeButton, otherOne: customizeButton, otherTwo: customizeButton) {
+        selectedButton.backgroundColor = .white
+        selectedButton.tintColor = .white
+        
+        otherOne.backgroundColor = Global.greenBG
+        otherOne.tintColor = Global.greenBG
+        
+        otherTwo.backgroundColor = Global.greenBG
+        otherTwo.tintColor = Global.greenBG
+    }
+    
     // Handler for tapping male button
     @objc func didTapMale() {
-        maleButton.backgroundColor = .white
-        maleButton.tintColor = .white
-        
-        femaleButton.backgroundColor = Global.greenBG
-        femaleButton.tintColor = Global.greenBG
-        
-        otherButton.backgroundColor = Global.greenBG
-        otherButton.tintColor = Global.greenBG
+        buttonSelected(selectedButton: maleButton, otherOne: femaleButton, otherTwo: otherButton)
         
         Global.gender = .male
     }
     
     // Handler for tapping female button
     @objc func didTapFemale() {
-        femaleButton.backgroundColor = .white
-        femaleButton.tintColor = .white
-        
-        maleButton.backgroundColor = Global.greenBG
-        maleButton.tintColor = Global.greenBG
-        
-        otherButton.backgroundColor = Global.greenBG
-        otherButton.tintColor = Global.greenBG
+        buttonSelected(selectedButton: femaleButton, otherOne: maleButton, otherTwo: otherButton)
         
         Global.gender = .female
     }
     
     // Handler for tapping other button
     @objc func didTapOther() {
-        otherButton.backgroundColor = .white
-        otherButton.tintColor = .white
-        
-        femaleButton.backgroundColor = Global.greenBG
-        femaleButton.tintColor = Global.greenBG
-        
-        maleButton.backgroundColor = Global.greenBG
-        maleButton.tintColor = Global.greenBG
+        buttonSelected(selectedButton: otherButton, otherOne: maleButton, otherTwo: femaleButton)
         
         Global.gender = .other
     }
@@ -228,8 +192,10 @@ class CustomizeViewController: UIViewController {
         switch sender.tag {
         case 1:
             heightLabel.text = "Height: \(Int(roundedValue)) Inches"
+            Global.height = Int(roundedValue)
         case 2:
-            neckLabel.text = "Neck: \(Int(roundedValue)) Inches"
+            weightLabel.text = "Weight: \(Int(roundedValue)) Pounds"
+            Global.weight = Int(roundedValue)
         case 3:
             chestLabel.text = "Chest: \(Int(roundedValue)) Inches"
         case 4:
@@ -249,8 +215,8 @@ class CustomizeViewController: UIViewController {
         self.view.addSubview(otherButton)
         self.view.addSubview(heightSlider)
         self.view.addSubview(heightLabel)
-        self.view.addSubview(neckSlider)
-        self.view.addSubview(neckLabel)
+        self.view.addSubview(weightSlider)
+        self.view.addSubview(weightLabel)
         self.view.addSubview(chestSlider)
         self.view.addSubview(chestLabel)
         self.view.addSubview(waistSlider)
@@ -273,8 +239,8 @@ class CustomizeViewController: UIViewController {
             heightLabel.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 0.0),
             heightLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 225.0),
             
-            neckLabel.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 0.0),
-            neckLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 325.0),
+            weightLabel.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 0.0),
+            weightLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 325.0),
             
             chestLabel.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 0.0),
             chestLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 425.0),
