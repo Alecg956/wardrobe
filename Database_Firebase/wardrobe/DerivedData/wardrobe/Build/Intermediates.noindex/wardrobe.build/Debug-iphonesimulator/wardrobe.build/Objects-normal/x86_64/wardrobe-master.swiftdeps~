@@ -1,7 +1,0 @@
-version: "Apple Swift version 4.2.1 (swiftlang-1000.11.42 clang-1000.11.45.1)"
-options: "09a97e93057bcbe5a80357e17ea013b1"
-build_time: [1572906799, 802642000]
-inputs:
-  "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/wardrobe/ViewController.swift": [1572906799, 0]
-  "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/wardrobe/DatabaseControllerViewController.swift": !dirty [1572906654, 0]
-  "/Users/jmandwee/Desktop/Database_Firebase/wardrobe/wardrobe/AppDelegate.swift": [1572896771, 0]
