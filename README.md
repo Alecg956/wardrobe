@@ -53,50 +53,6 @@ Directory Structure:
 │               └── xcschemes
 │                   └── xcschememanagement.plist
 |
-├── Database_Firebase
-│   └── wardrobe
-│       ├── DerivedData
-│       ├── Podfile
-│       ├── Podfile.lock
-│       ├── wardrobe
-│       │   ├── AppDelegate.swift
-│       │   ├── Assets.xcassets
-│       │   │   ├── AppIcon.appiconset
-│       │   │   │   └── Contents.json
-│       │   │   └── Contents.json
-│       │   ├── Base.lproj
-│       │   │   ├── LaunchScreen.storyboard
-│       │   │   └── Main.storyboard
-│       │   ├── DatabaseControllerViewController.swift
-│       │   ├── GoogleService-Info.plist
-│       │   ├── Info.plist
-│       │   └── ViewController.swift
-│       ├── wardrobe.xcodeproj
-│       │   ├── project.pbxproj
-│       │   ├── project.xcworkspace
-│       │   │   ├── contents.xcworkspacedata
-│       │   │   ├── xcshareddata
-│       │   │   │   └── IDEWorkspaceChecks.plist
-│       │   │   └── xcuserdata
-│       │   │       └── jmandwee.xcuserdatad
-│       │   │           └── UserInterfaceState.xcuserstate
-│       │   └── xcuserdata
-│       │       ├── chualan.xcuserdatad
-│       │       │   └── xcschemes
-│       │       │       └── xcschememanagement.plist
-│       │       └── jmandwee.xcuserdatad
-│       │           └── xcschemes
-│       │               └── xcschememanagement.plist
-│       └── wardrobe.xcworkspace
-│           ├── contents.xcworkspacedata
-│           ├── xcshareddata
-│           │   └── IDEWorkspaceChecks.plist
-│           └── xcuserdata
-│               ├── chualan.xcuserdatad
-│               │   └── UserInterfaceState.xcuserstate
-│               └── jmandwee.xcuserdatad
-│                   └── UserInterfaceState.xcuserstate
-|
 ├── README.md
 └── wardrobe
     ├── wardrobe
