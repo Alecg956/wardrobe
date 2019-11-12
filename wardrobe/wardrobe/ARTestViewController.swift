@@ -173,7 +173,9 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
                 
                 self.sceneView.automaticallyUpdatesLighting = true
                 self.sceneView.autoenablesDefaultLighting = true
-                self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true)!.addChildNode(node)
+                if let parentNode = self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true) {
+                    parentNode.addChildNode(node)
+                }
             }
         }
     }
@@ -189,7 +191,9 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
                 
                 newNode.scale = SCNVector3Make(105, 105, 105)
                 newNode.position = SCNVector3Make(1.5, 40, 2)
-                self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true)!.replaceChildNode(oldNode, with: newNode)
+                if let parentNode = self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true) {
+                    parentNode.replaceChildNode(oldNode, with: newNode)
+                }
             }
         }
     }
