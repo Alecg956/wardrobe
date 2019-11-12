@@ -158,7 +158,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
                 
                 if (Global.selectedItem != "") {
                     self.addClothingToModel()
-                    Global.selectedItem == ""
+                    Global.selectedItem = ""
                 }
             }
         }
