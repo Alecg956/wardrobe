@@ -16,7 +16,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
     static let rotateRightSmall = SCNAction.rotateBy(x: 0, y: 0.2, z: 0, duration: 0)
     static let rotateLeftSmall = SCNAction.rotateBy(x: 0, y: -0.2, z: 0, duration: 0)
     static let scaleUpSmall = SCNAction.scale(by: 1.1, duration: 0)
-    static let scaleDownSmall = SCNAction.scale(by: 0.9, duration: 0)
+    static let scaleDownSmall = SCNAction.scale(by: 0.90909, duration: 0)
     
     var timer: Timer = Timer()
     var modelFileName : String = "other_model"
@@ -233,6 +233,18 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    // Change height
+    func changeModelHeight() {
+        
+    }
+    
+    // Change weight
+    
+    // Calculate BMI based on height and weight
+    func getBMI() -> Double {
+        return 703.0 * (Double(Global.weight) / (Double(Global.height) * Double(Global.height)))
+    }
+    
     // Set up the initial state of the scene, this is called
     // Anytime the tab is tapped (we should update the model here)
     override func viewWillAppear(_ animated: Bool) {
@@ -270,6 +282,8 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         if (previousGenderSelected != Global.gender && self.sceneView.scene.rootNode.childNodes.count > 4) {
             replaceModel()
         }
+        
+        print(getBMI())
     }
     
     override func viewWillDisappear(_ animated: Bool) {
