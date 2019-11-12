@@ -156,7 +156,8 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
                 
                 self.addModelButtons()
                 
-                if(Global.selectedItem != "") {
+                if (Global.selectedItem != "") {
+
                     self.addClothingToModel()
                 }
             }
