@@ -420,6 +420,8 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
             if let newSize = Global.sizes[Global.size] {
                 sizeLabel.text = "Size \(newSize)"
             }
+
+            //add function for changing size of clothes up
         }
     }
     
@@ -433,7 +435,10 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
             if let newSize = Global.sizes[Global.size] {
                 sizeLabel.text = "Size \(newSize)"
             }
+
+            //add function for changing size of clothes down
         }
+
     }
     
     // Handler for tapping scale down button
