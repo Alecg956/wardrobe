@@ -17,8 +17,8 @@ struct Global {
     static var selectedItem:String = ""
     
     //for customize sliders
-    static var height:Int = 0
-    static var weight:Int = 0
+    static var height:Int = 70
+    static var weight:Int = 150
     
     // corresponds to a medium, negative is smaller, positive is higher
     static var size:Int = 0
