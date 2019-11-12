@@ -155,6 +155,10 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
                 self.sceneView.scene.rootNode.addChildNode(node)
                 
                 self.addModelButtons()
+                
+                if(Global.selectedItem != "") {
+                    self.addClothingToModel()
+                }
             }
         }
     }
