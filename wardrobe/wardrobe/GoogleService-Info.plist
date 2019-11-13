@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>237643719412-0urncdioq0sre7i61s0eqmkfe5c9k6e3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.237643719412-0urncdioq0sre7i61s0eqmkfe5c9k6e3</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAcVnKr_nPGwd5ChpbuaIJkKvG4A_L54bE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>237643719412</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>alechg.wardrobe</string>
+	<key>PROJECT_ID</key>
+	<string>wardrobe-database-d2f0f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>wardrobe-database-d2f0f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:237643719412:ios:a8c894764907d06173f4a1</string>
+	<key>DATABASE_URL</key>
+	<string>https://wardrobe-database-d2f0f.firebaseio.com</string>
+</dict>
+</plist>
