@@ -13,13 +13,14 @@ import ARKit
 class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     lazy var pickerView = UIPickerView()
+    lazy var currentColorNamePair = ColorNamePair(color: .red, name: "red")
     
-    struct colorNamePair {
+    struct ColorNamePair {
         var color :UIColor
         var name:String
     }
     
-    let pickerValues:[colorNamePair] = [colorNamePair(color: .red, name: "red"), colorNamePair(color: .blue, name: "blue"), colorNamePair(color: .green, name: "green"), colorNamePair(color: .yellow, name: "yellow")]
+    let pickerValues:[ColorNamePair] = [ColorNamePair(color: .red, name: "red"), ColorNamePair(color: .blue, name: "blue"), ColorNamePair(color: .green, name: "green"), ColorNamePair(color: .yellow, name: "yellow")]
     
     lazy var pickerTextField: UITextField = {
         let textField = UITextField()
@@ -51,36 +52,15 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         return toolBar
     }()
     
-    
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerValues.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerValues[row].name
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        pickerTextField.backgroundColor = pickerValues[row].color
-        pickerTextField.text = pickerValues[row].name
-        pickerTextField.reloadInputViews()
-    }
-    
-    
     lazy var numModels = Int()
     static let rotateRightSmall = SCNAction.rotateBy(x: 0, y: 0.2, z: 0, duration: 0)
     static let rotateLeftSmall = SCNAction.rotateBy(x: 0, y: -0.2, z: 0, duration: 0)
     static let scaleUpSmall = SCNAction.scale(by: 1.1, duration: 0)
     static let scaleDownSmall = SCNAction.scale(by: 0.90909, duration: 0)
     
-    var timer: Timer = Timer()
-    var modelFileName : String = "other_model"
-    var previousGenderSelected : Gender = Global.gender
+    lazy var timer: Timer = Timer()
+    lazy var modelFileName : String = "other_model"
+    lazy var previousGenderSelected : Gender = Global.gender
 
     @IBOutlet var sceneView: ARSCNView!
     
@@ -422,13 +402,11 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
+}
+
+// UI Stuff
+extension ARTestViewController {
     
-    @objc func didTapPickerDone() {
-        
-        pickerTextField.resignFirstResponder()
-    }
-    
-    // Set up the UI (not AR related)
     func setupUI() {
         
         sizeDownButton.addTarget(self, action: #selector(didTapSizeDown), for: .touchUpInside)
@@ -452,7 +430,6 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
             pickerTextField.bottomAnchor.constraint(equalTo: sizeLabel.topAnchor, constant: -10),
             pickerTextField.widthAnchor.constraint(equalTo: sizeLabel.widthAnchor),
             pickerTextField.heightAnchor.constraint(equalToConstant: 30),
-            
             
             sizeDownButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: -75.0),
             sizeDownButton.centerYAnchor.constraint(equalTo: sizeLabel.centerYAnchor),
@@ -511,6 +488,23 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
             modelDeleteButton.widthAnchor.constraint(equalToConstant: 50),
         ])
     }
+}
+
+// didTap Functions
+extension ARTestViewController {
+    
+    @objc func didTapPickerDone() {
+        
+         if let node = self.sceneView.scene.rootNode.childNode(withName: "shirt", recursively: true) {
+            
+            // kind of hacky, we shouldn't have to hardcode in the actual node name
+            if let child = node.childNode(withName: "buffer_0_mesh_0_prim1", recursively: true) {
+                child.geometry?.firstMaterial?.diffuse.contents = currentColorNamePair.color
+            }
+        }
+        
+        pickerTextField.resignFirstResponder()
+    }
     
     @objc func modelDeleteTapped() {
         
@@ -551,7 +545,6 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
 
             //add function for changing size of clothes down
         }
-
     }
     
     // Handler for tapping scale down button
@@ -602,5 +595,28 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         } else if gesture.state == .ended || gesture.state == .cancelled {
             timer.invalidate()
         }
+    }
+}
+
+// Picker delegate functions
+extension ARTestViewController {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerValues.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerValues[row].name
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickerTextField.backgroundColor = pickerValues[row].color
+        pickerTextField.text = pickerValues[row].name
+        currentColorNamePair = pickerValues[row]
+        pickerTextField.reloadInputViews()
     }
 }
