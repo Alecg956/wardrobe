@@ -154,8 +154,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
                 self.sceneView.autoenablesDefaultLighting = true
                 self.sceneView.scene.rootNode.addChildNode(node)
 
-                self.changeModelHeight()
-                self.changeModelWeight()
+                self.changeModelHeightAndWeight()
                 
                 self.addModelButtons()
                 
@@ -237,35 +236,23 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
     }
     
     // Change height
-    func changeModelHeight() {
+    func changeModelHeightAndWeight() {
         if let node = self.sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: true) {
-            var y:Float = 0.0;
+            var y:Float = 1.0;
+            var thick:Float = 1.0;
+            
             switch(Global.gender) {
                 case .male:
                     y = Float(Global.height) / Float(Global.defaultMaleHeight)
-                case .female:
-                    y = Float(Global.height) / Float(Global.defaultFemaleHeight)
-                case .other:
-                    y = Float(Global.height) / Float(Global.defaultOtherHeight)
-            }
-            node.scale = SCNVector3Make(0.005, 0.005 * y, 0.005)
-            print(y)
-        }
-    }
-    
-    // Change weight
-    func changeModelWeight() {
-                if let node = self.sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: true) {
-            var thick:Float = 0.0;
-            switch(Global.gender) {
-                case .male:
                     thick = Float(Global.weight) / Float(Global.defaultMaleWeight)
                 case .female:
+                    y = Float(Global.height) / Float(Global.defaultFemaleHeight)
                     thick = Float(Global.weight) / Float(Global.defaultFemaleWeight)
                 case .other:
+                    y = Float(Global.height) / Float(Global.defaultOtherHeight)
                     thick = Float(Global.weight) / Float(Global.defaultOtherWeight)
             }
-            node.scale = SCNVector3Make(0.005 * thick, 0.005, 0.005 * thick)
+            node.scale = SCNVector3Make(0.005 * thick, 0.005 * y, 0.005 * thick)
             print(y)
         }
     }
@@ -313,8 +300,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
             replaceModel()
         }
         
-        self.changeModelHeight()
-        self.changeModelWeight()
+        self.changeModelHeightAndWeight()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
