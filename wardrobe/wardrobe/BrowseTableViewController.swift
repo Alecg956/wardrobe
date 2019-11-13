@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 
 
@@ -21,6 +22,12 @@ class BrowseTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let ref = Database.database().reference()
+        
+        ref.child("Shirts").setValue("Black Tshirt")
+        ref.child("Shirts").setValue("New Shirt")
+        
         
         tableView.register(BrowseTableViewCell.self, forCellReuseIdentifier: BrowseTableViewCell.reuseIdentifier)
         self.clearsSelectionOnViewWillAppear = false
