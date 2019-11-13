@@ -153,6 +153,9 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
                 self.sceneView.automaticallyUpdatesLighting = true
                 self.sceneView.autoenablesDefaultLighting = true
                 self.sceneView.scene.rootNode.addChildNode(node)
+
+                self.changeModelHeight()
+                self.changeModelWeight()
                 
                 self.addModelButtons()
                 
@@ -251,6 +254,21 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
     }
     
     // Change weight
+    func changeModelWeight() {
+                if let node = self.sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: true) {
+            var thick:Float = 0.0;
+            switch(Global.gender) {
+                case .male:
+                    thick = Float(Global.weight) / Float(Global.defaultMaleWeight)
+                case .female:
+                    thick = Float(Global.weight) / Float(Global.defaultFemaleWeight)
+                case .other:
+                    thick = Float(Global.weight) / Float(Global.defaultOtherWeight)
+            }
+            node.scale = SCNVector3Make(0.005 * thick, 0.005, 0.005 * thick)
+            print(y)
+        }
+    }
     
     // Calculate BMI based on height and weight
     func getBMI() -> Double {
@@ -295,7 +313,8 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
             replaceModel()
         }
         
-        self.changeModelHeight();
+        self.changeModelHeight()
+        self.changeModelWeight()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
