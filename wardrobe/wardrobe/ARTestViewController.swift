@@ -235,17 +235,18 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
     
     // Change height
     func changeModelHeight() {
-        if let node = scene?.rootNode.childNode(withName: modelFileName, recursively: true) {
-            var y = 0;
+        if let node = self.sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: true) {
+            var y:Float = 0.0;
             switch(Global.gender) {
                 case .male:
-                    y = (Global.height - Global.defaultMaleHeight)/Global.defaultMaleHeight
+                    y = Float(Global.height) / Float(Global.defaultMaleHeight)
                 case .female:
-                    y = (Global.height - Global.defaultFemaleHeight)/Global.defaultFemaleHeight
+                    y = Float(Global.height) / Float(Global.defaultFemaleHeight)
                 case .other:
-                    y = (Global.height - Global.defaultOtherHeight)/Global.defaultOtherHeight
+                    y = Float(Global.height) / Float(Global.defaultOtherHeight)
             }
-            node.scale = SCNVector3Make(.005,.005 * y,.005)
+            node.scale = SCNVector3Make(0.005, 0.005 * y, 0.005)
+            print(y)
         }
     }
     
@@ -295,7 +296,6 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         }
         
         self.changeModelHeight();
-        print(getBMI())
     }
     
     override func viewWillDisappear(_ animated: Bool) {
