@@ -15,10 +15,10 @@ class customizeButton: UIButton {
         
         translatesAutoresizingMaskIntoConstraints = false
         
-        backgroundColor = Global.greenBG
-        tintColor = Global.greenBG
+        backgroundColor = .greenBG
+        tintColor = .greenBG
         layer.borderWidth = 5
-        layer.borderColor = Global.greenBG.cgColor
+        layer.borderColor = UIColor.greenBG.cgColor
         layer.cornerRadius = 5
         contentEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
         setTitle(title, for: .normal)

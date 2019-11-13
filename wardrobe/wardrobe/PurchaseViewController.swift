@@ -34,8 +34,8 @@ class PurchaseViewController: UIViewController, UITableViewDelegate, UITableView
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        button.backgroundColor = Global.greenBG
-        button.tintColor = Global.greenBG
+        button.backgroundColor = .greenBG
+        button.tintColor = .greenBG
         button.layer.cornerRadius = 5
         button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
         button.setTitle("Make Purchase!", for: .normal)

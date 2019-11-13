@@ -15,7 +15,6 @@ class CustomizeViewController: UIViewController {
         let button = customizeButton(title: "Male")
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapMale))
-        
         button.addGestureRecognizer(tapGesture)
         
         return button
@@ -26,7 +25,6 @@ class CustomizeViewController: UIViewController {
         let button = customizeButton(title: "Female")
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapFemale))
-        
         button.addGestureRecognizer(tapGesture)
         
         return button
@@ -41,7 +39,6 @@ class CustomizeViewController: UIViewController {
         button.tintColor = .white
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOther))
-        
         button.addGestureRecognizer(tapGesture)
         
         return button
@@ -55,8 +52,9 @@ class CustomizeViewController: UIViewController {
         
         slider.minimumValue = 0
         slider.maximumValue = 100
+        slider.setValue(Global.defaultHeight.other.rawValue, animated: true)
         slider.isContinuous = true
-        slider.tintColor = Global.greenBG
+        slider.tintColor = .greenBG
         slider.addTarget(self, action: #selector(CustomizeViewController.sliderValueDidChange(_:)), for: .valueChanged)
         slider.tag = 1
         
@@ -67,7 +65,10 @@ class CustomizeViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         
-        label.text = "Height: 0 Inches"
+        var feet = Int(Global.defaultHeight.other.rawValue / 12)
+        var inches = Int(Global.defaultHeight.other.rawValue) % 12
+        
+        label.text = "Height: \(feet) feet \(inches) Inches"
         
         return label
     }()
@@ -80,8 +81,9 @@ class CustomizeViewController: UIViewController {
         
         slider.minimumValue = 0
         slider.maximumValue = 300
+        slider.setValue(Global.defaultWeight.other.rawValue, animated: true)
         slider.isContinuous = true
-        slider.tintColor = Global.greenBG
+        slider.tintColor = .greenBG
         slider.addTarget(self, action: #selector(CustomizeViewController.sliderValueDidChange(_:)), for: .valueChanged)
         slider.tag = 2
         
@@ -92,7 +94,7 @@ class CustomizeViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         
-        label.text = "Weight: 0 Pounds"
+        label.text = "Weight: \(Int(Global.defaultWeight.other.rawValue)) Pounds"
         
         return label
     }()
@@ -106,7 +108,7 @@ class CustomizeViewController: UIViewController {
         slider.minimumValue = 0
         slider.maximumValue = 100
         slider.isContinuous = true
-        slider.tintColor = Global.greenBG
+        slider.tintColor = .greenBG
         slider.addTarget(self, action: #selector(CustomizeViewController.sliderValueDidChange(_:)), for: .valueChanged)
         slider.tag = 3
         
@@ -131,7 +133,7 @@ class CustomizeViewController: UIViewController {
         slider.minimumValue = 0
         slider.maximumValue = 100
         slider.isContinuous = true
-        slider.tintColor = Global.greenBG
+        slider.tintColor = .greenBG
         slider.addTarget(self, action: #selector(CustomizeViewController.sliderValueDidChange(_:)), for: .valueChanged)
         slider.tag = 4
         
@@ -158,11 +160,11 @@ class CustomizeViewController: UIViewController {
         selectedButton.backgroundColor = .white
         selectedButton.tintColor = .white
         
-        otherOne.backgroundColor = Global.greenBG
-        otherOne.tintColor = Global.greenBG
+        otherOne.backgroundColor = .greenBG
+        otherOne.tintColor = .greenBG
         
-        otherTwo.backgroundColor = Global.greenBG
-        otherTwo.tintColor = Global.greenBG
+        otherTwo.backgroundColor = .greenBG
+        otherTwo.tintColor = .greenBG
     }
     
     // Handler for tapping male button
@@ -170,6 +172,10 @@ class CustomizeViewController: UIViewController {
         buttonSelected(selectedButton: maleButton, otherOne: femaleButton, otherTwo: otherButton)
         
         Global.gender = .male
+        
+        updateHeightVals(newHeight: Global.defaultHeight.male.rawValue)
+        updateWeightVals(newWeight: Global.defaultWeight.male.rawValue)
+        
     }
     
     // Handler for tapping female button
@@ -177,6 +183,9 @@ class CustomizeViewController: UIViewController {
         buttonSelected(selectedButton: femaleButton, otherOne: maleButton, otherTwo: otherButton)
         
         Global.gender = .female
+        
+        updateHeightVals(newHeight: Global.defaultHeight.female.rawValue)
+        updateWeightVals(newWeight: Global.defaultWeight.female.rawValue)
     }
     
     // Handler for tapping other button
@@ -184,18 +193,20 @@ class CustomizeViewController: UIViewController {
         buttonSelected(selectedButton: otherButton, otherOne: maleButton, otherTwo: femaleButton)
         
         Global.gender = .other
+        
+        updateHeightVals(newHeight: Global.defaultHeight.other.rawValue)
+        updateWeightVals(newWeight: Global.defaultWeight.other.rawValue)
     }
     
     @objc func sliderValueDidChange(_ sender:UISlider!) {
         let roundedValue = round(sender.value)
         
         switch sender.tag {
+            
         case 1:
-            heightLabel.text = "Height: \(Int(roundedValue)) Inches"
-            Global.height = Int(roundedValue)
+            updateHeightVals(newHeight: roundedValue)
         case 2:
-            weightLabel.text = "Weight: \(Int(roundedValue)) Pounds"
-            Global.weight = Int(roundedValue)
+            updateWeightVals(newWeight: roundedValue)
         case 3:
             chestLabel.text = "Chest: \(Int(roundedValue)) Inches"
         case 4:
@@ -205,9 +216,23 @@ class CustomizeViewController: UIViewController {
         }
         
     }
-
-
     
+    func updateHeightVals(newHeight:Float) {
+        
+        Global.height = newHeight
+        
+        let feet = Int(Global.height / 12)
+        let inches = Int(Global.height) % 12
+        heightLabel.text = "Height: \(feet) feet \(inches) Inches"
+        heightSlider.setValue(Global.height, animated: true)
+    }
+    
+    func updateWeightVals(newWeight:Float) {
+        Global.weight = newWeight
+        weightLabel.text = "Height: \(Int(Global.weight)) Pounds"
+        weightSlider.setValue(Global.weight, animated: true)
+    }
+
     //setup buttons
     func setupUI() {
         self.view.addSubview(maleButton)

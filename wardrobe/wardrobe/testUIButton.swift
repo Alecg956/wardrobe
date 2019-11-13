@@ -14,7 +14,7 @@ class testUIButton: UIButton {
         
         translatesAutoresizingMaskIntoConstraints = false
         
-        tintColor = Global.greenBG
+        tintColor = .greenBG
         setImage(UIImage(systemName: imageString), for: .normal)
         imageView?.contentMode = .scaleToFill
         contentHorizontalAlignment = .fill

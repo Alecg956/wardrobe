@@ -14,31 +14,60 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
     
     lazy var pickerView = UIPickerView()
     
+    struct colorNamePair {
+        var color :UIColor
+        var name:String
+    }
+    
+    let pickerValues:[colorNamePair] = [colorNamePair(color: .red, name: "red"), colorNamePair(color: .blue, name: "blue"), colorNamePair(color: .green, name: "green"), colorNamePair(color: .yellow, name: "yellow")]
+    
     lazy var pickerTextField: UITextField = {
         let textField = UITextField()
         
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.text = "red"
+        textField.textColor = .gray
+        textField.text = "color"
         textField.textAlignment = .center
+        textField.backgroundColor = .greenBG
+        textField.clipsToBounds = true
+        textField.layer.cornerRadius = 8.0
+        textField.tintColor = .clear
         return textField
     }()
     
-    let salutations = ["red", "blue", "green", "yellow"]
+    lazy var pickerToolBar: UIToolbar = {
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.sizeToFit()
+
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didTapPickerDone))
+
+        toolBar.setItems([doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        return toolBar
+    }()
+    
+    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return salutations.count
+        return pickerValues.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return salutations[row]
+        return pickerValues[row].name
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        pickerTextField.text = salutations[row]
+        pickerTextField.backgroundColor = pickerValues[row].color
+        pickerTextField.text = pickerValues[row].name
         pickerTextField.reloadInputViews()
     }
     
@@ -67,7 +96,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         label.translatesAutoresizingMaskIntoConstraints = false
         label.layer.cornerRadius = 8.0
         label.layer.masksToBounds = true
-        label.backgroundColor = Global.greenBG
+        label.backgroundColor = .greenBG
         label.text = "Size: M"
         label.textColor = .gray
         label.textAlignment = .center
@@ -269,22 +298,22 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
     // Change height
     func changeModelHeightAndWeight() {
         if let node = self.sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: true) {
-            var y:Float = 1.0;
+            var height:Float = 1.0;
             var thick:Float = 1.0;
             
             switch(Global.gender) {
                 case .male:
-                    y = Float(Global.height) / Float(Global.defaultMaleHeight)
-                    thick = Float(Global.weight) / Float(Global.defaultMaleWeight)
+                    height = Float(Global.height) / Float(Global.defaultHeight.male.rawValue)
+                    thick = Float(Global.weight) / Float(Global.defaultWeight.male.rawValue)
                 case .female:
-                    y = Float(Global.height) / Float(Global.defaultFemaleHeight)
-                    thick = Float(Global.weight) / Float(Global.defaultFemaleWeight)
+                    height = Float(Global.height) / Float(Global.defaultHeight.female.rawValue)
+                    thick = Float(Global.weight) / Float(Global.defaultWeight.female.rawValue)
                 case .other:
-                    y = Float(Global.height) / Float(Global.defaultOtherHeight)
-                    thick = Float(Global.weight) / Float(Global.defaultOtherWeight)
+                    height = Float(Global.height) / Float(Global.defaultHeight.other.rawValue)
+                    thick = Float(Global.weight) / Float(Global.defaultWeight.other.rawValue)
             }
-            node.scale = SCNVector3Make(0.005 * thick, 0.005 * y, 0.005 * thick)
-            print(y)
+            node.scale = SCNVector3Make(0.005 * thick, 0.005 * height, 0.005 * thick)
+            print(height)
         }
     }
     
@@ -405,23 +434,10 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         sizeDownButton.addTarget(self, action: #selector(didTapSizeDown), for: .touchUpInside)
         sizeUpButton.addTarget(self, action: #selector(didTapSizeUp), for: .touchUpInside)
         
-        
         pickerView.delegate = self
         pickerTextField.inputView = pickerView
         pickerView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let toolBar = UIToolbar()
-        toolBar.barStyle = .default
-        toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
-        toolBar.sizeToFit()
-
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didTapPickerDone))
-
-        toolBar.setItems([doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
-
-        pickerTextField.inputAccessoryView = toolBar
+        pickerTextField.inputAccessoryView = pickerToolBar
         
         self.view.addSubview(sizeUpButton)
         self.view.addSubview(sizeDownButton)
@@ -433,9 +449,9 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         NSLayoutConstraint.activate([
             
             pickerTextField.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
-            pickerTextField.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor),
-            pickerTextField.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor),
-            pickerTextField.heightAnchor.constraint(equalToConstant: 20),
+            pickerTextField.bottomAnchor.constraint(equalTo: sizeLabel.topAnchor, constant: -10),
+            pickerTextField.widthAnchor.constraint(equalTo: sizeLabel.widthAnchor),
+            pickerTextField.heightAnchor.constraint(equalToConstant: 30),
             
             
             sizeDownButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: -75.0),

@@ -6,28 +6,33 @@ enum Gender {
     case other
 }
 
+extension UIColor {
+    static let greenBG = UIColor(red: 186/255, green: 255/255, blue: 201/255, alpha: 1)
+}
+
 // Add global variables to this struct
 struct Global {
     
     // default state is .other
     static var gender: Gender = .other
     
-    static let greenBG = UIColor(red: 186/255, green: 255/255, blue: 201/255, alpha: 1)
-    
     static var selectedItem:String = ""
     
-    static let defaultMaleHeight:Int = 70
-    static let defaultMaleWeight:Int = 150
-
-    static let defaultFemaleHeight:Int = 64
-    static let defaultFemaleWeight:Int = 125
-
-    static let defaultOtherHeight:Int = 67
-    static let defaultOtherWeight:Int = 138
+    enum defaultHeight: Float {
+        case male = 70
+        case female = 64
+        case other = 67
+    }
+    
+    enum defaultWeight: Float {
+        case male = 150
+        case female = 125
+        case other = 138
+    }
 
     //for customize sliders
-    static var height:Int = defaultOtherHeight
-    static var weight:Int = defaultOtherWeight
+    static var height:Float = defaultHeight.other.rawValue
+    static var weight:Float = defaultWeight.other.rawValue
     
     // corresponds to a medium, negative is smaller, positive is higher
     static var size:Int = 0
