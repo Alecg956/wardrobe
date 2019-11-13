@@ -10,7 +10,38 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ARTestViewController: UIViewController, ARSCNViewDelegate {
+class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    lazy var pickerView = UIPickerView()
+    
+    lazy var pickerTextField: UITextField = {
+        let textField = UITextField()
+        
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.text = "red"
+        textField.textAlignment = .center
+        return textField
+    }()
+    
+    let salutations = ["red", "blue", "green", "yellow"]
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return salutations.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return salutations[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickerTextField.text = salutations[row]
+        pickerTextField.reloadInputViews()
+    }
+    
     
     lazy var numModels = Int()
     static let rotateRightSmall = SCNAction.rotateBy(x: 0, y: 0.2, z: 0, duration: 0)
@@ -323,19 +354,49 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
+    @objc func didTapPickerDone() {
+        
+        pickerTextField.resignFirstResponder()
+    }
+    
     // Set up the UI (not AR related)
     func setupUI() {
         
         sizeDownButton.addTarget(self, action: #selector(didTapSizeDown), for: .touchUpInside)
         sizeUpButton.addTarget(self, action: #selector(didTapSizeUp), for: .touchUpInside)
         
+        
+        pickerView.delegate = self
+        pickerTextField.inputView = pickerView
+        pickerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.sizeToFit()
+
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didTapPickerDone))
+
+        toolBar.setItems([doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+
+        pickerTextField.inputAccessoryView = toolBar
+        
         self.view.addSubview(sizeUpButton)
         self.view.addSubview(sizeDownButton)
         self.view.addSubview(rotateRightButton)
         self.view.addSubview(rotateLeftButton)
         self.view.addSubview(sizeLabel)
+        self.view.addSubview(pickerTextField)
         
         NSLayoutConstraint.activate([
+            
+            pickerTextField.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
+            pickerTextField.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor),
+            pickerTextField.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor),
+            pickerTextField.heightAnchor.constraint(equalToConstant: 20),
+            
             
             sizeDownButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: -75.0),
             sizeDownButton.centerYAnchor.constraint(equalTo: sizeLabel.centerYAnchor),
