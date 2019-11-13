@@ -47,7 +47,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
     static let rotateRightSmall = SCNAction.rotateBy(x: 0, y: 0.2, z: 0, duration: 0)
     static let rotateLeftSmall = SCNAction.rotateBy(x: 0, y: -0.2, z: 0, duration: 0)
     static let scaleUpSmall = SCNAction.scale(by: 1.1, duration: 0)
-    static let scaleDownSmall = SCNAction.scale(by: 0.9, duration: 0)
+    static let scaleDownSmall = SCNAction.scale(by: 0.90909, duration: 0)
     
     var timer: Timer = Timer()
     var modelFileName : String = "other_model"
@@ -184,8 +184,15 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
                 self.sceneView.automaticallyUpdatesLighting = true
                 self.sceneView.autoenablesDefaultLighting = true
                 self.sceneView.scene.rootNode.addChildNode(node)
+
+                self.changeModelHeightAndWeight()
                 
                 self.addModelButtons()
+                
+                if (Global.selectedItem != "") {
+                    self.addClothingToModel()
+                    Global.selectedItem = ""
+                }
             }
         }
     }
@@ -204,7 +211,9 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
                 
                 self.sceneView.automaticallyUpdatesLighting = true
                 self.sceneView.autoenablesDefaultLighting = true
-                self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true)!.addChildNode(node)
+                if let parentNode = self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true) {
+                    parentNode.addChildNode(node)
+                }
             }
         }
     }
@@ -220,7 +229,9 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
                 
                 newNode.scale = SCNVector3Make(105, 105, 105)
                 newNode.position = SCNVector3Make(1.5, 40, 2)
-                self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true)!.replaceChildNode(oldNode, with: newNode)
+                if let parentNode = self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true) {
+                    parentNode.replaceChildNode(oldNode, with: newNode)
+                }
             }
         }
     }
@@ -253,6 +264,33 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
                 print(self.sceneView.scene.rootNode.childNodes.count)
             }
         }
+    }
+    
+    // Change height
+    func changeModelHeightAndWeight() {
+        if let node = self.sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: true) {
+            var y:Float = 1.0;
+            var thick:Float = 1.0;
+            
+            switch(Global.gender) {
+                case .male:
+                    y = Float(Global.height) / Float(Global.defaultMaleHeight)
+                    thick = Float(Global.weight) / Float(Global.defaultMaleWeight)
+                case .female:
+                    y = Float(Global.height) / Float(Global.defaultFemaleHeight)
+                    thick = Float(Global.weight) / Float(Global.defaultFemaleWeight)
+                case .other:
+                    y = Float(Global.height) / Float(Global.defaultOtherHeight)
+                    thick = Float(Global.weight) / Float(Global.defaultOtherWeight)
+            }
+            node.scale = SCNVector3Make(0.005 * thick, 0.005 * y, 0.005 * thick)
+            print(y)
+        }
+    }
+    
+    // Calculate BMI based on height and weight
+    func getBMI() -> Double {
+        return 703.0 * (Double(Global.weight) / (Double(Global.height) * Double(Global.height)))
     }
     
     // Set up the initial state of the scene, this is called
@@ -292,6 +330,8 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         if (previousGenderSelected != Global.gender && self.sceneView.scene.rootNode.childNodes.count > 4) {
             replaceModel()
         }
+        
+        self.changeModelHeightAndWeight()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -477,6 +517,8 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
             if let newSize = Global.sizes[Global.size] {
                 sizeLabel.text = "Size \(newSize)"
             }
+
+            //add function for changing size of clothes up
         }
     }
     
@@ -490,7 +532,10 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
             if let newSize = Global.sizes[Global.size] {
                 sizeLabel.text = "Size \(newSize)"
             }
+
+            //add function for changing size of clothes down
         }
+
     }
     
     // Handler for tapping scale down button

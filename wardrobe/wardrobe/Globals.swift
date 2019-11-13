@@ -16,9 +16,18 @@ struct Global {
     
     static var selectedItem:String = ""
     
+    static let defaultMaleHeight:Int = 70
+    static let defaultMaleWeight:Int = 150
+
+    static let defaultFemaleHeight:Int = 64
+    static let defaultFemaleWeight:Int = 125
+
+    static let defaultOtherHeight:Int = 67
+    static let defaultOtherWeight:Int = 138
+
     //for customize sliders
-    static var height:Int = 0
-    static var weight:Int = 0
+    static var height:Int = defaultOtherHeight
+    static var weight:Int = defaultOtherWeight
     
     // corresponds to a medium, negative is smaller, positive is higher
     static var size:Int = 0
