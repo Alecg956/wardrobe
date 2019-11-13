@@ -235,7 +235,18 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
     
     // Change height
     func changeModelHeight() {
-        
+        if let node = scene?.rootNode.childNode(withName: modelFileName, recursively: true) {
+            var y = 0;
+            switch(Global.gender) {
+                case .male:
+                    y = (Global.height - Global.defaultMaleHeight)/Global.defaultMaleHeight
+                case .female:
+                    y = (Global.height - Global.defaultFemaleHeight)/Global.defaultFemaleHeight
+                case .other:
+                    y = (Global.height - Global.defaultOtherHeight)/Global.defaultOtherHeight
+            }
+            node.scale = SCNVector3Make(.005,.005 * y,.005)
+        }
     }
     
     // Change weight
@@ -283,6 +294,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate {
             replaceModel()
         }
         
+        self.changeModelHeight();
         print(getBMI())
     }
     
