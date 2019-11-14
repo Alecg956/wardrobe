@@ -491,9 +491,8 @@ extension ARTestViewController {
          if let node = self.sceneView.scene.rootNode.childNode(withName: "item", recursively: true) {
             
             // kind of hacky, we shouldn't have to hardcode in the actual node name
-            if let child = node.childNode(withName: "buffer_0_mesh_0_prim1", recursively: true) {
-                child.geometry?.firstMaterial?.diffuse.contents = currentColorNamePair.color
-            }
+            node.geometry?.firstMaterial?.diffuse.contents = currentColorNamePair.color
+            
         }
         
         pickerTextField.resignFirstResponder()
