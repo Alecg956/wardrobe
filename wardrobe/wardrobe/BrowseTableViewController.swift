@@ -27,6 +27,28 @@ class BrowseTableViewController: UITableViewController {
         
         ref.child("Shirts").setValue("Black Tshirt")
         ref.child("Shirts").setValue("New Shirt")
+        ref.child("Shirts").removeValue()
+        
+        
+        ref.child("Pants/Sweatpants").setValue("red")
+        ref.child("Pants/Sweatpants").setValue("blue")
+        ref.child("Pants/Sweatpants").setValue("black")
+        ref.child("Pants/Long pants").setValue("red")
+        ref.child("Pants/Long pants").setValue("blue")
+        ref.child("Pants/Long pants").setValue("black")
+
+        
+        ref.child("Shirts/Sweatshirt").setValue("red")
+        ref.child("Shirts/Sweatshirt").setValue("blue")
+        ref.child("Shirts/Sweatshirt").setValue("black")
+        ref.child("Shirts/Basic Tee").setValue("red")
+        ref.child("Shirts/Basic Tee").setValue("blue")
+        ref.child("Shirts/Basic Tee").setValue("black")
+
+        
+        
+
+        
         
         
         tableView.register(BrowseTableViewCell.self, forCellReuseIdentifier: BrowseTableViewCell.reuseIdentifier)
