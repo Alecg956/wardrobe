@@ -60,10 +60,9 @@ class BrowseDetailTableViewController: UITableViewController {
         
         // call database here
         if (pageTitle == "Shirts") {
-            pageItems.append(pageItem(itemName: "Red_Shirt", imageName: "red_shirt"))
-            pageItems.append(pageItem(itemName: "Blue_Shirt", imageName: "blue_shirt"))
-            pageItems.append(pageItem(itemName: "Green_Shirt", imageName: "green_shirt"))
-            pageItems.append(pageItem(itemName: "Yellow_Shirt", imageName: "yellow_shirt"))
+            pageItems.append(pageItem(itemName: "White_Shirt", imageName: "white_shirt"))
+        } else if (pageTitle == "Pants") {
+            pageItems.append(pageItem(itemName: "Blue_Pants", imageName: "blue_pants"))
         }
     }
 }

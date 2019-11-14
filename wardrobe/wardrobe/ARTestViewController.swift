@@ -175,7 +175,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         // Load model based on gender
         setModelFileName()
         
-        let scene = SCNScene(named: "art.scnassets/" + modelFileName + ".scn")
+        let scene = SCNScene(named: "art.scnassets/models/" + modelFileName + ".scn")
     
         // Add to the scene in the background to not block the UI
         DispatchQueue.main.async {
@@ -209,15 +209,11 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
     // Add clothing item to model
     func addClothingToModel() {
         
-        let scene = SCNScene(named: "art.scnassets/" + Global.selectedItem + ".scn")
+        let scene = SCNScene(named: "art.scnassets/clothing/" + Global.selectedItem + ".scn")
 
         DispatchQueue.main.async {
             
-            if let node = scene?.rootNode.childNode(withName: "shirt", recursively: false) {
-                
-                node.scale = SCNVector3Make(105, 105, 105)
-                node.position = SCNVector3Make(1.5, 40, 2)
-                
+            if let node = scene?.rootNode.childNode(withName: "item", recursively: false) {
                 self.sceneView.automaticallyUpdatesLighting = true
                 self.sceneView.autoenablesDefaultLighting = true
                 if let parentNode = self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true) {
@@ -230,14 +226,11 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
     // Replace old item with new item (Hard coded at the moment)
     func replaceClothingOnModel() {
         
-        if let oldNode = self.sceneView.scene.rootNode.childNode(withName: "shirt", recursively: true) {
+        if let oldNode = self.sceneView.scene.rootNode.childNode(withName: "item", recursively: true) {
             
-            let scene = SCNScene(named: "art.scnassets/" + Global.selectedItem + ".scn")
+            let scene = SCNScene(named: "art.scnassets/clothing/" + Global.selectedItem + ".scn")
             
-            if let newNode = scene?.rootNode.childNode(withName: "shirt", recursively: true) {
-                
-                newNode.scale = SCNVector3Make(105, 105, 105)
-                newNode.position = SCNVector3Make(1.5, 40, 2)
+            if let newNode = scene?.rootNode.childNode(withName: "item", recursively: true) {
                 if let parentNode = self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true) {
                     parentNode.replaceChildNode(oldNode, with: newNode)
                 }
@@ -256,7 +249,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
             
             print(oldModelFileName)
             
-            let scene = SCNScene(named: "art.scnassets/" + modelFileName + ".scn")
+            let scene = SCNScene(named: "art.scnassets/models/" + modelFileName + ".scn")
             
             if let newNode = scene?.rootNode.childNode(withName: modelFileName, recursively: true) {
                 
@@ -495,7 +488,7 @@ extension ARTestViewController {
     
     @objc func didTapPickerDone() {
         
-         if let node = self.sceneView.scene.rootNode.childNode(withName: "shirt", recursively: true) {
+         if let node = self.sceneView.scene.rootNode.childNode(withName: "item", recursively: true) {
             
             // kind of hacky, we shouldn't have to hardcode in the actual node name
             if let child = node.childNode(withName: "buffer_0_mesh_0_prim1", recursively: true) {
