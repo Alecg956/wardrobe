@@ -129,7 +129,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1025E60D235CFBD90017E7DA /* Build configuration list for PBXProject "wardrobe" */;
+			buildConfigurationList = 1025E60D235CFBD90017E7DA /* Build configuration list for PBXProject "Wardrobe" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -321,13 +321,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3U7979Q2XJ;
+				DEVELOPMENT_TEAM = XR228W54TT;
 				INFOPLIST_FILE = wardrobe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = alechg.wardrobe;
+				PRODUCT_BUNDLE_IDENTIFIER = swang2798.wardrobe;
 				PRODUCT_NAME = Wardrobe;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -357,7 +357,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1025E60D235CFBD90017E7DA /* Build configuration list for PBXProject "wardrobe" */ = {
+		1025E60D235CFBD90017E7DA /* Build configuration list for PBXProject "Wardrobe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1025E624235CFBDE0017E7DA /* Debug */,

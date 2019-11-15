@@ -20,7 +20,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         var name:String
     }
     
-    let pickerValues:[ColorNamePair] = [ColorNamePair(color: .red, name: "red"), ColorNamePair(color: .blue, name: "blue"), ColorNamePair(color: .green, name: "green"), ColorNamePair(color: .yellow, name: "yellow")]
+    let pickerValues:[ColorNamePair] = [ColorNamePair(color: .white, name: "white"), ColorNamePair(color: .red, name: "red"), ColorNamePair(color: .blue, name: "blue"), ColorNamePair(color: .green, name: "green"), ColorNamePair(color: .yellow, name: "yellow")]
     
     lazy var pickerTextField: UITextField = {
         let textField = UITextField()
