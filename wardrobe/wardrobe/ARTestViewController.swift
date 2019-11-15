@@ -20,7 +20,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         var name:String
     }
     
-    let pickerValues:[ColorNamePair] = [ColorNamePair(color: .red, name: "red"), ColorNamePair(color: .blue, name: "blue"), ColorNamePair(color: .green, name: "green"), ColorNamePair(color: .yellow, name: "yellow")]
+    let pickerValues:[ColorNamePair] = [ColorNamePair(color: .white, name: "white"), ColorNamePair(color: .red, name: "red"), ColorNamePair(color: .blue, name: "blue"), ColorNamePair(color: .green, name: "green"), ColorNamePair(color: .yellow, name: "yellow")]
     
     lazy var pickerTextField: UITextField = {
         let textField = UITextField()
@@ -290,11 +290,6 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         }
     }
     
-    // Calculate BMI based on height and weight
-    func getBMI() -> Double {
-        return 703.0 * (Double(Global.weight) / (Double(Global.height) * Double(Global.height)))
-    }
-    
     // Set up the initial state of the scene, this is called
     // Anytime the tab is tapped (we should update the model here)
     override func viewWillAppear(_ animated: Bool) {
@@ -314,7 +309,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         sceneView.session.run(configuration)
         
         // Check to see if a new item has been selected and there is a model on screen
-        if (Global.selectedItem != "" && self.sceneView.scene.rootNode.childNodes.count > 4) {
+        if (Global.selectedItem != "" && numModels == 1) {
             
             // Check if model has clothing type on it already
             if let node = self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true), node.childNodes.count > 0 {
@@ -329,11 +324,32 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         
         // Check if gender has been changed
         // Check count to see if a model is there already
-        if (previousGenderSelected != Global.gender && self.sceneView.scene.rootNode.childNodes.count > 4) {
+        if (previousGenderSelected != Global.gender && numModels == 1) {
             replaceModel()
         }
         
         self.changeModelHeightAndWeight()
+    }
+
+    func scaleClothes() {
+
+        if let node = self.sceneView.scene.rootNode.childNode(withName: "item", recursively: true) {
+            if(Global.size == -1) {
+                print("S")
+                node.scale = SCNVector3Make(0.9, 0.9, 0.9)
+                node.position = SCNVector3Make(0, 15, 0)
+            }
+            if(Global.size == 0) {
+                print("M")
+                node.scale = SCNVector3Make(1, 1, 1)
+                node.position = SCNVector3Make(0, 0, 0)
+            }
+            if(Global.size == 1) {
+                print("L")
+                node.scale = SCNVector3Make(1.1, 1.1, 1.1)
+                node.position = SCNVector3Make(0, -12, 0)
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -521,6 +537,7 @@ extension ARTestViewController {
             }
 
             //add function for changing size of clothes up
+            scaleClothes()
         }
     }
     
@@ -536,6 +553,7 @@ extension ARTestViewController {
             }
 
             //add function for changing size of clothes down
+            scaleClothes()
         }
     }
     
