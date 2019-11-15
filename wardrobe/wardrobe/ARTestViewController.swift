@@ -314,7 +314,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         sceneView.session.run(configuration)
         
         // Check to see if a new item has been selected and there is a model on screen
-        if (Global.selectedItem != "" && self.sceneView.scene.rootNode.childNodes.count > 4) {
+        if (Global.selectedItem != "" && numModels == 1) {
             
             // Check if model has clothing type on it already
             if let node = self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true), node.childNodes.count > 0 {
@@ -329,7 +329,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         
         // Check if gender has been changed
         // Check count to see if a model is there already
-        if (previousGenderSelected != Global.gender && self.sceneView.scene.rootNode.childNodes.count > 4) {
+        if (previousGenderSelected != Global.gender && numModels == 1) {
             replaceModel()
         }
         
