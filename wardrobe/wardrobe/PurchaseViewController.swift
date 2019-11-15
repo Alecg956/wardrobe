@@ -11,24 +11,6 @@ import UIKit
 class PurchaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var clothes: [String] = []
     var myTableView: UITableView!
-
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Num: \(indexPath.row)")
-        print("Value: \(clothes[indexPath.row])")
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return clothes.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
-        cell.textLabel!.text = "\(clothes[indexPath.row])"
-        return cell
-    }
-    
-    
     
     lazy var purchaseButton: UIButton = {
         let button = UIButton()
@@ -72,6 +54,29 @@ class PurchaseViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Num: \(indexPath.row)")
+        print("Value: \(clothes[indexPath.row])")
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return clothes.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier:PurchaseTableViewCell.reuseIdentifier, for: indexPath) as? PurchaseTableViewCell else {
+            
+            return UITableViewCell()
+            
+        }
+            
+        cell.itemLabel.text = "\(clothes[indexPath.row])"
+        cell.itemImageView.image = UIImage(named: "white_shirt")
+        return cell
+    }
+    
     func getURL() -> String {
         var url = ""
         switch Global.selectedItem {
@@ -111,7 +116,7 @@ class PurchaseViewController: UIViewController, UITableViewDelegate, UITableView
         let displayHeight: CGFloat = self.view.frame.height / 4
 
         myTableView = UITableView(frame: CGRect(x: 0, y: barHeight + 150, width: displayWidth, height: displayHeight - barHeight))
-        myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        myTableView.register(PurchaseTableViewCell.self, forCellReuseIdentifier: PurchaseTableViewCell.reuseIdentifier)
         myTableView.dataSource = self
         myTableView.delegate = self
         self.view.addSubview(myTableView)
