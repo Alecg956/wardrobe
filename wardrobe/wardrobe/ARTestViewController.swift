@@ -290,11 +290,6 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         }
     }
     
-    // Calculate BMI based on height and weight
-    func getBMI() -> Double {
-        return 703.0 * (Double(Global.weight) / (Double(Global.height) * Double(Global.height)))
-    }
-    
     // Set up the initial state of the scene, this is called
     // Anytime the tab is tapped (we should update the model here)
     override func viewWillAppear(_ animated: Bool) {
@@ -334,6 +329,27 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         }
         
         self.changeModelHeightAndWeight()
+    }
+
+    func scaleClothes() {
+
+        if let node = self.sceneView.scene.rootNode.childNode(withName: "item", recursively: true) {
+            if(Global.size == -1) {
+                print("S")
+                node.scale = SCNVector3Make(0.9, 0.9, 0.9)
+                node.position = SCNVector3Make(0, 15, 0)
+            }
+            if(Global.size == 0) {
+                print("M")
+                node.scale = SCNVector3Make(1, 1, 1)
+                node.position = SCNVector3Make(0, 0, 0)
+            }
+            if(Global.size == 1) {
+                print("L")
+                node.scale = SCNVector3Make(1.1, 1.1, 1.1)
+                node.position = SCNVector3Make(0, -12, 0)
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -521,6 +537,7 @@ extension ARTestViewController {
             }
 
             //add function for changing size of clothes up
+            scaleClothes()
         }
     }
     
@@ -536,6 +553,7 @@ extension ARTestViewController {
             }
 
             //add function for changing size of clothes down
+            scaleClothes()
         }
     }
     
