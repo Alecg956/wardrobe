@@ -27,6 +27,14 @@ class PurchaseTableViewCell: UITableViewCell {
         return imageView
     }()
     
+    lazy var sizeLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = ""
+        
+        return label
+    }()
+    
     static let reuseIdentifier = "purchaseReuseIdentifier"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -53,6 +61,7 @@ class PurchaseTableViewCell: UITableViewCell {
     func setupUI() {
         self.contentView.addSubview(itemLabel)
         self.contentView.addSubview(itemImageView)
+        self.contentView.addSubview(sizeLabel)
         
         NSLayoutConstraint.activate([
             
@@ -61,6 +70,10 @@ class PurchaseTableViewCell: UITableViewCell {
             itemLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10),
             itemLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10),
             itemLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -10),
+            
+            sizeLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            sizeLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10),
+            sizeLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -10),
             
             itemImageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10),
             itemImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10),

@@ -54,11 +54,11 @@ class PurchaseViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    
+    /*
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Num: \(indexPath.row)")
         print("Value: \(clothes[indexPath.row])")
-    }
+    }*/
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return clothes.count
@@ -74,6 +74,8 @@ class PurchaseViewController: UIViewController, UITableViewDelegate, UITableView
             
         cell.itemLabel.text = "\(clothes[indexPath.row])"
         cell.itemImageView.image = UIImage(named: "white_shirt")
+        cell.sizeLabel.text = "Size: \(Global.sizes[Global.size] ?? "M")"
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
     }
     
