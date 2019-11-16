@@ -45,11 +45,10 @@ class BrowseTableViewController: UITableViewController {
         ref.child("Shirts/Basic Tee").setValue("blue")
         ref.child("Shirts/Basic Tee").setValue("black")
 
-        
-        
 
-        
-        
+        ref.child("Shirts/Green Shirt/itemName").setValue("Green_Shirt")
+        ref.child("Shirts/Green Shirt/imageName").setValue("green_shirt")
+
         
         tableView.register(BrowseTableViewCell.self, forCellReuseIdentifier: BrowseTableViewCell.reuseIdentifier)
         self.clearsSelectionOnViewWillAppear = false

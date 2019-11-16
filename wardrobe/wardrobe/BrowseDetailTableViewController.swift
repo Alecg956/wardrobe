@@ -58,12 +58,26 @@ class BrowseDetailTableViewController: UITableViewController {
     }
     
     func getItems() {
+
+        // Get green shirt info from database
+        let ref = Database.database().reference()
+        let greenshirt_item_name = ""
+        let greenshirt_image_name = ""
+
+        ref.child("Shirts/Green Shirt").observeSingleEvent(of: .value, with: { (snapshot) in
+
+            let data = snapshot.value as? NSDictionary
+            greenshirt_item_name = data?["itemName"] as? String ?? ""
+            greenshirt_image_name = data?["imageName"] as? String ?? ""
+
+            }) 
         
         // call database here
         if (pageTitle == "Shirts") {
             pageItems.append(pageItem(itemName: "Red_Shirt", imageName: "red_shirt"))
             pageItems.append(pageItem(itemName: "Blue_Shirt", imageName: "blue_shirt"))
-            pageItems.append(pageItem(itemName: "Green_Shirt", imageName: "green_shirt"))
+            pageItems.append(pageItem(itemName: greenshirt_item_name, imageName: greenshirt_image_name))
+            //pageItems.append(pageItem(itemName: "Green_Shirt", imageName: "green_shirt"))
             pageItems.append(pageItem(itemName: "Yellow_Shirt", imageName: "yellow_shirt"))
             pageItems.append(pageItem(itemName: "Pink_Shirt", imageName: "pink_shirt"))
         }
