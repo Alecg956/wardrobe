@@ -20,11 +20,11 @@ class BrowseTableViewController: UITableViewController {
         
         switch Global.gender {
         case .male:
-            categories = ["Shirts", "Jackets", "Bottoms", "Shoes", "Accessories"]
+            categories = ["Shirts", "Jackets", "Bottoms", "Footwear", "Accessories"]
         case .female:
-            categories = ["Shirts", "Jackets", "Bottoms", "Dresses", "Shoes", "Accessories"]
+            categories = ["Shirts", "Jackets", "Bottoms", "Dresses", "Footwear", "Accessories"]
         case .other:
-            categories = ["Shirts", "Jackets", "Bottoms", "Shoes", "Accessories"]
+            categories = ["Shirts", "Jackets", "Bottoms", "Footwear", "Accessories"]
         }
         
         if Global.gender != gender {
