@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0623963D236AA4D30012C6C7 /* CustomizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0623963C236AA4D30012C6C7 /* CustomizeViewController.swift */; };
 		067CCA7B236E4DC7000EA7C4 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067CCA7A236E4DC7000EA7C4 /* PurchaseViewController.swift */; };
+		06CC00CE237F6DED00791266 /* PurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CC00CD237F6DEC00791266 /* PurchaseTableViewCell.swift */; };
 		1025E616235CFBD90017E7DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1025E615235CFBD90017E7DA /* AppDelegate.swift */; };
 		1025E618235CFBD90017E7DA /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 1025E617235CFBD90017E7DA /* art.scnassets */; };
 		1025E61A235CFBD90017E7DA /* ARTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1025E619235CFBD90017E7DA /* ARTestViewController.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		0623963C236AA4D30012C6C7 /* CustomizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeViewController.swift; sourceTree = "<group>"; };
 		067CCA7A236E4DC7000EA7C4 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
+		06CC00CD237F6DEC00791266 /* PurchaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseTableViewCell.swift; sourceTree = "<group>"; };
 		1025E612235CFBD90017E7DA /* Wardrobe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wardrobe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1025E615235CFBD90017E7DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1025E617235CFBD90017E7DA /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				107903D223751113000A5DF3 /* testUIButton.swift */,
 				0623963C236AA4D30012C6C7 /* CustomizeViewController.swift */,
 				067CCA7A236E4DC7000EA7C4 /* PurchaseViewController.swift */,
+				06CC00CD237F6DEC00791266 /* PurchaseTableViewCell.swift */,
 				10281E73236DDE320091A473 /* Globals.swift */,
 				1025E61B235CFBD90017E7DA /* Main.storyboard */,
 				1025E61E235CFBDE0017E7DA /* Assets.xcassets */,
@@ -170,6 +173,7 @@
 				067CCA7B236E4DC7000EA7C4 /* PurchaseViewController.swift in Sources */,
 				10752A3A236DE734001B773E /* BrowseDetailTableViewController.swift in Sources */,
 				107903D323751113000A5DF3 /* testUIButton.swift in Sources */,
+				06CC00CE237F6DED00791266 /* PurchaseTableViewCell.swift in Sources */,
 				10727591237A16F000F30019 /* customizeButton.swift in Sources */,
 				10752A3C236DEDD4001B773E /* BrowseDetailTableViewCell.swift in Sources */,
 				10F44016236C793100435BC9 /* BrowseTableViewCell.swift in Sources */,

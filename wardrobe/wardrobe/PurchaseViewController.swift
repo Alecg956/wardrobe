@@ -11,24 +11,6 @@ import UIKit
 class PurchaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var clothes: [String] = []
     var myTableView: UITableView!
-
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Num: \(indexPath.row)")
-        print("Value: \(clothes[indexPath.row])")
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return clothes.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
-        cell.textLabel!.text = "\(clothes[indexPath.row])"
-        return cell
-    }
-    
-    
     
     lazy var purchaseButton: UIButton = {
         let button = UIButton()
@@ -72,13 +54,44 @@ class PurchaseViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    /*
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Num: \(indexPath.row)")
+        print("Value: \(clothes[indexPath.row])")
+    }*/
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return clothes.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier:PurchaseTableViewCell.reuseIdentifier, for: indexPath) as? PurchaseTableViewCell else {
+            
+            return UITableViewCell()
+            
+        }
+            
+        cell.itemLabel.text = "\(clothes[indexPath.row])"
+        
+        if Global.selectedItem == "Button_Up_Shirt" {
+            cell.itemImageView.image = UIImage(named: "button_up_shirt")
+        } else if Global.selectedItem == "Chinos" {
+            cell.itemImageView.image = UIImage(named: "chinos")
+        }
+        
+        cell.sizeLabel.text = "Size: \(Global.sizes[Global.size] ?? "M")"
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        return cell
+    }
+    
     func getURL() -> String {
         var url = ""
         switch Global.selectedItem {
-        case "Red_Shirt":
-            url = "https://www.amazon.com/Soffe-Long-Sleeve-Cotton-T-Shirt-Cardinal/dp/B003AU5WIC/ref=sr_1_33?dchild=1&keywords=red+t+shirt&psc=1&qid=1572904360&s=apparel&sr=1-33"
-        case "Blue_Shirt":
-            url = "https://www.amazon.com/Soffe-Long-Sleeve-Cotton-T-Shirt-Royal/dp/B003AU5WH8/ref=sr_1_39?dchild=1&keywords=blue+t+shirt&psc=1&qid=1572901755&s=apparel&sr=1-39"
+        case "Button_Up_Shirt":
+            url = "https://www.amazon.com/Amazon-Essentials-Regular-Fit-Long-Sleeve-Oxford/dp/B06XW9S1JL/ref=sr_1_5?crid=2LDAZTVEDIXQ3&dchild=1&keywords=white+button+up+shirt+men&qid=1573862215&sprefix=white+button+up+shirt%2Caps%2C155&sr=8-5"
+        case "Chinos":
+            url = "https://www.amazon.com/Amazon-Essentials-Slim-Fit-Wrinkle-Resistant-Flat-Front/dp/B07756KXN4/ref=sr_1_2_sspa?keywords=white+chinos+men&qid=1573862236&sr=8-2-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzVThBRTRGQkZMN04wJmVuY3J5cHRlZElkPUEwNjI4NTgxMk1LMExVSk1GQUgxSiZlbmNyeXB0ZWRBZElkPUEwODQ5NzA3MkxUNVNZVjE5TlZKTSZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU="
         default:
             url = "https://www.amazon.com"
         }
@@ -111,7 +124,7 @@ class PurchaseViewController: UIViewController, UITableViewDelegate, UITableView
         let displayHeight: CGFloat = self.view.frame.height / 4
 
         myTableView = UITableView(frame: CGRect(x: 0, y: barHeight + 150, width: displayWidth, height: displayHeight - barHeight))
-        myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        myTableView.register(PurchaseTableViewCell.self, forCellReuseIdentifier: PurchaseTableViewCell.reuseIdentifier)
         myTableView.dataSource = self
         myTableView.delegate = self
         self.view.addSubview(myTableView)
