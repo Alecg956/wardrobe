@@ -8,6 +8,7 @@ enum Gender {
 
 extension UIColor {
     static let greenBG = UIColor(red: 186/255, green: 255/255, blue: 201/255, alpha: 1)
+    static let greenBGDisabled = UIColor(red: 186/255, green: 255/255, blue: 201/255, alpha: 0.3)
 }
 
 // Add global variables to this struct

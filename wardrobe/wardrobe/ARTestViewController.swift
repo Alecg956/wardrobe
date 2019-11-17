@@ -29,10 +29,11 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         textField.textColor = .gray
         textField.text = "color"
         textField.textAlignment = .center
-        textField.backgroundColor = .greenBG
+        textField.backgroundColor = .greenBGDisabled
         textField.clipsToBounds = true
         textField.layer.cornerRadius = 8.0
         textField.tintColor = .clear
+        textField.isUserInteractionEnabled = false
         return textField
     }()
     
@@ -76,7 +77,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         label.translatesAutoresizingMaskIntoConstraints = false
         label.layer.cornerRadius = 8.0
         label.layer.masksToBounds = true
-        label.backgroundColor = .greenBG
+        label.backgroundColor = .greenBGDisabled
         label.text = "Size: M"
         label.textColor = .gray
         label.textAlignment = .center
@@ -126,6 +127,14 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         
         // Set up the UI
         setupUI()
+        
+        if numModels == 0 {
+            let alert = UIAlertController(title: "Testing with AR", message: "To add a model wait for a flat surface to be detected and tap the screen.  Select clothing by looking in the browse tab and see it appear on your model!", preferredStyle: .alert)
+
+            alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+        
     }
     
     // Handler for adding the model to the scene
@@ -196,7 +205,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
 
                 self.changeModelHeightAndWeight()
                 
-                self.addModelButtons()
+                self.addAndEnableModelButtons()
                 
                 if (Global.selectedItem != "") {
                     self.addClothingToModel()
@@ -214,10 +223,14 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         DispatchQueue.main.async {
             
             if let node = scene?.rootNode.childNode(withName: "item", recursively: false) {
+                
                 self.sceneView.automaticallyUpdatesLighting = true
                 self.sceneView.autoenablesDefaultLighting = true
+                
                 if let parentNode = self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true) {
+                    
                     parentNode.addChildNode(node)
+                    self.setClothingButtonsEnabled(enabled: true)
                 }
             }
         }
@@ -470,11 +483,53 @@ extension ARTestViewController {
         
     }
     
-    func addModelButtons() {
+    func setModelButtonsEnabled(enabled: Bool) {
+        
+        let color: UIColor = enabled ? .greenBG : .greenBGDisabled
+        
+        rotateLeftButton.tintColor = color
+        rotateLeftButton.isUserInteractionEnabled = enabled
+        
+        rotateRightButton.tintColor = color
+        rotateRightButton.isUserInteractionEnabled = enabled
+        
+        modelSizeUpButton.tintColor = color
+        modelSizeUpButton.isUserInteractionEnabled = enabled
+        
+        modelSizeDownButton.tintColor = color
+        modelSizeDownButton.isUserInteractionEnabled = enabled
+        
+        modelDeleteButton.tintColor = color
+        modelDeleteButton.isUserInteractionEnabled = enabled
+    }
+    
+    func setClothingButtonsEnabled(enabled: Bool) {
+        
+        let color: UIColor = enabled ? .greenBG : .greenBGDisabled
+
+        pickerTextField.backgroundColor = color
+        pickerTextField.isUserInteractionEnabled = enabled
+        
+        sizeLabel.backgroundColor = color
+        
+        sizeUpButton.tintColor = color
+        sizeUpButton.isUserInteractionEnabled = enabled
+        
+        sizeDownButton.tintColor = color
+        sizeDownButton.isUserInteractionEnabled = enabled
+    }
+    
+    func addAndEnableModelButtons() {
         
         modelSizeUpButton.addTarget(self, action: #selector(didTapScaleUp), for: .touchUpInside)
         modelSizeDownButton.addTarget(self, action: #selector(didTapScaleDown), for: .touchUpInside)
         modelDeleteButton.addTarget(self, action: #selector(modelDeleteTapped), for: .touchUpInside)
+        
+        setModelButtonsEnabled(enabled: true)
+        
+        if !Global.selectedItem.isEmpty {
+            setClothingButtonsEnabled(enabled: true)
+        }
         
         self.view.addSubview(modelSizeUpButton)
         self.view.addSubview(modelSizeDownButton)
@@ -519,11 +574,15 @@ extension ARTestViewController {
     @objc func modelDeleteTapped() {
         
         if let node = sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: false) {
+            
             node.removeFromParentNode()
             numModels -= 1
             modelDeleteButton.removeFromSuperview()
             modelSizeUpButton.removeFromSuperview()
             modelSizeDownButton.removeFromSuperview()
+            
+            setModelButtonsEnabled(enabled: false)
+            setClothingButtonsEnabled(enabled: false)
         }
     }
     

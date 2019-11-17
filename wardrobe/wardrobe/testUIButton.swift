@@ -14,15 +14,12 @@ class testUIButton: UIButton {
         
         translatesAutoresizingMaskIntoConstraints = false
         
-        tintColor = .greenBG
+        tintColor = .greenBGDisabled
         setImage(UIImage(systemName: imageString), for: .normal)
         imageView?.contentMode = .scaleToFill
         contentHorizontalAlignment = .fill
         contentVerticalAlignment = .fill
-        
-//        let tapGesture = UITapGestureRecognizer(target: self, action: selector)
-        
-//        addGestureRecognizer(tapGesture)
+        isUserInteractionEnabled = false
         
     }
     
