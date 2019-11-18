@@ -9,10 +9,15 @@
 import UIKit
 import FirebaseDatabase
 
+var test_var = ClothesInfo()
+var dog = test_var
+
 class BrowseDetailTableViewController: UITableViewController {
     
     var pageTitle: String = ""
     var pageItems: [pageItem] = []
+    //var my_class: ClothesInfo!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +50,7 @@ class BrowseDetailTableViewController: UITableViewController {
         }
             
         cell.itemLabel.text = pageItems[indexPath.row].itemName
-        cell.itemImageView.image = UIImage(named: pageItems[indexPath.row].imageName)  
+        cell.itemImageView.image = UIImage(named: pageItems[indexPath.row].imageName)
         return cell
     }
     
@@ -61,22 +66,29 @@ class BrowseDetailTableViewController: UITableViewController {
 
         // Get green shirt info from database
         let ref = Database.database().reference()
-        let greenshirt_item_name = ""
-        let greenshirt_image_name = ""
+
 
         ref.child("Shirts/Green Shirt").observeSingleEvent(of: .value, with: { (snapshot) in
 
             let data = snapshot.value as? NSDictionary
-            greenshirt_item_name = data?["itemName"] as? String ?? ""
-            greenshirt_image_name = data?["imageName"] as? String ?? ""
+            let item = data?["itemName"] as? String ?? ""
+            let image = data?["imageName"] as? String ?? ""
 
-            }) 
+            
+            dog.imgName = image
+            dog.itemName = item
+            
+            
+
+            })
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        //print(my_class?.imgName)
         
         // call database here
         if (pageTitle == "Shirts") {
             pageItems.append(pageItem(itemName: "Red_Shirt", imageName: "red_shirt"))
             pageItems.append(pageItem(itemName: "Blue_Shirt", imageName: "blue_shirt"))
-            pageItems.append(pageItem(itemName: greenshirt_item_name, imageName: greenshirt_image_name))
+            pageItems.append(pageItem(itemName: dog.itemName, imageName: dog.imgName))
             //pageItems.append(pageItem(itemName: "Green_Shirt", imageName: "green_shirt"))
             pageItems.append(pageItem(itemName: "Yellow_Shirt", imageName: "yellow_shirt"))
             pageItems.append(pageItem(itemName: "Pink_Shirt", imageName: "pink_shirt"))
@@ -87,4 +99,15 @@ class BrowseDetailTableViewController: UITableViewController {
 struct pageItem {
     var itemName: String = ""
     var imageName: String = ""
+}
+
+class ClothesInfo {
+    var imgName: String = "TEST"
+    var itemName: String = "TEST"
+
+    
+    //init(InputImgName: String, InputItemName: String) {
+    //    self.imgName = InputImgName
+    //    self.itemName = InputItemName
+    // }
 }
