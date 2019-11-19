@@ -12,6 +12,7 @@ class BrowseDetailTableViewController: UITableViewController {
     
     var pageTitle: String = ""
     var pageItems: [pageItem] = []
+    var categoryIndex: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,9 @@ class BrowseDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         Global.selectedItem = pageItems[indexPath.row].itemName
+        Global.selectedItems[categoryIndex] = pageItems[indexPath.row].itemName
+        print(categoryIndex)
+        print(Global.selectedItems)
         
         print(Global.selectedItem)
         self.tabBarController?.selectedIndex = 2
@@ -61,14 +65,22 @@ class BrowseDetailTableViewController: UITableViewController {
         // call database here
         if (pageTitle == "Shirts") {
             pageItems.append(pageItem(itemName: "Button_Up_Shirt", imageName: "button_up_shirt"))
+            categoryIndex = 0
+        } else if (pageTitle == "Jackets"){
+            //TODO: add jacket
+            categoryIndex = 1
         } else if (pageTitle == "Bottoms") {
             pageItems.append(pageItem(itemName: "Chinos", imageName: "chinos"))
-        } else if (pageTitle == "Accessories") {
-            pageItems.append(pageItem(itemName: "Cap", imageName: "cap"))
+            categoryIndex = 2
         } else if (pageTitle == "Footwear") {
             pageItems.append(pageItem(itemName: "Sneakers", imageName: "sneakers"))
+            categoryIndex = 3
+        } else if (pageTitle == "Accessories") {
+            pageItems.append(pageItem(itemName: "Cap", imageName: "cap"))
+            categoryIndex = 4
         } else if (pageTitle == "Dresses") {
             pageItems.append(pageItem(itemName: "Dress", imageName: "dress"))
+            categoryIndex = 5
         }
     }
 }
