@@ -9,13 +9,11 @@
 import UIKit
 import FirebaseDatabase
 
-var test_var = ClothesInfo()
-var dog = test_var
-
 class BrowseDetailTableViewController: UITableViewController {
     
     var pageTitle: String = ""
     var pageItems: [pageItem] = []
+    //var clothesData: [pageItem] = []
     //var my_class: ClothesInfo!
     
 
@@ -62,10 +60,9 @@ class BrowseDetailTableViewController: UITableViewController {
         dismiss(animated: true)
     }
     
+    let ref = Database.database().reference()
+    
     func getItems() {
-
-        // Get green shirt info from database
-        let ref = Database.database().reference()
 
 
         ref.child("Shirts/Green Shirt").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -73,41 +70,38 @@ class BrowseDetailTableViewController: UITableViewController {
             let data = snapshot.value as? NSDictionary
             let item = data?["itemName"] as? String ?? ""
             let image = data?["imageName"] as? String ?? ""
+            
+            let test_var = clothesInfo(itemName: item, imgName: image)
+            self.pageItems.append(pageItem(itemName: item, imageName: image))
 
-            
-            dog.imgName = image
-            dog.itemName = item
-            
-            
+            test_var.itemName = item
 
             })
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        //print(my_class?.imgName)
         
         // call database here
         if (pageTitle == "Shirts") {
             pageItems.append(pageItem(itemName: "Red_Shirt", imageName: "red_shirt"))
             pageItems.append(pageItem(itemName: "Blue_Shirt", imageName: "blue_shirt"))
-            pageItems.append(pageItem(itemName: dog.itemName, imageName: dog.imgName))
+            //pageItems.append(pageItem(itemName: test_var.itemName, imageName: test_var.imgName))
             //pageItems.append(pageItem(itemName: "Green_Shirt", imageName: "green_shirt"))
             pageItems.append(pageItem(itemName: "Yellow_Shirt", imageName: "yellow_shirt"))
             pageItems.append(pageItem(itemName: "Pink_Shirt", imageName: "pink_shirt"))
         }
+        
     }
 }
 
 struct pageItem {
-    var itemName: String = ""
-    var imageName: String = ""
+    var itemName: String = "test"
+    var imageName: String = "test"
 }
 
-class ClothesInfo {
-    var imgName: String = "TEST"
-    var itemName: String = "TEST"
-
+class clothesInfo {
+    var itemName: String
+    var imgName: String
     
-    //init(InputImgName: String, InputItemName: String) {
-    //    self.imgName = InputImgName
-    //    self.itemName = InputItemName
-    // }
+    init(itemName: String, imgName: String) {
+        self.itemName = itemName
+        self.imgName = imgName
+    }
 }
