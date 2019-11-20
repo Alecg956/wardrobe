@@ -222,7 +222,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
 
         DispatchQueue.main.async {
             
-            if let node = scene?.rootNode.childNode(withName: "item", recursively: false) {
+            if let node = scene?.rootNode.childNode(withName: Global.selectedType, recursively: false) {
                 
                 self.sceneView.automaticallyUpdatesLighting = true
                 self.sceneView.autoenablesDefaultLighting = true
@@ -239,11 +239,11 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
     // Replace old item with new item (Hard coded at the moment)
     func replaceClothingOnModel() {
         
-        if let oldNode = self.sceneView.scene.rootNode.childNode(withName: "item", recursively: true) {
+        if let oldNode = self.sceneView.scene.rootNode.childNode(withName: Global.selectedType, recursively: true) {
             
             let scene = SCNScene(named: "art.scnassets/clothing/" + Global.selectedItem + ".scn")
             
-            if let newNode = scene?.rootNode.childNode(withName: "item", recursively: true) {
+            if let newNode = scene?.rootNode.childNode(withName: Global.selectedType, recursively: true) {
                 if let parentNode = self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true) {
                     parentNode.replaceChildNode(oldNode, with: newNode)
                 }
@@ -346,7 +346,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
 
     func scaleClothes() {
 
-        if let node = self.sceneView.scene.rootNode.childNode(withName: "item", recursively: true) {
+        if let node = self.sceneView.scene.rootNode.childNode(withName: Global.selectedType, recursively: true) {
             if(Global.size == -1) {
                 print("S")
                 node.scale = SCNVector3Make(0.9, 0.9, 0.9)
@@ -559,7 +559,7 @@ extension ARTestViewController {
     
     @objc func didTapPickerDone() {
         
-         if let node = self.sceneView.scene.rootNode.childNode(withName: "item", recursively: true) {
+         if let node = self.sceneView.scene.rootNode.childNode(withName: Global.selectedType, recursively: true) {
             
             // kind of hacky, we shouldn't have to hardcode in the actual node name
             node.geometry?.material(named: "item")?.diffuse.contents = currentColorNamePair.color
