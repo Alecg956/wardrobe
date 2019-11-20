@@ -211,6 +211,9 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
                     self.addClothingToModel()
                     Global.selectedItem = ""
                 }
+                
+                self.setPlanesVisible(visible: false)
+                
             }
         }
     }
@@ -326,7 +329,6 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         // Check to see if a new item has been selected and there is a model on screen
         if (Global.selectedItem != "" && numModels == 1) {
             
-            
             updateClothingOnModel()
         }
         
@@ -425,16 +427,27 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
             // represents a one sided plane geometry
             let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
             
-            plane.firstMaterial?.diffuse.contents = UIColor.white.withAlphaComponent(0.75)
+            plane.firstMaterial?.diffuse.contents = UIColor.white.withAlphaComponent(0.65)
             
             // use the anchor's position to set the center of the plane
             let planeNode = SCNNode(geometry: plane)
+            planeNode.name = "plane"
             planeNode.position = SCNVector3Make(planeAnchor.center.x, planeAnchor.center.x, planeAnchor.center.z)
             
             // rotate it, default would be perpendicular
             planeNode.eulerAngles.x = -.pi/2
             
             node.addChildNode(planeNode)
+        }
+    }
+    
+    func setPlanesVisible(visible: Bool) {
+        
+        let visibility = visible ? 0.65 : 0
+        // only process these nodes because we only want to detect planes
+        if let node = self.sceneView.scene.rootNode.childNode(withName: "plane", recursively: true) {
+            
+            node.geometry?.firstMaterial?.diffuse.contents = UIColor.white.withAlphaComponent(CGFloat(visibility))
         }
     }
     
@@ -626,6 +639,8 @@ extension ARTestViewController {
             
             setModelButtonsEnabled(enabled: false)
             setClothingButtonsEnabled(enabled: false)
+            
+            self.setPlanesVisible(visible: true)
         }
         
         Global.selectedItem = ""
