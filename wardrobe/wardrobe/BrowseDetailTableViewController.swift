@@ -12,6 +12,7 @@ class BrowseDetailTableViewController: UITableViewController {
     
     var pageTitle: String = ""
     var pageItems: [pageItem] = []
+    var categoryIndex: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,15 +59,16 @@ class BrowseDetailTableViewController: UITableViewController {
     
     func getItems() {
         
+        Global.selectedType = pageTitle
         // call database here
         if (pageTitle == "Shirts") {
             pageItems.append(pageItem(itemName: "Button_Up_Shirt", imageName: "button_up_shirt"))
         } else if (pageTitle == "Bottoms") {
             pageItems.append(pageItem(itemName: "Chinos", imageName: "chinos"))
-        } else if (pageTitle == "Accessories") {
-            pageItems.append(pageItem(itemName: "Cap", imageName: "cap"))
         } else if (pageTitle == "Footwear") {
             pageItems.append(pageItem(itemName: "Sneakers", imageName: "sneakers"))
+        } else if (pageTitle == "Accessories") {
+            pageItems.append(pageItem(itemName: "Cap", imageName: "cap"))
         } else if (pageTitle == "Dresses") {
             pageItems.append(pageItem(itemName: "Dress", imageName: "dress"))
         }

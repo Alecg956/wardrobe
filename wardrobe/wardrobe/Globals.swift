@@ -18,6 +18,7 @@ struct Global {
     static var gender: Gender = .other
     
     static var selectedItem:String = ""
+    static var selectedType:String = "" 
     
     enum defaultHeight: Float {
         case male = 70
