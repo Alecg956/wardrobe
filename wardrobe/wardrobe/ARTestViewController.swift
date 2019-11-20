@@ -733,7 +733,8 @@ extension ARTestViewController {
     @objc func didTapAddToCart () {
         
         if Global.selectedItem != "" {
-            Global.cart.append(Global.selectedItem)
+            let item = Global.ClothingItem(name: Global.selectedItem, size: Global.size, color: pickerTextField.backgroundColor ?? .white)
+            Global.cart.append(item)
         }
         print(Global.cart)
     }

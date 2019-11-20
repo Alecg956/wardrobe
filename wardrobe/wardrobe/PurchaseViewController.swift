@@ -70,17 +70,21 @@ class PurchaseViewController: UIViewController, UITableViewDelegate, UITableView
             
         }
             
-        cell.itemLabel.text = "\(clothes[indexPath.row])"
-        
-        if Global.selectedItem == "Button_Up_Shirt" {
-            cell.itemImageView.image = UIImage(named: "button_up_shirt")
-        } else if Global.selectedItem == "Chinos" {
-            cell.itemImageView.image = UIImage(named: "chinos")
-        }
-        
-        cell.sizeLabel.text = "Size: \(Global.sizes[Global.size] ?? "M")"
+        cell.itemLabel.text = "\(clothes[indexPath.row].name)"
+        cell.itemImageView.image = UIImage(named: clothes[indexPath.row].name.lowercased())
+        cell.sizeLabel.text = "Size: \(Global.sizes[clothes[indexPath.row].size] ?? "M")"
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+      if editingStyle == .delete {
+        print("Deleted")
+
+        clothes.remove(at: indexPath.row)
+        Global.cart.remove(at: indexPath.row)
+        myTableView.deleteRows(at: [indexPath], with: .automatic)
+      }
     }
     
     func getURL() -> String {
