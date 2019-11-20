@@ -9,7 +9,7 @@
 import UIKit
 
 class PurchaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var clothes: [String] = []
+    var clothes = Global.cart
     var myTableView: UITableView!
     
     lazy var purchaseButton: UIButton = {
@@ -39,13 +39,11 @@ class PurchaseViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        clothes = Global.cart
+        
         myTableView.reloadData()
         
-        clothes.removeAll()
-        clothes.append(Global.selectedItem)
-        
-        
-        if Global.selectedItem == "" {
+        if Global.cart.isEmpty {
             purchaseButton.isEnabled = false
             purchaseButton.alpha = 0.5
         } else {

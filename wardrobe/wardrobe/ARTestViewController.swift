@@ -110,6 +110,16 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         return button
     }()
     
+    lazy var addToCartButton: testUIButton = {
+        
+        let button = testUIButton(imageString: "cart.badge.plus.fill")
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapAddToCart))
+
+        button.addGestureRecognizer(tapGesture)
+        return button
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -499,6 +509,7 @@ extension ARTestViewController {
         self.view.addSubview(sizeDownButton)
         self.view.addSubview(rotateRightButton)
         self.view.addSubview(rotateLeftButton)
+        self.view.addSubview(addToCartButton)
         self.view.addSubview(sizeLabel)
         self.view.addSubview(pickerTextField)
         
@@ -528,6 +539,11 @@ extension ARTestViewController {
             rotateLeftButton.bottomAnchor.constraint(equalTo: self.sizeDownButton.topAnchor, constant: -55.0),
             rotateLeftButton.heightAnchor.constraint(equalToConstant: 50.0),
             rotateLeftButton.widthAnchor.constraint(equalToConstant: 50.0),
+            
+            addToCartButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15.0),
+            addToCartButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20.0),
+            addToCartButton.heightAnchor.constraint(equalToConstant: 40),
+            addToCartButton.widthAnchor.constraint(equalToConstant: 50),
             
             
             sizeLabel.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
@@ -573,6 +589,9 @@ extension ARTestViewController {
         
         sizeDownButton.tintColor = color
         sizeDownButton.isUserInteractionEnabled = enabled
+        
+        addToCartButton.tintColor = color
+        addToCartButton.isUserInteractionEnabled = enabled
     }
     
     func addAndEnableModelButtons() {
@@ -708,6 +727,15 @@ extension ARTestViewController {
         if let node = sceneView.scene.rootNode.childNode(withName: modelFileName, recursively: false) {
             node.runAction(ARTestViewController.rotateLeftSmall)
         }
+    }
+    
+    // Handler for tapping add to cart button
+    @objc func didTapAddToCart () {
+        
+        if Global.selectedItem != "" {
+            Global.cart.append(Global.selectedItem)
+        }
+        print(Global.cart)
     }
     
     // Handler for holding rotate right button
