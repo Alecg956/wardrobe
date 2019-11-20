@@ -48,6 +48,14 @@ class BrowseTableViewController: UITableViewController {
 
         ref.child("Shirts/Green Shirt/itemName").setValue("Green_Shirt")
         ref.child("Shirts/Green Shirt/imageName").setValue("green_shirt")
+        ref.child("Shirts/Red Shirt/itemName").setValue("Red_Shirt")
+        ref.child("Shirts/Red Shirt/imageName").setValue("red_shirt")
+        ref.child("Shirts/Blue Shirt/itemName").setValue("Blue_Shirt")
+        ref.child("Shirts/Blue Shirt/imageName").setValue("blue_shirt")
+        ref.child("Shirts/Yellow Shirt/itemName").setValue("Yellow_Shirt")
+        ref.child("Shirts/Yellow Shirt/imageName").setValue("yellow_shirt")
+        ref.child("Shirts/Pink Shirt/itemName").setValue("Pink_Shirt")
+        ref.child("Shirts/Pink Shirt/imageName").setValue("pink_shirt")
 
         
         tableView.register(BrowseTableViewCell.self, forCellReuseIdentifier: BrowseTableViewCell.reuseIdentifier)
