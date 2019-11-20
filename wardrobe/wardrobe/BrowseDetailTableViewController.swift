@@ -52,8 +52,6 @@ class BrowseDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         Global.selectedItem = pageItems[indexPath.row].itemName
-        print(categoryIndex)
-        print(Global.selectedItems)
         
         print(Global.selectedItem)
         self.tabBarController?.selectedIndex = 2
@@ -65,22 +63,14 @@ class BrowseDetailTableViewController: UITableViewController {
         // call database here
         if (pageTitle == "Shirts") {
             pageItems.append(pageItem(itemName: "Button_Up_Shirt", imageName: "button_up_shirt"))
-            
-        } else if (pageTitle == "Jackets"){
-            //TODO: add jacket
-            
         } else if (pageTitle == "Bottoms") {
             pageItems.append(pageItem(itemName: "Chinos", imageName: "chinos"))
-            
         } else if (pageTitle == "Footwear") {
             pageItems.append(pageItem(itemName: "Sneakers", imageName: "sneakers"))
-            
         } else if (pageTitle == "Accessories") {
             pageItems.append(pageItem(itemName: "Cap", imageName: "cap"))
-            
         } else if (pageTitle == "Dresses") {
             pageItems.append(pageItem(itemName: "Dress", imageName: "dress"))
-            
         }
     }
 }

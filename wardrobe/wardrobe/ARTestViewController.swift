@@ -237,7 +237,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
     }
     
     // Replace old item with new item (Hard coded at the moment)
-    func replaceClothingOnModel() {
+    func updateClothingOnModel() {
         
         if let oldNode = self.sceneView.scene.rootNode.childNode(withName: Global.selectedType, recursively: true) {
             
@@ -248,6 +248,8 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
                     parentNode.replaceChildNode(oldNode, with: newNode)
                 }
             }
+        } else {
+            addClothingToModel()
         }
     }
     
@@ -324,15 +326,8 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         // Check to see if a new item has been selected and there is a model on screen
         if (Global.selectedItem != "" && numModels == 1) {
             
-            // Check if model has clothing type on it already
-            if let node = self.sceneView.scene.rootNode.childNode(withName: self.modelFileName, recursively: true), node.childNodes.count > 0 {
-                
-                replaceClothingOnModel()
-            }
-            else {
-                print(Global.selectedItem)
-                addClothingToModel()
-            }
+            
+            updateClothingOnModel()
         }
         
         // Check if gender has been changed
@@ -347,20 +342,68 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
     func scaleClothes() {
 
         if let node = self.sceneView.scene.rootNode.childNode(withName: Global.selectedType, recursively: true) {
-            if(Global.size == -1) {
-                print("S")
-                node.scale = SCNVector3Make(0.9, 0.9, 0.9)
-                node.position = SCNVector3Make(0, 15, 0)
-            }
-            if(Global.size == 0) {
-                print("M")
-                node.scale = SCNVector3Make(1, 1, 1)
-                node.position = SCNVector3Make(0, 0, 0)
-            }
-            if(Global.size == 1) {
-                print("L")
-                node.scale = SCNVector3Make(1.1, 1.1, 1.1)
-                node.position = SCNVector3Make(0, -12, 0)
+            if (Global.selectedType == "Shirts") {
+                if(Global.size == -1) {
+                    node.scale = SCNVector3Make(0.9, 0.9, 0.9)
+                    node.position = SCNVector3Make(0, 15, 0)
+                }
+                if(Global.size == 0) {
+                    node.scale = SCNVector3Make(1, 1, 1)
+                    node.position = SCNVector3Make(0, 0, 0)
+                }
+                if(Global.size == 1) {
+                    node.scale = SCNVector3Make(1.1, 1.1, 1.1)
+                    node.position = SCNVector3Make(0, -12, 0)
+                }
+            } else if (Global.selectedType == "Bottoms") {
+                if(Global.size == -1) {
+                    node.scale = SCNVector3Make(0.9, 0.9, 0.9)
+                    node.position = SCNVector3Make(0, 15, 0)
+                }
+                if(Global.size == 0) {
+                    node.scale = SCNVector3Make(1, 1, 1)
+                    node.position = SCNVector3Make(0, 0, 0)
+                }
+                if(Global.size == 1) {
+                    node.scale = SCNVector3Make(1.1, 1.1, 1.1)
+                    node.position = SCNVector3Make(0, -9, 0)
+                }
+            } else if (Global.selectedType == "Footwear") {
+                if(Global.size == -1) {
+                    node.scale = SCNVector3Make(0.9, 0.9, 0.9)
+                }
+                if(Global.size == 0) {
+                    node.scale = SCNVector3Make(1, 1, 1)
+                }
+                if(Global.size == 1) {
+                    node.scale = SCNVector3Make(1.1, 1.1, 1.1)
+                }
+            } else if (Global.selectedType == "Accessories") {
+                if(Global.size == -1) {
+                    node.scale = SCNVector3Make(0.9, 0.9, 0.9)
+                    node.position = SCNVector3Make(0, 20, 0)
+                }
+                if(Global.size == 0) {
+                    node.scale = SCNVector3Make(1, 1, 1)
+                    node.position = SCNVector3Make(0, 0, 0)
+                }
+                if(Global.size == 1) {
+                    node.scale = SCNVector3Make(1.1, 1.1, 1.1)
+                    node.position = SCNVector3Make(0, -20, 0)
+                }
+            } else if (Global.selectedType == "Dresses") {
+                if(Global.size == -1) {
+                    node.scale = SCNVector3Make(0.9, 0.9, 0.9)
+                    node.position = SCNVector3Make(0, 15, 0)
+                }
+                if(Global.size == 0) {
+                    node.scale = SCNVector3Make(1, 1, 1)
+                    node.position = SCNVector3Make(0, 0, 0)
+                }
+                if(Global.size == 1) {
+                    node.scale = SCNVector3Make(1.1, 1.1, 1.1)
+                    node.position = SCNVector3Make(0, -12, 0)
+                }
             }
         }
     }
@@ -584,6 +627,8 @@ extension ARTestViewController {
             setModelButtonsEnabled(enabled: false)
             setClothingButtonsEnabled(enabled: false)
         }
+        
+        Global.selectedItem = ""
     }
     
     // Handler for tapping scale up button
