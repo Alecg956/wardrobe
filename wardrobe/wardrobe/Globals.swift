@@ -23,7 +23,7 @@ struct Global {
     struct ClothingItem {
         var name: String
         var size: Int
-        var color: UIColor
+        var color: String
     }
     
     static var cart = [ClothingItem]()

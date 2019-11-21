@@ -219,7 +219,6 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
                 
                 if (Global.selectedItem != "") {
                     self.addClothingToModel()
-                    Global.selectedItem = ""
                 }
                 
                 self.setPlanesVisible(visible: false)
@@ -733,7 +732,7 @@ extension ARTestViewController {
     @objc func didTapAddToCart () {
         
         if Global.selectedItem != "" {
-            let item = Global.ClothingItem(name: Global.selectedItem, size: Global.size, color: pickerTextField.backgroundColor ?? .white)
+            let item = Global.ClothingItem(name: Global.selectedItem, size: Global.size, color: pickerTextField.text ?? "white")
             Global.cart.append(item)
         }
         print(Global.cart)
