@@ -454,10 +454,14 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         
         let visibility = visible ? 0.65 : 0
         // only process these nodes because we only want to detect planes
-        if let node = self.sceneView.scene.rootNode.childNode(withName: "plane", recursively: true) {
+        
+        self.sceneView.scene.rootNode.childNodes(passingTest: { (node, stop) -> Bool in
             
-            node.geometry?.firstMaterial?.diffuse.contents = UIColor.white.withAlphaComponent(CGFloat(visibility))
+            return node.name == "plane"
         }
+        ).forEach({ node in
+            node.geometry?.firstMaterial?.diffuse.contents = UIColor.white.withAlphaComponent(CGFloat(visibility))
+        })
     }
     
     // update current scene based on new camera detections, expands planes
