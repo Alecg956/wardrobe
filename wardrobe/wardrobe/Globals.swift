@@ -18,7 +18,15 @@ struct Global {
     static var gender: Gender = .other
     
     static var selectedItem:String = ""
-    static var selectedType:String = "" 
+    static var selectedType:String = ""
+    
+    struct ClothingItem {
+        var name: String
+        var size: Int
+        var color: String
+    }
+    
+    static var cart = [ClothingItem]()
     
     enum defaultHeight: Float {
         case male = 70

@@ -9,26 +9,8 @@
 import UIKit
 
 class PurchaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var clothes: [String] = []
+    var clothes = Global.cart
     var myTableView: UITableView!
-    
-    lazy var purchaseButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        button.backgroundColor = .greenBG
-        button.tintColor = .greenBG
-        button.layer.cornerRadius = 5
-        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
-        button.setTitle("Make Purchase!", for: .normal)
-        button.setTitleColor(UIColor.black, for: UIControl.State.normal)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapPurchase))
-        
-        button.addGestureRecognizer(tapGesture)
-        
-        return button
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,19 +21,9 @@ class PurchaseViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        clothes = Global.cart
+        
         myTableView.reloadData()
-        
-        clothes.removeAll()
-        clothes.append(Global.selectedItem)
-        
-        
-        if Global.selectedItem == "" {
-            purchaseButton.isEnabled = false
-            purchaseButton.alpha = 0.5
-        } else {
-            purchaseButton.isEnabled = true
-            purchaseButton.alpha = 1.0
-        }
     }
     
     /*
@@ -72,56 +44,32 @@ class PurchaseViewController: UIViewController, UITableViewDelegate, UITableView
             
         }
             
-        cell.itemLabel.text = "\(clothes[indexPath.row])"
-        
-        if Global.selectedItem == "Button_Up_Shirt" {
-            cell.itemImageView.image = UIImage(named: "button_up_shirt")
-        } else if Global.selectedItem == "Chinos" {
-            cell.itemImageView.image = UIImage(named: "chinos")
+        cell.itemLabel.text = "\(clothes[indexPath.row].name)"
+        cell.itemImageView.image = UIImage(named: clothes[indexPath.row].name.lowercased())
+        cell.sizeLabel.text = "Size: \(Global.sizes[clothes[indexPath.row].size] ?? "M")"
+        if clothes[indexPath.row].color != "color" {
+            cell.colorLabel.text = "Color: \(clothes[indexPath.row].color)"
         }
-        
-        cell.sizeLabel.text = "Size: \(Global.sizes[Global.size] ?? "M")"
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
     }
     
-    func getURL() -> String {
-        var url = ""
-        switch Global.selectedItem {
-        case "Button_Up_Shirt":
-            url = "https://www.amazon.com/Amazon-Essentials-Regular-Fit-Long-Sleeve-Oxford/dp/B06XW9S1JL/ref=sr_1_5?crid=2LDAZTVEDIXQ3&dchild=1&keywords=white+button+up+shirt+men&qid=1573862215&sprefix=white+button+up+shirt%2Caps%2C155&sr=8-5"
-        case "Chinos":
-            url = "https://www.amazon.com/Amazon-Essentials-Slim-Fit-Wrinkle-Resistant-Flat-Front/dp/B07756KXN4/ref=sr_1_2_sspa?keywords=white+chinos+men&qid=1573862236&sr=8-2-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzVThBRTRGQkZMN04wJmVuY3J5cHRlZElkPUEwNjI4NTgxMk1LMExVSk1GQUgxSiZlbmNyeXB0ZWRBZElkPUEwODQ5NzA3MkxUNVNZVjE5TlZKTSZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU="
-        default:
-            url = "https://www.amazon.com"
-        }
-        return url
-    }
- 
-    // Handler for tapping purchase button
-    @objc func didTapPurchase() {
-        
-        if let url = URL(string: getURL()) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+      if editingStyle == .delete {
+        print("Deleted")
+
+        clothes.remove(at: indexPath.row)
+        Global.cart.remove(at: indexPath.row)
+        myTableView.deleteRows(at: [indexPath], with: .automatic)
+      }
     }
     
     //setup buttons
     func setupUI() {
         
-        self.view.addSubview(purchaseButton)
-        
-        NSLayoutConstraint.activate([
-            
-            purchaseButton.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 0.0),
-            purchaseButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -100.0),
-        
-        ])
-        
-        
         let barHeight: CGFloat = view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
         let displayWidth: CGFloat = self.view.frame.width
-        let displayHeight: CGFloat = self.view.frame.height / 4
+        let displayHeight: CGFloat = self.view.frame.height / 3
 
         myTableView = UITableView(frame: CGRect(x: 0, y: barHeight + 150, width: displayWidth, height: displayHeight - barHeight))
         myTableView.register(PurchaseTableViewCell.self, forCellReuseIdentifier: PurchaseTableViewCell.reuseIdentifier)
