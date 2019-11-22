@@ -15,6 +15,7 @@ class BrowseDetailTableViewController: UITableViewController {
     var pageItems: [pageItem] = []
     //var clothesData: [pageItem] = []
     //var my_class: ClothesInfo!
+    var test_var = pageItem()
     
 
     override func viewDidLoad() {
@@ -71,23 +72,27 @@ class BrowseDetailTableViewController: UITableViewController {
             let item = data?["itemName"] as? String ?? ""
             let image = data?["imageName"] as? String ?? ""
             
-            let test_var = clothesInfo(itemName: item, imgName: image)
+            //let test_var = clothesInfo(itemName: item, imgName: image)
             self.pageItems.append(pageItem(itemName: item, imageName: image))
 
-            test_var.itemName = item
+            self.test_var.itemName = item
+            self.test_var.imageName = image
             
             self.tableView.reloadData()
         })
-//
-//        // call database here
-//        if (pageTitle == "Shirts") {
-//            pageItems.append(pageItem(itemName: "Red_Shirt", imageName: "red_shirt"))
-//            pageItems.append(pageItem(itemName: "Blue_Shirt", imageName: "blue_shirt"))
-//            //pageItems.append(pageItem(itemName: test_var.itemName, imageName: test_var.imgName))
-//            pageItems.append(pageItem(itemName: "Green_Shirt", imageName: "green_shirt"))
-//            pageItems.append(pageItem(itemName: "Yellow_Shirt", imageName: "yellow_shirt"))
-//            pageItems.append(pageItem(itemName: "Pink_Shirt", imageName: "pink_shirt"))
-//        }
+
+        // call database here
+        if (pageTitle == "Shirts") {
+            pageItems.append(pageItem(itemName: "Red_Shirt", imageName: "red_shirt"))
+           // pageItems.append(pageItem(itemName: "Blue_Shirt", imageName: "blue_shirt"))
+              pageItems.append(pageItem(itemName: test_var.itemName, imageName: test_var.imageName))
+           // pageItems.append(pageItem(itemName: "Green_Shirt", imageName: "green_shirt"))
+           // pageItems.append(pageItem(itemName: "Yellow_Shirt", imageName: "yellow_shirt"))
+           // pageItems.append(pageItem(itemName: "Pink_Shirt", imageName: "pink_shirt"))
+            
+            //self.tableView.reloadData()
+        }
+        
         
     }
 }
