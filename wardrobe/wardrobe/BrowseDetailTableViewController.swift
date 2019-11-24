@@ -73,10 +73,16 @@ class BrowseDetailTableViewController: UITableViewController {
             let image = data?["imageName"] as? String ?? ""
             
             //let test_var = clothesInfo(itemName: item, imgName: image)
-            self.pageItems.append(pageItem(itemName: item, imageName: image))
+            if (self.pageTitle == "Shirts") {
+                self.pageItems.append(pageItem(itemName: item, imageName: image))
 
-            self.test_var.itemName = item
-            self.test_var.imageName = image
+                self.test_var.itemName = item
+                self.test_var.imageName = image
+                
+            }
+            else if (self.pageTitle == "Pants") {
+                self.pageItems.append(pageItem(itemName: "Pants Var", imageName: "pants image"))
+            }
             
             self.tableView.reloadData()
         })
