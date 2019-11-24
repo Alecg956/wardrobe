@@ -9,6 +9,13 @@ enum Gender {
 extension UIColor {
     static let greenBG = UIColor(red: 186/255, green: 255/255, blue: 201/255, alpha: 1)
     static let greenBGDisabled = UIColor(red: 186/255, green: 255/255, blue: 201/255, alpha: 0.3)
+    static let clothingRed = UIColor(red: 255/255, green: 154/255, blue: 162/255, alpha: 1)
+    static let clothingPink = UIColor(red: 255/255, green: 183/255, blue: 178/255, alpha: 1)
+    static let clothingOrange = UIColor(red: 255/255, green: 218/255, blue: 193/255, alpha: 1)
+    static let clothingGreen = UIColor(red: 181/255, green: 234/255, blue: 215/255, alpha: 1)
+    static let clothingBlue = UIColor(red: 160/255, green: 216/255, blue: 255/255, alpha: 1)
+    static let clothingKhaki = UIColor(red: 195/255, green: 176/255, blue: 145/255, alpha: 1)
+    static let darkGreen = UIColor(red: 120/255, green: 146/255, blue: 107/255, alpha: 1)
 }
 
 // Add global variables to this struct

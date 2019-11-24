@@ -13,14 +13,34 @@ import ARKit
 class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     lazy var pickerView = UIPickerView()
-    lazy var currentColorNamePair = ColorNamePair(color: .red, name: "red")
+    lazy var currentColorNamePair = ColorNamePair(asset: "white_fabric", color: .white, name: "white")
     
     struct ColorNamePair {
-        var color :UIColor
+        var asset: String
+        var color:UIColor
         var name:String
     }
     
-    let pickerValues:[ColorNamePair] = [ColorNamePair(color: .white, name: "white"), ColorNamePair(color: .black, name: "black"), ColorNamePair(color: .red, name: "red"), ColorNamePair(color: .blue, name: "blue"), ColorNamePair(color: .green, name: "green"), ColorNamePair(color: .yellow, name: "yellow")]
+    lazy var pickerValues:[ColorNamePair] = []
+    
+    func getShirtPickerValues() {
+        pickerValues = [
+        ColorNamePair(asset: "white_fabric", color: .white, name: "white"),
+        ColorNamePair(asset: "black_fabric", color: .black, name: "black"),
+        ColorNamePair(asset: "red_fabric", color: .clothingRed, name: "red"),
+        ColorNamePair(asset: "orange_fabric", color: .clothingOrange, name: "orange"),
+        ColorNamePair(asset: "blue_fabric", color: .clothingBlue, name: "blue"),
+        ColorNamePair(asset: "green_fabric", color: .clothingGreen, name: "green")]
+    }
+    
+    func getPantsPickerValues() {
+        pickerValues = [
+        ColorNamePair(asset: "white_denim_fabric", color: .white, name: "white"),
+        ColorNamePair(asset: "black_denim_fabric", color: .black, name: "black"),
+        ColorNamePair(asset: "jeans_fabric", color: .clothingBlue, name: "denim"),
+        ColorNamePair(asset: "khaki_fabric", color: .clothingKhaki, name: "khaki"),
+        ColorNamePair(asset: "camo_fabric", color: .darkGreen, name: "camo")]
+    }
     
     lazy var pickerTextField: UITextField = {
         let textField = UITextField()
@@ -243,6 +263,12 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
                     
                     parentNode.addChildNode(node)
                     self.setClothingButtonsEnabled(enabled: true)
+                    
+                    if (Global.selectedType == "Shirts") {
+                        self.getShirtPickerValues()
+                    } else {
+                        self.getPantsPickerValues()
+                    }
                 }
             }
         }
@@ -640,9 +666,9 @@ extension ARTestViewController {
          if let node = self.sceneView.scene.rootNode.childNode(withName: Global.selectedType, recursively: true) {
             
             // kind of hacky, we shouldn't have to hardcode in the actual node name
-            node.geometry?.material(named: "item")?.diffuse.contents = currentColorNamePair.color
-            node.geometry?.material(named: "tongue")?.diffuse.contents = currentColorNamePair.color
-            node.geometry?.material(named: "upper")?.diffuse.contents = currentColorNamePair.color
+            node.geometry?.material(named: "item")?.diffuse.contents = currentColorNamePair.asset
+            node.geometry?.material(named: "tongue")?.diffuse.contents = currentColorNamePair.asset
+            node.geometry?.material(named: "upper")?.diffuse.contents = currentColorNamePair.asset
             
         }
         
