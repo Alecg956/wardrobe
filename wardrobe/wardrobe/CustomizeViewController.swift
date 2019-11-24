@@ -149,6 +149,16 @@ class CustomizeViewController: UIViewController {
         return label
     }()
     
+    lazy var helpButton: testUIButton = {
+        
+        let button = testUIButton(imageString: "questionmark.circle.fill")
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapHelp))
+
+        button.addGestureRecognizer(tapGesture)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -196,6 +206,15 @@ class CustomizeViewController: UIViewController {
         
         updateHeightVals(newHeight: Global.defaultHeight.other.rawValue)
         updateWeightVals(newWeight: Global.defaultWeight.other.rawValue)
+    }
+    
+    // Handler for tapping help button
+    @objc func didTapHelp () {
+        
+        let alert = UIAlertController(title: "Customize The AR Model", message: "Select the gender with which you identify, then adjust the sliders to fit your body measurements. After that you can move to Browse, and select the clothing you wish to test in AR!", preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+        self.present(alert, animated: true)
     }
     
     @objc func sliderValueDidChange(_ sender:UISlider!) {
@@ -246,6 +265,10 @@ class CustomizeViewController: UIViewController {
         self.view.addSubview(chestLabel)
         self.view.addSubview(waistSlider)
         self.view.addSubview(waistLabel)
+        self.view.addSubview(helpButton)
+        
+        helpButton.tintColor = .greenBG
+        helpButton.isUserInteractionEnabled = true
         
         NSLayoutConstraint.activate([
             
@@ -273,6 +296,10 @@ class CustomizeViewController: UIViewController {
             waistLabel.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 0.0),
             waistLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 525.0),
 
+            helpButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15.0),
+            helpButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20.0),
+            helpButton.heightAnchor.constraint(equalToConstant: 50),
+            helpButton.widthAnchor.constraint(equalToConstant: 50),
         
         ])
         

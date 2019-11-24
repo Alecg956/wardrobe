@@ -12,6 +12,16 @@ class PurchaseViewController: UIViewController, UITableViewDelegate, UITableView
     var clothes = Global.cart
     var myTableView: UITableView!
     
+    lazy var helpButton: testUIButton = {
+        
+        let button = testUIButton(imageString: "questionmark.circle.fill")
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapHelp))
+
+        button.addGestureRecognizer(tapGesture)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,6 +74,15 @@ class PurchaseViewController: UIViewController, UITableViewDelegate, UITableView
       }
     }
     
+    // Handler for tapping help button
+    @objc func didTapHelp () {
+        
+        let alert = UIAlertController(title: "Purchase", message: "You can see all the items you have added to your cart, from here you can select the individual purchase buttons next to each item if you wish to buy it!", preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
     //setup buttons
     func setupUI() {
         
@@ -76,13 +95,26 @@ class PurchaseViewController: UIViewController, UITableViewDelegate, UITableView
         myTableView.dataSource = self
         myTableView.delegate = self
         self.view.addSubview(myTableView)
+        self.view.addSubview(helpButton)
+        
+        helpButton.tintColor = .greenBG
+        helpButton.isUserInteractionEnabled = true
+        
+        NSLayoutConstraint.activate([
+            
+            helpButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15.0),
+            helpButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20.0),
+            helpButton.heightAnchor.constraint(equalToConstant: 50),
+            helpButton.widthAnchor.constraint(equalToConstant: 50),
+        
+        ])
         
         // make label for cart text
         let cartLabel = UILabel()
         cartLabel.text = "Your Cart"
         cartLabel.textAlignment = .center
         cartLabel.font = cartLabel.font.withSize(30)
-        cartLabel.frame = CGRect(x: 0, y: barHeight + 50, width: displayWidth, height: 100)
+        cartLabel.frame = CGRect(x: 0, y: barHeight + 75, width: displayWidth, height: 100)
         self.view.addSubview(cartLabel)
     }
 }

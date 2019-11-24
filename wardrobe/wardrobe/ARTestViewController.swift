@@ -140,6 +140,16 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         return button
     }()
     
+    lazy var helpButton: testUIButton = {
+        
+        let button = testUIButton(imageString: "questionmark.circle.fill")
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapHelp))
+
+        button.addGestureRecognizer(tapGesture)
+        return button
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -538,9 +548,12 @@ extension ARTestViewController {
         self.view.addSubview(sizeDownButton)
         self.view.addSubview(rotateRightButton)
         self.view.addSubview(rotateLeftButton)
-        self.view.addSubview(addToCartButton)
+        self.view.addSubview(helpButton)
         self.view.addSubview(sizeLabel)
         self.view.addSubview(pickerTextField)
+        
+        helpButton.tintColor = .greenBG
+        helpButton.isUserInteractionEnabled = true
         
         NSLayoutConstraint.activate([
             
@@ -569,10 +582,10 @@ extension ARTestViewController {
             rotateLeftButton.heightAnchor.constraint(equalToConstant: 50.0),
             rotateLeftButton.widthAnchor.constraint(equalToConstant: 50.0),
             
-            addToCartButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15.0),
-            addToCartButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20.0),
-            addToCartButton.heightAnchor.constraint(equalToConstant: 40),
-            addToCartButton.widthAnchor.constraint(equalToConstant: 50),
+            helpButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15.0),
+            helpButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20.0),
+            helpButton.heightAnchor.constraint(equalToConstant: 50),
+            helpButton.widthAnchor.constraint(equalToConstant: 50),
             
             
             sizeLabel.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
@@ -638,6 +651,7 @@ extension ARTestViewController {
         self.view.addSubview(modelSizeUpButton)
         self.view.addSubview(modelSizeDownButton)
         self.view.addSubview(modelDeleteButton)
+        self.view.addSubview(addToCartButton)
         
         NSLayoutConstraint.activate([
             modelSizeUpButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15.0),
@@ -654,6 +668,11 @@ extension ARTestViewController {
             modelDeleteButton.topAnchor.constraint(equalTo: modelSizeDownButton.bottomAnchor, constant: 10.0),
             modelDeleteButton.heightAnchor.constraint(equalToConstant: 40),
             modelDeleteButton.widthAnchor.constraint(equalToConstant: 50),
+            
+            addToCartButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15.0),
+            addToCartButton.topAnchor.constraint(equalTo: modelDeleteButton.bottomAnchor, constant: 10.0),
+            addToCartButton.heightAnchor.constraint(equalToConstant: 40),
+            addToCartButton.widthAnchor.constraint(equalToConstant: 50),
         ])
     }
 }
@@ -766,6 +785,15 @@ extension ARTestViewController {
             Global.cart.append(item)
         }
         print(Global.cart)
+    }
+    
+    // Handler for tapping help button
+    @objc func didTapHelp () {
+        
+        let alert = UIAlertController(title: "Testing with AR", message: "To add a model wait for a flat surface to be detected and tap the screen.  Select clothing by looking in the browse tab and see it appear on your model!", preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+        self.present(alert, animated: true)
     }
     
     // Handler for holding rotate right button

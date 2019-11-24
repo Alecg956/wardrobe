@@ -96,6 +96,8 @@ class PurchaseTableViewCell: UITableViewCell {
             url = "https://www.amazon.com/Converse-Chuck-Taylor-Classic-Sneakers/dp/B01G4AU46Y/"
         case "Cap":
             url = "https://www.amazon.com/Carhartt-Medium-Profile-Percent-Cotton/dp/B00MNLKARM/"
+        case "Dress":
+            url = "https://www.amazon.com/Amazon-Essentials-Womens-Surplice-Burgundy/dp/B07JN9HYHX/"
         default:
             url = "https://www.amazon.com"
         }
