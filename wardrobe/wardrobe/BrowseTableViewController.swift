@@ -24,38 +24,19 @@ class BrowseTableViewController: UITableViewController {
         super.viewDidLoad()
         
         let ref = Database.database().reference()
-        
-        ref.child("Shirts").setValue("Black Tshirt")
-        ref.child("Shirts").setValue("New Shirt")
-        ref.child("Shirts").removeValue()
-        
-        
-        ref.child("Pants/Sweatpants").setValue("red")
-        ref.child("Pants/Sweatpants").setValue("blue")
-        ref.child("Pants/Sweatpants").setValue("black")
-        ref.child("Pants/Long pants").setValue("red")
-        ref.child("Pants/Long pants").setValue("blue")
-        ref.child("Pants/Long pants").setValue("black")
-
-        
-        ref.child("Shirts/Sweatshirt").setValue("red")
-        ref.child("Shirts/Sweatshirt").setValue("blue")
-        ref.child("Shirts/Sweatshirt").setValue("black")
-        ref.child("Shirts/Basic Tee").setValue("red")
-        ref.child("Shirts/Basic Tee").setValue("blue")
-        ref.child("Shirts/Basic Tee").setValue("black")
 
 
-        ref.child("Shirts/Green Shirt/itemName").setValue("Green_Shirt")
-        ref.child("Shirts/Green Shirt/imageName").setValue("green_shirt")
-        ref.child("Shirts/Red Shirt/itemName").setValue("Red_Shirt")
-        ref.child("Shirts/Red Shirt/imageName").setValue("red_shirt")
-        ref.child("Shirts/Blue Shirt/itemName").setValue("Blue_Shirt")
-        ref.child("Shirts/Blue Shirt/imageName").setValue("blue_shirt")
-        ref.child("Shirts/Yellow Shirt/itemName").setValue("Yellow_Shirt")
-        ref.child("Shirts/Yellow Shirt/imageName").setValue("yellow_shirt")
-        ref.child("Shirts/Pink Shirt/itemName").setValue("Pink_Shirt")
-        ref.child("Shirts/Pink Shirt/imageName").setValue("pink_shirt")
+
+        ref.child("Shirts/Buttom Up Shirt/itemName").setValue("Buttom_Up_Shirt")
+        ref.child("Shirts/Buttom Up Shirt/imageName").setValue("buttom_up_shirt")
+        ref.child("Buttoms/Chinos/itemName").setValue("Chinos")
+        ref.child("Buttoms/Chinos/imageName").setValue("chinos")
+        ref.child("Footwear/Sneakers/itemName").setValue("Sneakers")
+        ref.child("Footwear/Sneakers/imageName").setValue("sneakers")
+        ref.child("Accessories/Cap/itemName").setValue("Cap")
+        ref.child("Accessories/Cap/imageName").setValue("cap")
+        ref.child("Dresses/Dress/itemName").setValue("Dress")
+        ref.child("Dresses/Dress/imageName").setValue("dress")
 
         
         tableView.register(BrowseTableViewCell.self, forCellReuseIdentifier: BrowseTableViewCell.reuseIdentifier)
