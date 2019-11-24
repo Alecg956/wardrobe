@@ -27,10 +27,10 @@ class BrowseTableViewController: UITableViewController {
 
 
 
-        ref.child("Shirts/Buttom Up Shirt/itemName").setValue("Buttom_Up_Shirt")
-        ref.child("Shirts/Buttom Up Shirt/imageName").setValue("buttom_up_shirt")
-        ref.child("Buttoms/Chinos/itemName").setValue("Chinos")
-        ref.child("Buttoms/Chinos/imageName").setValue("chinos")
+        ref.child("Shirts/Button Up Shirt/itemName").setValue("Button_Up_Shirt")
+        ref.child("Shirts/Button Up Shirt/imageName").setValue("button_up_shirt")
+        ref.child("Bottoms/Chinos/itemName").setValue("Chinos")
+        ref.child("Bottoms/Chinos/imageName").setValue("chinos")
         ref.child("Footwear/Sneakers/itemName").setValue("Sneakers")
         ref.child("Footwear/Sneakers/imageName").setValue("sneakers")
         ref.child("Accessories/Cap/itemName").setValue("Cap")
