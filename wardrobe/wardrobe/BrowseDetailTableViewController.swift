@@ -66,7 +66,7 @@ class BrowseDetailTableViewController: UITableViewController {
     func getItems() {
 
 
-        ref.child("Shirts/Green Shirt").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("Shirts/Button Up Shirt").observeSingleEvent(of: .value, with: { (snapshot) in
 
             let data = snapshot.value as? NSDictionary
             let item = data?["itemName"] as? String ?? ""
@@ -76,28 +76,70 @@ class BrowseDetailTableViewController: UITableViewController {
             if (self.pageTitle == "Shirts") {
                 self.pageItems.append(pageItem(itemName: item, imageName: image))
 
-                self.test_var.itemName = item
-                self.test_var.imageName = image
-                
+                // self.test_var.itemName = item
+                // self.test_var.imageName = image
             }
-            else if (self.pageTitle == "Pants") {
-                self.pageItems.append(pageItem(itemName: "Pants Var", imageName: "pants image"))
-            }
-            
             self.tableView.reloadData()
         })
 
-        // call database here
-        if (pageTitle == "Shirts") {
-            pageItems.append(pageItem(itemName: "Red_Shirt", imageName: "red_shirt"))
-           // pageItems.append(pageItem(itemName: "Blue_Shirt", imageName: "blue_shirt"))
-              pageItems.append(pageItem(itemName: test_var.itemName, imageName: test_var.imageName))
-           // pageItems.append(pageItem(itemName: "Green_Shirt", imageName: "green_shirt"))
-           // pageItems.append(pageItem(itemName: "Yellow_Shirt", imageName: "yellow_shirt"))
-           // pageItems.append(pageItem(itemName: "Pink_Shirt", imageName: "pink_shirt"))
+        ref.child("Bottoms/Chinos").observeSingleEvent(of: .value, with: { (snapshot) in
+
+            let data = snapshot.value as? NSDictionary
+            let item = data?["itemName"] as? String ?? ""
+            let image = data?["imageName"] as? String ?? ""
+
+            if (self.pageTitle == "Bottoms") {
+                self.pageItems.append(pageItem(itemName: item, imageName: image))
+            }
+            self.tableView.reloadData()
+        })
+
+        ref.child("Footwear/Sneakers").observeSingleEvent(of: .value, with: { (snapshot) in
+
+            let data = snapshot.value as? NSDictionary
+            let item = data?["itemName"] as? String ?? ""
+            let image = data?["imageName"] as? String ?? ""
+
+            if (self.pageTitle == "Footwear") {
+                self.pageItems.append(pageItem(itemName: item, imageName: image))
+            }
+            self.tableView.reloadData()
+        })
+        ref.child("Accessories/Cap").observeSingleEvent(of: .value, with: { (snapshot) in
+
+            let data = snapshot.value as? NSDictionary
+            let item = data?["itemName"] as? String ?? ""
+            let image = data?["imageName"] as? String ?? ""
+
+            if (self.pageTitle == "Accessories") {
+                self.pageItems.append(pageItem(itemName: item, imageName: image))
+            }
+            self.tableView.reloadData()
+        })
+
+        ref.child("Dresses/Dress").observeSingleEvent(of: .value, with: { (snapshot) in
+
+            let data = snapshot.value as? NSDictionary
+            let item = data?["itemName"] as? String ?? ""
+            let image = data?["imageName"] as? String ?? ""
+
+            if (self.pageTitle == "Dresses") {
+                self.pageItems.append(pageItem(itemName: item, imageName: image))
+            }
+            self.tableView.reloadData()
+        })
+
+        // // call database here
+        // if (pageTitle == "Shirts") {
+        //     pageItems.append(pageItem(itemName: "Red_Shirt", imageName: "red_shirt"))
+        //    // pageItems.append(pageItem(itemName: "Blue_Shirt", imageName: "blue_shirt"))
+        //       pageItems.append(pageItem(itemName: test_var.itemName, imageName: test_var.imageName))
+        //    // pageItems.append(pageItem(itemName: "Green_Shirt", imageName: "green_shirt"))
+        //    // pageItems.append(pageItem(itemName: "Yellow_Shirt", imageName: "yellow_shirt"))
+        //    // pageItems.append(pageItem(itemName: "Pink_Shirt", imageName: "pink_shirt"))
             
-            //self.tableView.reloadData()
-        }
+        //     //self.tableView.reloadData()
+        // }
         
         
     }
