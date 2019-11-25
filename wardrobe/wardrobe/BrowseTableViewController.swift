@@ -17,7 +17,7 @@ class BrowseTableViewController: UITableViewController {
     var sectionTitles: [String] = ["Categories"]
     
     func getCategories() {
-        categories = ["Shirts", "Pants"]
+        categories = ["Shirts", "Bottoms", "Footwear", "Accessories", "Dresses"]
     }
 
     override func viewDidLoad() {
