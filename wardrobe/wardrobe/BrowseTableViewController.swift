@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 
 
@@ -24,7 +25,11 @@ class BrowseTableViewController: UITableViewController {
         case .female:
             categories = ["Shirts", "Bottoms", "Footwear", "Accessories", "Dresses"]
         case .other:
+<<<<<<< HEAD
             categories = ["Shirts", "Bottoms", "Footwear", "Accessories"]
+=======
+            categories = ["Shirts", "Bottoms", "Footwear", "Accessories", "Dresses"]
+>>>>>>> database
         }
         
         if Global.gender != gender {
@@ -34,8 +39,22 @@ class BrowseTableViewController: UITableViewController {
         gender = Global.gender
     }
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let ref = Database.database().reference()
+
+        ref.child("Shirts/Button Up Shirt/itemName").setValue("Button_Up_Shirt")
+        ref.child("Shirts/Button Up Shirt/imageName").setValue("button_up_shirt")
+        ref.child("Bottoms/Chinos/itemName").setValue("Chinos")
+        ref.child("Bottoms/Chinos/imageName").setValue("chinos")
+        ref.child("Footwear/Sneakers/itemName").setValue("Sneakers")
+        ref.child("Footwear/Sneakers/imageName").setValue("sneakers")
+        ref.child("Accessories/Cap/itemName").setValue("Cap")
+        ref.child("Accessories/Cap/imageName").setValue("cap")
+        ref.child("Dresses/Dress/itemName").setValue("Dress")
+        ref.child("Dresses/Dress/imageName").setValue("dress")
         
         tableView.register(BrowseTableViewCell.self, forCellReuseIdentifier: BrowseTableViewCell.reuseIdentifier)
         self.clearsSelectionOnViewWillAppear = false
