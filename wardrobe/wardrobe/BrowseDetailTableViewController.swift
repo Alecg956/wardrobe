@@ -13,14 +13,8 @@ class BrowseDetailTableViewController: UITableViewController {
     
     var pageTitle: String = ""
     var pageItems: [pageItem] = []
-<<<<<<< HEAD
     var categoryIndex: Int = 0
-=======
-    //var clothesData: [pageItem] = []
-    //var my_class: ClothesInfo!
     var test_var = pageItem()
-    
->>>>>>> database
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +62,7 @@ class BrowseDetailTableViewController: UITableViewController {
     let ref = Database.database().reference()
     
     func getItems() {
+        Global.selectedType = pageTitle
 
 
         ref.child("Shirts/Button Up Shirt").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -146,22 +141,22 @@ class BrowseDetailTableViewController: UITableViewController {
         // }
         
         
-<<<<<<< HEAD
-        Global.selectedType = pageTitle
-        // call database here
-        if (pageTitle == "Shirts") {
-            pageItems.append(pageItem(itemName: "Button_Up_Shirt", imageName: "button_up_shirt"))
-        } else if (pageTitle == "Bottoms") {
-            pageItems.append(pageItem(itemName: "Chinos", imageName: "chinos"))
-        } else if (pageTitle == "Footwear") {
-            pageItems.append(pageItem(itemName: "Sneakers", imageName: "sneakers"))
-        } else if (pageTitle == "Accessories") {
-            pageItems.append(pageItem(itemName: "Cap", imageName: "cap"))
-        } else if (pageTitle == "Dresses") {
-            pageItems.append(pageItem(itemName: "Dress", imageName: "dress"))
-        }
-=======
->>>>>>> database
+//<<<<<<< HEAD
+//        Global.selectedType = pageTitle
+//        // call database here
+//        if (pageTitle == "Shirts") {
+//            pageItems.append(pageItem(itemName: "Button_Up_Shirt", imageName: "button_up_shirt"))
+//        } else if (pageTitle == "Bottoms") {
+//            pageItems.append(pageItem(itemName: "Chinos", imageName: "chinos"))
+//        } else if (pageTitle == "Footwear") {
+//            pageItems.append(pageItem(itemName: "Sneakers", imageName: "sneakers"))
+//        } else if (pageTitle == "Accessories") {
+//            pageItems.append(pageItem(itemName: "Cap", imageName: "cap"))
+//        } else if (pageTitle == "Dresses") {
+//            pageItems.append(pageItem(itemName: "Dress", imageName: "dress"))
+//        }
+//=======
+//>>>>>>> database
     }
 }
 
