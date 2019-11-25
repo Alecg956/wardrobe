@@ -127,36 +127,6 @@ class BrowseDetailTableViewController: UITableViewController {
             }
             self.tableView.reloadData()
         })
-
-        // // call database here
-        // if (pageTitle == "Shirts") {
-        //     pageItems.append(pageItem(itemName: "Red_Shirt", imageName: "red_shirt"))
-        //    // pageItems.append(pageItem(itemName: "Blue_Shirt", imageName: "blue_shirt"))
-        //       pageItems.append(pageItem(itemName: test_var.itemName, imageName: test_var.imageName))
-        //    // pageItems.append(pageItem(itemName: "Green_Shirt", imageName: "green_shirt"))
-        //    // pageItems.append(pageItem(itemName: "Yellow_Shirt", imageName: "yellow_shirt"))
-        //    // pageItems.append(pageItem(itemName: "Pink_Shirt", imageName: "pink_shirt"))
-            
-        //     //self.tableView.reloadData()
-        // }
-        
-        
-//<<<<<<< HEAD
-//        Global.selectedType = pageTitle
-//        // call database here
-//        if (pageTitle == "Shirts") {
-//            pageItems.append(pageItem(itemName: "Button_Up_Shirt", imageName: "button_up_shirt"))
-//        } else if (pageTitle == "Bottoms") {
-//            pageItems.append(pageItem(itemName: "Chinos", imageName: "chinos"))
-//        } else if (pageTitle == "Footwear") {
-//            pageItems.append(pageItem(itemName: "Sneakers", imageName: "sneakers"))
-//        } else if (pageTitle == "Accessories") {
-//            pageItems.append(pageItem(itemName: "Cap", imageName: "cap"))
-//        } else if (pageTitle == "Dresses") {
-//            pageItems.append(pageItem(itemName: "Dress", imageName: "dress"))
-//        }
-//=======
-//>>>>>>> database
     }
 }
 

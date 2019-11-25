@@ -26,11 +26,6 @@ class BrowseTableViewController: UITableViewController {
             categories = ["Shirts", "Bottoms", "Footwear", "Accessories", "Dresses"]
         case .other:
             categories = ["Shirts", "Bottoms", "Footwear", "Accessories", "Dresses"]
-//<<<<<<< HEAD
-//            categories = ["Shirts", "Bottoms", "Footwear", "Accessories"]
-//=======
-            //categories = ["Shirts", "Bottoms", "Footwear", "Accessories", "Dresses"]
-//>>>>>>> database
         }
         
         if Global.gender != gender {
@@ -48,14 +43,23 @@ class BrowseTableViewController: UITableViewController {
 
         ref.child("Shirts/Button Up Shirt/itemName").setValue("Button_Up_Shirt")
         ref.child("Shirts/Button Up Shirt/imageName").setValue("button_up_shirt")
+        ref.child("Shirts/Button Up Shirt/itemLink").setValue("https://www.amazon.com/Amazon-Essentials-Regular-Fit-Long-Sleeve-Oxford/dp/B06XWLZBK3/")
+        
         ref.child("Bottoms/Chinos/itemName").setValue("Chinos")
         ref.child("Bottoms/Chinos/imageName").setValue("chinos")
+        ref.child("Bottoms/Chinos/itemLink").setValue("https://www.amazon.com/Amazon-Essentials-Slim-Fit-Wrinkle-Resistant-Flat-Front/dp/B07756KXN4/")
+        
         ref.child("Footwear/Sneakers/itemName").setValue("Sneakers")
         ref.child("Footwear/Sneakers/imageName").setValue("sneakers")
+        ref.child("Footwear/Sneakers/itemLink").setValue("https://www.amazon.com/Converse-Chuck-Taylor-Classic-Sneakers/dp/B01G4AU46Y/")
+        
         ref.child("Accessories/Cap/itemName").setValue("Cap")
         ref.child("Accessories/Cap/imageName").setValue("cap")
+        ref.child("Accessories/Cap/itemLink").setValue("https://www.amazon.com/Carhartt-Medium-Profile-Percent-Cotton/dp/B00MNLKARM/")
+        
         ref.child("Dresses/Dress/itemName").setValue("Dress")
         ref.child("Dresses/Dress/imageName").setValue("dress")
+        ref.child("Dresses/Dress/itemLink").setValue("https://www.amazon.com/Amazon-Essentials-Womens-Surplice-Burgundy/dp/B07JN9HYHX/")
         
         tableView.register(BrowseTableViewCell.self, forCellReuseIdentifier: BrowseTableViewCell.reuseIdentifier)
         self.clearsSelectionOnViewWillAppear = false
