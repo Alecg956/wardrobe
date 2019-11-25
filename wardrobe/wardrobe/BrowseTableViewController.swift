@@ -15,17 +15,31 @@ class BrowseTableViewController: UITableViewController {
     
     var categories: [String] = []
     var sectionTitles: [String] = ["Categories"]
+    var gender: Gender = .other
     
     func getCategories() {
-        categories = ["Shirts", "Bottoms", "Footwear", "Accessories", "Dresses"]
+        
+        switch Global.gender {
+        case .male:
+            categories = ["Shirts", "Bottoms", "Footwear", "Accessories"]
+        case .female:
+            categories = ["Shirts", "Bottoms", "Footwear", "Accessories", "Dresses"]
+        case .other:
+            categories = ["Shirts", "Bottoms", "Footwear", "Accessories", "Dresses"]
+        }
+        
+        if Global.gender != gender {
+            tableView.reloadData()
+        }
+        
+        gender = Global.gender
     }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let ref = Database.database().reference()
-
-
 
         ref.child("Shirts/Button Up Shirt/itemName").setValue("Button_Up_Shirt")
         ref.child("Shirts/Button Up Shirt/imageName").setValue("button_up_shirt")
@@ -37,11 +51,13 @@ class BrowseTableViewController: UITableViewController {
         ref.child("Accessories/Cap/imageName").setValue("cap")
         ref.child("Dresses/Dress/itemName").setValue("Dress")
         ref.child("Dresses/Dress/imageName").setValue("dress")
-
         
         tableView.register(BrowseTableViewCell.self, forCellReuseIdentifier: BrowseTableViewCell.reuseIdentifier)
         self.clearsSelectionOnViewWillAppear = false
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         getCategories()
     }
 
