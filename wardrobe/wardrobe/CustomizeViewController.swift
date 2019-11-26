@@ -107,6 +107,7 @@ class CustomizeViewController: UIViewController {
         
         slider.minimumValue = 0
         slider.maximumValue = 100
+        slider.setValue(Global.defaultChest.other.rawValue, animated: true)
         slider.isContinuous = true
         slider.tintColor = .greenBG
         slider.addTarget(self, action: #selector(CustomizeViewController.sliderValueDidChange(_:)), for: .valueChanged)
@@ -119,7 +120,7 @@ class CustomizeViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         
-        label.text = "Chest: 0 Inches"
+        label.text = "Chest: \(Int(Global.defaultChest.other.rawValue)) Inches"
         
         return label
     }()
@@ -132,6 +133,7 @@ class CustomizeViewController: UIViewController {
         
         slider.minimumValue = 0
         slider.maximumValue = 100
+        slider.setValue(Global.defaultWaist.other.rawValue, animated: true)
         slider.isContinuous = true
         slider.tintColor = .greenBG
         slider.addTarget(self, action: #selector(CustomizeViewController.sliderValueDidChange(_:)), for: .valueChanged)
@@ -144,7 +146,7 @@ class CustomizeViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         
-        label.text = "Waist: 0 Inches"
+        label.text = "Waist: \(Int(Global.defaultWaist.other.rawValue)) Inches"
         
         return label
     }()
@@ -185,6 +187,8 @@ class CustomizeViewController: UIViewController {
         
         updateHeightVals(newHeight: Global.defaultHeight.male.rawValue)
         updateWeightVals(newWeight: Global.defaultWeight.male.rawValue)
+        updateChestVals(newChest: Global.defaultChest.male.rawValue)
+        updateWaistVals(newWaist: Global.defaultWaist.male.rawValue)
         
     }
     
@@ -196,6 +200,8 @@ class CustomizeViewController: UIViewController {
         
         updateHeightVals(newHeight: Global.defaultHeight.female.rawValue)
         updateWeightVals(newWeight: Global.defaultWeight.female.rawValue)
+        updateChestVals(newChest: Global.defaultChest.female.rawValue)
+        updateWaistVals(newWaist: Global.defaultWaist.female.rawValue)
     }
     
     // Handler for tapping other button
@@ -206,6 +212,8 @@ class CustomizeViewController: UIViewController {
         
         updateHeightVals(newHeight: Global.defaultHeight.other.rawValue)
         updateWeightVals(newWeight: Global.defaultWeight.other.rawValue)
+        updateChestVals(newChest: Global.defaultChest.other.rawValue)
+        updateWaistVals(newWaist: Global.defaultWaist.other.rawValue)
     }
     
     // Handler for tapping help button
@@ -227,9 +235,9 @@ class CustomizeViewController: UIViewController {
         case 2:
             updateWeightVals(newWeight: roundedValue)
         case 3:
-            chestLabel.text = "Chest: \(Int(roundedValue)) Inches"
+            updateChestVals(newChest: roundedValue)
         case 4:
-            waistLabel.text = "Waist: \(Int(roundedValue)) Inches"
+            updateWaistVals(newWaist: roundedValue)
         default:
             print("Default switch")
         }
@@ -248,8 +256,20 @@ class CustomizeViewController: UIViewController {
     
     func updateWeightVals(newWeight:Float) {
         Global.weight = newWeight
-        weightLabel.text = "Height: \(Int(Global.weight)) Pounds"
+        weightLabel.text = "Weight: \(Int(Global.weight)) Pounds"
         weightSlider.setValue(Global.weight, animated: true)
+    }
+    
+    func updateChestVals(newChest:Float) {
+        Global.chest = newChest
+        chestLabel.text = "Chest: \(Int(Global.chest)) Inches"
+        chestSlider.setValue(Global.chest, animated: true)
+    }
+    
+    func updateWaistVals(newWaist:Float) {
+        Global.waist = newWaist
+        waistLabel.text = "Waist: \(Int(Global.waist)) Inches"
+        waistSlider.setValue(Global.waist, animated: true)
     }
 
     //setup buttons

@@ -46,10 +46,24 @@ struct Global {
         case female = 125
         case other = 138
     }
+    
+    enum defaultChest: Float {
+        case male = 42
+        case female = 37
+        case other = 40
+    }
+    
+    enum defaultWaist: Float {
+        case male = 40
+        case female = 38
+        case other = 39
+    }
 
     //for customize sliders
     static var height:Float = defaultHeight.other.rawValue
     static var weight:Float = defaultWeight.other.rawValue
+    static var chest:Float = defaultChest.other.rawValue
+    static var waist:Float = defaultWaist.other.rawValue
     
     // corresponds to a medium, negative is smaller, positive is higher
     static var size:Int = 0
