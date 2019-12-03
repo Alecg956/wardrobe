@@ -1,4 +1,14 @@
 import UIKit
+import SwiftGifOrigin
+
+extension UIImage {
+  public class func gif(asset: String) -> UIImage? {
+    if let asset = NSDataAsset(name: asset) {
+       return UIImage.gif(data: asset.data)
+    }
+    return nil
+  }
+}
 
 enum Gender {
     case male

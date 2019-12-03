@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImageIO
 import SceneKit
 import ARKit
 
@@ -14,6 +15,8 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
     
     lazy var pickerView = UIPickerView()
     lazy var currentColorNamePair = ColorNamePair(asset: "white_fabric", color: .white, name: "white")
+    
+    var modelTimer: Timer?
     
     struct ColorNamePair {
         var asset: String
@@ -170,8 +173,35 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         
         if numModels == 0 {
             let alert = UIAlertController(title: "Testing with AR", message: "To add a model wait for a flat surface to be detected and tap the screen.  Select clothing by looking in the browse tab and see it appear on your model!", preferredStyle: .alert)
-
-            alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+            
+            let help_gif = UIImage.gif(asset: "help_gif")
+            let imageView = UIImageView(image: help_gif)
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            
+            imageView.layer.cornerRadius = 8.0
+            imageView.clipsToBounds = true
+            alert.view.addSubview(imageView)
+            
+            NSLayoutConstraint.activate([
+                
+                alert.view.heightAnchor.constraint(equalToConstant: 450),
+                
+                imageView.topAnchor.constraint(equalTo: alert.view.topAnchor, constant: 150),
+                imageView.bottomAnchor.constraint(equalTo: alert.view.bottomAnchor, constant: -60),
+                imageView.widthAnchor.constraint(equalToConstant: 150),
+                imageView.centerXAnchor.constraint(equalTo: alert.view.centerXAnchor)
+                
+            ])
+            
+            self.modelTimer?.invalidate()
+            
+            alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { action in
+                
+                alert.dismiss(animated: true)
+                self.modelTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.checkModelPlaced), userInfo: nil, repeats: true)
+                
+            
+            }))
             self.present(alert, animated: true)
         }
         
@@ -220,6 +250,8 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         if numModels >= 1 {
             return
         }
+        
+        modelTimer?.invalidate()
         
         // Load model based on gender
         setModelFileName()
@@ -384,6 +416,50 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         }
         
         self.changeModelHeightAndWeight()
+        
+        if (numModels == 0) {
+            modelTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(checkModelPlaced), userInfo: nil, repeats: true)
+        }
+    }
+    
+    @objc func checkModelPlaced() {
+        
+        self.modelTimer?.invalidate()
+
+        let showAlert = UIAlertController(title: "Place AR Model", message: "Move the phone closer to place the model", preferredStyle: .alert)
+        showAlert.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        let help_gif = UIImage.gif(asset: "help_gif")
+        let imageView = UIImageView(image: help_gif)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        imageView.layer.cornerRadius = 8.0
+        imageView.clipsToBounds = true
+        showAlert.view.addSubview(imageView)
+        
+        NSLayoutConstraint.activate([
+            
+            showAlert.view.heightAnchor.constraint(equalToConstant: 400),
+            
+            imageView.topAnchor.constraint(equalTo: showAlert.view.topAnchor, constant: 100),
+            imageView.bottomAnchor.constraint(equalTo: showAlert.view.bottomAnchor, constant: -60),
+            imageView.widthAnchor.constraint(equalToConstant: 150),
+            imageView.centerXAnchor.constraint(equalTo: showAlert.view.centerXAnchor)
+            
+        ])
+        
+
+        showAlert.addAction(UIAlertAction(title: "I understand", style: .default, handler: { action in
+            
+            if (self.numModels == 0) {
+                self.modelTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.checkModelPlaced), userInfo: nil, repeats: true)
+            }
+            
+            showAlert.dismiss(animated: true)
+            
+        }))
+        self.present(showAlert, animated: true, completion: nil)
+        
     }
 
     func scaleClothes() {
@@ -708,6 +784,8 @@ extension ARTestViewController {
             setClothingButtonsEnabled(enabled: false)
             
             self.setPlanesVisible(visible: true)
+            
+            modelTimer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(checkModelPlaced), userInfo: nil, repeats: true)
         }
         
         Global.selectedItem = ""
@@ -790,9 +868,36 @@ extension ARTestViewController {
     // Handler for tapping help button
     @objc func didTapHelp () {
         
+        modelTimer?.invalidate()
+        
         let alert = UIAlertController(title: "Testing with AR", message: "To add a model wait for a flat surface to be detected and tap the screen.  Select clothing by looking in the browse tab and see it appear on your model!", preferredStyle: .alert)
+        
+        let help_gif = UIImage.gif(asset: "help_gif")
+        let imageView = UIImageView(image: help_gif)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        imageView.layer.cornerRadius = 8.0
+        imageView.clipsToBounds = true
+        alert.view.addSubview(imageView)
+        
+        NSLayoutConstraint.activate([
+            
+            alert.view.heightAnchor.constraint(equalToConstant: 450),
+            
+            imageView.topAnchor.constraint(equalTo: alert.view.topAnchor, constant: 150),
+            imageView.bottomAnchor.constraint(equalTo: alert.view.bottomAnchor, constant: -60),
+            imageView.widthAnchor.constraint(equalToConstant: 150),
+            imageView.centerXAnchor.constraint(equalTo: alert.view.centerXAnchor)
+            
+        ])
 
-        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { action in
+            
+            alert.dismiss(animated: true)
+            self.modelTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.checkModelPlaced), userInfo: nil, repeats: true)
+            
+            
+        }))
         self.present(alert, animated: true)
     }
     

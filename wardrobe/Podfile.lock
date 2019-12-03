@@ -73,11 +73,13 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - SwiftGifOrigin (1.7.0)
 
 DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Core
   - Firebase/Database
+  - SwiftGifOrigin (~> 1.7.0)
 
 SPEC REPOS:
   trunk:
@@ -95,6 +97,7 @@ SPEC REPOS:
     - GoogleUtilities
     - leveldb-library
     - nanopb
+    - SwiftGifOrigin
 
 SPEC CHECKSUMS:
   Firebase: bc9cfc7a96c73268656d5aaab453ff1b4b530e0e
@@ -111,7 +114,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: f895fde57977df4e0233edda0dbeac490e3703b6
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  SwiftGifOrigin: fbd6cf37afcfcf97a5c3db996ddc0492e5c5c145
 
-PODFILE CHECKSUM: 916a5607d2f9a5352ea75c2c248810c298cacaa6
+PODFILE CHECKSUM: 37f102c958be991707fa56f6d140f19530206776
 
 COCOAPODS: 1.8.4

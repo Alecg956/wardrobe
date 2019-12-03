@@ -10,5 +10,6 @@ target 'wardrobe' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Analytics'
+  pod 'SwiftGifOrigin', '~> 1.7.0'
 
 end
