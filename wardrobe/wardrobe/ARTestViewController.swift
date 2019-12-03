@@ -13,6 +13,7 @@ import ARKit
 
 class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    var firstLoad = true
     lazy var pickerView = UIPickerView()
     lazy var currentColorNamePair = ColorNamePair(asset: "white_fabric", color: .white, name: "white")
     
@@ -193,11 +194,11 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
                 
             ])
             
-            self.modelTimer?.invalidate()
-            
             alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { action in
                 
                 alert.dismiss(animated: true)
+                
+                print("activating timer\n")
                 self.modelTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.checkModelPlaced), userInfo: nil, repeats: true)
                 
             
@@ -251,6 +252,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
             return
         }
         
+        print("invalidating timer")
         modelTimer?.invalidate()
         
         // Load model based on gender
@@ -417,14 +419,21 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         
         self.changeModelHeightAndWeight()
         
-        if (numModels == 0) {
+        if (numModels == 0 && !firstLoad) {
+            
+            print("activating timer viewwillappear\n")
+            modelTimer?.invalidate()
             modelTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(checkModelPlaced), userInfo: nil, repeats: true)
         }
+        
+        firstLoad = false
     }
     
     @objc func checkModelPlaced() {
         
         self.modelTimer?.invalidate()
+        
+        print("displaying alert\n")
 
         let showAlert = UIAlertController(title: "Place AR Model", message: "Move the phone closer to place the model", preferredStyle: .alert)
         showAlert.view.translatesAutoresizingMaskIntoConstraints = false
@@ -452,6 +461,8 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         showAlert.addAction(UIAlertAction(title: "I understand", style: .default, handler: { action in
             
             if (self.numModels == 0) {
+                
+                print("activating timer\n")
                 self.modelTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.checkModelPlaced), userInfo: nil, repeats: true)
             }
             
@@ -785,6 +796,7 @@ extension ARTestViewController {
             
             self.setPlanesVisible(visible: true)
             
+            print("activating timer\n")
             modelTimer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(checkModelPlaced), userInfo: nil, repeats: true)
         }
         
@@ -894,6 +906,8 @@ extension ARTestViewController {
         alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { action in
             
             alert.dismiss(animated: true)
+            
+            print("activating timer\n")
             self.modelTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.checkModelPlaced), userInfo: nil, repeats: true)
             
             
