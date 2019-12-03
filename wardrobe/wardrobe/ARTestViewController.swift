@@ -907,10 +907,10 @@ extension ARTestViewController {
             
             alert.dismiss(animated: true)
             
-            print("activating timer\n")
-            self.modelTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.checkModelPlaced), userInfo: nil, repeats: true)
-            
-            
+            if (self.numModels == 0) {
+                print("activating timer\n")
+                self.modelTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.checkModelPlaced), userInfo: nil, repeats: true)
+            }
         }))
         self.present(alert, animated: true)
     }
