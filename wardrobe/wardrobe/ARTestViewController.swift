@@ -254,6 +254,7 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         
         print("invalidating timer")
         modelTimer?.invalidate()
+        modelTimer = nil
         
         // Load model based on gender
         setModelFileName()
@@ -429,9 +430,17 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
         firstLoad = false
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        if modelTimer != nil {
+            print("disabling timer\n")
+            modelTimer?.invalidate()
+        }
+    }
+    
     @objc func checkModelPlaced() {
         
         self.modelTimer?.invalidate()
+        modelTimer = nil
         
         print("displaying alert\n")
 
@@ -885,6 +894,7 @@ extension ARTestViewController {
     @objc func didTapHelp () {
         
         modelTimer?.invalidate()
+        modelTimer = nil
         
         let alert = UIAlertController(title: "Testing with AR", message: "To add a model wait for a flat surface to be detected and tap the screen.  Select clothing by looking in the browse tab and see it appear on your model!", preferredStyle: .alert)
         
