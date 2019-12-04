@@ -54,7 +54,7 @@ struct Global {
     enum defaultWeight: Float {
         case male = 150
         case female = 125
-        case other = 138
+        case other = 140
     }
     
     enum defaultChest: Float {

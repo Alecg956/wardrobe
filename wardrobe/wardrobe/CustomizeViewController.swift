@@ -48,10 +48,10 @@ class CustomizeViewController: UIViewController {
     lazy var heightSlider: UISlider = {
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
-        let slider = UISlider(frame: CGRect(x: displayWidth / 4, y: 300, width: displayWidth / 2, height: 20))
+        let slider = UISlider(frame: CGRect(x: displayWidth / 6, y: 275, width: displayWidth / 1.5, height: 20))
         
-        slider.minimumValue = 0
-        slider.maximumValue = 100
+        slider.minimumValue = 36
+        slider.maximumValue = 84
         slider.setValue(Global.defaultHeight.other.rawValue, animated: true)
         slider.isContinuous = true
         slider.tintColor = .greenBG
@@ -77,9 +77,9 @@ class CustomizeViewController: UIViewController {
     lazy var weightSlider: UISlider = {
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
-        let slider = UISlider(frame: CGRect(x: displayWidth / 4, y: 400, width: displayWidth / 2, height: 20))
+        let slider = UISlider(frame: CGRect(x: displayWidth / 6, y: 375, width: displayWidth / 1.5, height: 20))
         
-        slider.minimumValue = 0
+        slider.minimumValue = 50
         slider.maximumValue = 300
         slider.setValue(Global.defaultWeight.other.rawValue, animated: true)
         slider.isContinuous = true
@@ -103,10 +103,10 @@ class CustomizeViewController: UIViewController {
     lazy var chestSlider: UISlider = {
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
-        let slider = UISlider(frame: CGRect(x: displayWidth / 4, y: 500, width: displayWidth / 2, height: 20))
+        let slider = UISlider(frame: CGRect(x: displayWidth / 6, y: 475, width: displayWidth / 1.5, height: 20))
         
-        slider.minimumValue = 0
-        slider.maximumValue = 100
+        slider.minimumValue = 20
+        slider.maximumValue = 60
         slider.setValue(Global.defaultChest.other.rawValue, animated: true)
         slider.isContinuous = true
         slider.tintColor = .greenBG
@@ -129,10 +129,10 @@ class CustomizeViewController: UIViewController {
     lazy var waistSlider: UISlider = {
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
-        let slider = UISlider(frame: CGRect(x: displayWidth / 4, y: 600, width: displayWidth / 2, height: 20))
+        let slider = UISlider(frame: CGRect(x: displayWidth / 6, y: 575, width: displayWidth / 1.5, height: 20))
         
-        slider.minimumValue = 0
-        slider.maximumValue = 100
+        slider.minimumValue = 20
+        slider.maximumValue = 60
         slider.setValue(Global.defaultWaist.other.rawValue, animated: true)
         slider.isContinuous = true
         slider.tintColor = .greenBG
@@ -233,7 +233,7 @@ class CustomizeViewController: UIViewController {
         case 1:
             updateHeightVals(newHeight: roundedValue)
         case 2:
-            updateWeightVals(newWeight: roundedValue)
+            updateWeightVals(newWeight: Float(Int(sender.value/5) * 5))
         case 3:
             updateChestVals(newChest: roundedValue)
         case 4:
@@ -305,16 +305,19 @@ class CustomizeViewController: UIViewController {
             //heightSlider.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 200.0),
             
             heightLabel.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 0.0),
-            heightLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 225.0),
+            heightLabel.bottomAnchor.constraint(equalTo: heightSlider.topAnchor, constant: -15),
             
             weightLabel.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 0.0),
-            weightLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 325.0),
+            weightLabel.bottomAnchor.constraint(equalTo: weightSlider.topAnchor, constant: -15),
+
             
             chestLabel.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 0.0),
-            chestLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 425.0),
+            chestLabel.bottomAnchor.constraint(equalTo: chestSlider.topAnchor, constant: -15),
+
             
             waistLabel.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 0.0),
-            waistLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 525.0),
+            waistLabel.bottomAnchor.constraint(equalTo: waistSlider.topAnchor, constant: -15),
+
 
             helpButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15.0),
             helpButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20.0),

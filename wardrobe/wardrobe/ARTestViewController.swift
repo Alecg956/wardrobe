@@ -78,8 +78,8 @@ class ARTestViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDat
     }()
     
     lazy var numModels = Int()
-    static let rotateRightSmall = SCNAction.rotateBy(x: 0, y: 0.2, z: 0, duration: 0)
-    static let rotateLeftSmall = SCNAction.rotateBy(x: 0, y: -0.2, z: 0, duration: 0)
+    static let rotateRightSmall = SCNAction.rotateBy(x: 0, y: 0.5, z: 0, duration: 0.1)
+    static let rotateLeftSmall = SCNAction.rotateBy(x: 0, y: -0.5, z: 0, duration: 0.1)
     static let scaleUpSmall = SCNAction.scale(by: 1.1, duration: 0)
     static let scaleDownSmall = SCNAction.scale(by: 0.90909, duration: 0)
     
@@ -874,6 +874,10 @@ extension ARTestViewController {
             let item = Global.ClothingItem(name: Global.selectedItem, size: Global.size, color: pickerTextField.text ?? "white")
             Global.cart.append(item)
         }
+        
+        self.tabBarController?.selectedIndex = 3
+
+        
         print(Global.cart)
     }
     
