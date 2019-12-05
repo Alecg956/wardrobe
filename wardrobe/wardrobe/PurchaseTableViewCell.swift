@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class PurchaseTableViewCell: UITableViewCell {
     
@@ -84,24 +85,60 @@ class PurchaseTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    let ref = Database.database().reference()
     
     func getURL(name: String) -> String {
         var url = ""
         switch name {
         case "Button_Up_Shirt":
-            url = "https://www.amazon.com/Amazon-Essentials-Regular-Fit-Long-Sleeve-Oxford/dp/B06XWLZBK3/"
+            ref.child("Shirts/Button Up Shirt").observeSingleEvent(of: .value, with: { (snapshot) in
+
+                let data = snapshot.value as? NSDictionary
+                url = data?["itemLink"] as? String ?? ""
+
+                return url
+            })
+            //url = "https://www.amazon.com/Amazon-Essentials-Regular-Fit-Long-Sleeve-Oxford/dp/B06XWLZBK3/"
         case "Chinos":
-            url = "https://www.amazon.com/Amazon-Essentials-Slim-Fit-Wrinkle-Resistant-Flat-Front/dp/B07756KXN4/"
+            ref.child("Bottoms/Chinos").observeSingleEvent(of: .value, with: { (snapshot) in
+
+                let data = snapshot.value as? NSDictionary
+                url = data?["itemLink"] as? String ?? ""
+
+                return url
+            })
+            //url = "https://www.amazon.com/Amazon-Essentials-Slim-Fit-Wrinkle-Resistant-Flat-Front/dp/B07756KXN4/"
         case "Sneakers":
-            url = "https://www.amazon.com/Converse-Chuck-Taylor-Classic-Sneakers/dp/B01G4AU46Y/"
+            ref.child("Footwear/Sneakers").observeSingleEvent(of: .value, with: { (snapshot) in
+
+                let data = snapshot.value as? NSDictionary
+                url = data?["itemLink"] as? String ?? ""
+
+                return url
+            })
+            //url = "https://www.amazon.com/Converse-Chuck-Taylor-Classic-Sneakers/dp/B01G4AU46Y/"
         case "Cap":
-            url = "https://www.amazon.com/Carhartt-Medium-Profile-Percent-Cotton/dp/B00MNLKARM/"
+            ref.child("Accessories/Cap").observeSingleEvent(of: .value, with: { (snapshot) in
+
+                let data = snapshot.value as? NSDictionary
+                url = data?["itemLink"] as? String ?? ""
+
+                return url
+            })
+            //url = "https://www.amazon.com/Carhartt-Medium-Profile-Percent-Cotton/dp/B00MNLKARM/"
         case "Dress":
-            url = "https://www.amazon.com/Amazon-Essentials-Womens-Surplice-Burgundy/dp/B07JN9HYHX/"
+            ref.child("Dresses/Dress").observeSingleEvent(of: .value, with: { (snapshot) in
+
+                let data = snapshot.value as? NSDictionary
+                url = data?["itemLink"] as? String ?? ""
+
+                return url
+            })
+            //url = "https://www.amazon.com/Amazon-Essentials-Womens-Surplice-Burgundy/dp/B07JN9HYHX/"
         default:
             url = "https://www.amazon.com"
+            return url
         }
-        return url
     }
     
     // Handler for tapping male button
