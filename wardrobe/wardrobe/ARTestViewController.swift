@@ -884,7 +884,37 @@ extension ARTestViewController {
             Global.cart.append(item)
         }
         
-        self.tabBarController?.selectedIndex = 3
+        let alert = UIAlertController(title: "Added to cart", message: "", preferredStyle: .alert)
+                   
+       
+        let imageView = UIImageView(image: UIImage(systemName: "checkmark.square"))
+        
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .lightGray
+                   
+        imageView.layer.cornerRadius = 8.0
+        imageView.clipsToBounds = true
+        alert.view.addSubview(imageView)
+    
+        NSLayoutConstraint.activate([
+                       
+            alert.view.heightAnchor.constraint(equalToConstant: 150),
+            alert.view.widthAnchor.constraint(equalToConstant: 150),
+                       
+            imageView.topAnchor.constraint(equalTo: alert.view.topAnchor, constant: 50),
+            imageView.bottomAnchor.constraint(equalTo: alert.view.bottomAnchor, constant: -25),
+            imageView.widthAnchor.constraint(equalToConstant: 100),
+            imageView.centerXAnchor.constraint(equalTo: alert.view.centerXAnchor)
+                       
+        ])
+        
+        self.present(alert, animated: true)
+        
+        let when = DispatchTime.now() + 1.5
+        DispatchQueue.main.asyncAfter(deadline: when){
+          alert.dismiss(animated: true, completion: nil)
+        }
 
         
         print(Global.cart)
