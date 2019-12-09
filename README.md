@@ -471,7 +471,7 @@ Directory Structure:
 2.  Open the wardrobe.xcworkspace (if you don't open the workspace it won't compile!) file in the wardrobe folder
 3.  (optional) Connect an iOS device using a lightning connector if you are not planning on using the simulator
 4.  If iOS device is connected, select the device from the simulator drop-down options next to the "Wardrobe" scheme selection
-    (found in the gray rectangle to the right of the "stop" button)
+    (found in the gray rectangle to the right of the "stop" button), otherwise choose a simulator device
 5.  Press the "play" button at the top left corner of the interface
 6.  Watch you simulator/device start and load the application
 7.  Done!
