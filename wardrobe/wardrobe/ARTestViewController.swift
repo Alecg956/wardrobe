@@ -899,10 +899,10 @@ extension ARTestViewController {
     
         NSLayoutConstraint.activate([
                        
-            alert.view.heightAnchor.constraint(equalToConstant: 150),
+            alert.view.heightAnchor.constraint(equalToConstant: 170),
             alert.view.widthAnchor.constraint(equalToConstant: 150),
                        
-            imageView.topAnchor.constraint(equalTo: alert.view.topAnchor, constant: 50),
+            imageView.topAnchor.constraint(equalTo: alert.view.topAnchor, constant: 70),
             imageView.bottomAnchor.constraint(equalTo: alert.view.bottomAnchor, constant: -25),
             imageView.widthAnchor.constraint(equalToConstant: 100),
             imageView.centerXAnchor.constraint(equalTo: alert.view.centerXAnchor)
