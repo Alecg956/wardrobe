@@ -1,8 +1,8 @@
 # Wardrobe
 
-Wardrobe is an augmented reality prototype iOS application designed to let users try on clothing using a customized model of themselves. They can then view the model from all angles and see how the clothing looks before purchasing it. This is our functinoal prototype of the concept, an example of usage is shown below:
+Wardrobe is an augmented reality prototype iOS application designed to let users try on clothing using a customized model of themselves. They can then view the model from all angles and see how the clothing looks before purchasing it. This is our functional prototype of the concept, an example of usage is shown below:
 
-![](readme_files/readme1.png)
+![](readme_files/readm1.png)
 
 # Wardrobe App Instructions:
 
